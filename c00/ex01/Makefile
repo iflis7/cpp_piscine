@@ -11,7 +11,6 @@ RM 		= rm -f
 AUTHOR	= hsaadi
 DATE	= $(shell date "+%d %B %T")
 HASH	= 
-NOVISU 	= 0 # 1 = no progress bar usefull when tty is not available
 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
@@ -48,7 +47,6 @@ re: fclean all
 
 #COLORS
 RED = \033[1;31m
-GREEN = \033[1;32m
 YELLOW = \033[1;33m
 DEFAULT = \033[0m
 COM_COLOR   = \033[0;34m
@@ -68,12 +66,12 @@ header:
 	@echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| "
 	@echo
 ifneq ($(HASH),)
-	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)@$(HASH)\n"
+	@printf "%b" "$(DEFAULT)Name:	$(OBJ_COLOR)$(NAME)@$(HASH)\n"
 else
-	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)\n"
+	@printf "%b" "$(DEFAULT)Name:	$(OBJ_COLOR)$(NAME)\n"
 endif
-	@printf "%b" "$(OBJ_COLOR)Author:	$(WARN_COLOR)$(AUTHOR)\n"
-	@printf "%b" "$(OBJ_COLOR)Date: 	$(WARN_COLOR)$(DATE)\n\033[m"
-	@printf "%b" "$(OBJ_COLOR)CC: 	$(WARN_COLOR)$(CC)\n\033[m"
-	@printf "%b" "$(OBJ_COLOR)Flags: 	$(WARN_COLOR)$(CFLAGS)\n\033[m"
+	@printf "%b" "$(DEFAULT)Author:	$(OBJ_COLOR)$(AUTHOR)\n"
+	@printf "%b" "$(DEFAULT)Date: 	$(OBJ_COLOR)$(DATE)\n\033[m"
+	@printf "%b" "$(DEFAULT)CC: 	$(OBJ_COLOR)$(CC)\n\033[m"
+	@printf "%b" "$(DEFAULT)Flags: 	$(OBJ_COLOR)$(CFLAGS)\n\033[m"
 	@echo
