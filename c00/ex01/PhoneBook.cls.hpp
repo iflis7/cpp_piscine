@@ -2,9 +2,9 @@
 # define PHONEBOOK_CLS_HPP
 
 # include "Contact.cls.hpp"
-# include <iomanip>
-# include <iostream>
-# include <string>
+#include "main.hpp"
+
+const int	MAX_CONTACTS = 8;
 
 class PhoneBook
 {
@@ -12,22 +12,14 @@ class PhoneBook
 	PhoneBook(void);
 	~PhoneBook(void);
 
-	// void    add(void);
-	// void    search(void);
-	// void    print(void);
-	// void    exitBook(void);
+	void    add(const Contact &contact);
+	void    search(int index);
+	void    print(int index);
+	void    exitBook(void);
 
-	// private:
-
-	//     std::string _firstName;
-	//     std::string _lastName;
-	//     std::string _nickname;
-	//     std::string _login;
-	//     std::string _postalAddress;
-	//     std::string _emailAddress;
-	//     std::string _phoneNumber;
-
-	//     int         _index;
+	private:
+	// Contact contacts[MAX_CONTACTS];
+	// int num_contacts;
 };
 
 #endif

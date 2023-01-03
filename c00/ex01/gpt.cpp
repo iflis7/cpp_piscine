@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-const int	MAX_CONTACTS = 8;
+
 
 class Contact
 {
@@ -53,10 +53,7 @@ class PhoneBook
 	int num_contacts;
 
   public:
-	PhoneBook()
-		: num_contacts(0)
-	{
-	}
+	PhoneBook(): num_contacts(0){}
 
 	void add_contact(const Contact &contact)
 	{
