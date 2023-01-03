@@ -4,22 +4,34 @@
 # include "Contact.cls.hpp"
 #include "main.hpp"
 
-const int	MAX_CONTACTS = 8;
 
 class PhoneBook
 {
-  public:
+
+public:
+	
 	PhoneBook(void);
 	~PhoneBook(void);
 
-	void    add(const Contact &contact);
-	void    search(int index);
-	void    print(int index);
-	void    exitBook(void);
+	void	prompt(void) const;
+	void	add(void);
+	void	add_contact(std::string FirstName,
+						std::string LastName,
+						std::string NickName,
+						std::string PhoneNumber,
+						std::string Secret);
+	void	search(void) const;
 
-	private:
-	// Contact contacts[MAX_CONTACTS];
-	// int num_contacts;
+private:
+
+	Contact			_contacts[8];
+	void			_show_contact(int index) const;
+	int				_index;
+	int				_count;
+	void			_check_index(void);
+	void			_set_userinput(std::string message, void (Contact::*f)(std::string));
+	std::string		_truncate(std::string input) const;
+	static int const _WIDTH = 10;
 };
 
 #endif

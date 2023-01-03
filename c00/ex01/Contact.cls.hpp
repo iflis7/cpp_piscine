@@ -1,46 +1,41 @@
 #ifndef CONTACT_CLS_HPP
-#define CONTACT_CLS_HPP
+# define CONTACT_CLS_HPP
 
-#include "main.hpp"
+# include "main.hpp"
 
 class Contact
 {
-private:
-    std::string first_name;
-    std::string last_name;
-    std::string nickname;
-    std::string phone_number;
-    std::string darkest_secret;
+  private:
+	std::string firstName;
+	std::string lastName;
+	std::string nickName;
+	std::string phoneNumber;
+	std::string darkestSecret;
 
-public:
-    Contact(const std::string &first_name, const std::string &last_name,
-            const std::string &nickname, const std::string &phone_number,
-            const std::string &darkest_secret)
-        : first_name(first_name), last_name(last_name), nickname(nickname),
-          phone_number(phone_number),
-          darkest_secret(darkest_secret)
-    {
-    }
+  public:
+	Contact(void);
+	Contact(std::string &firstName,
+			std::string &lastName,
+			std::string &nickName,
+			std::string &phoneNumber,
+			std::string &darkestSecret);
+	~Contact(void);
 
-    ~Contact()
-    {
-    }
-
-    std::string get_first_name() const 
-    {
-    }
-    std::string get_last_name() const
-    {
-    }
-    std::string get_nickname() const
-    {
-    }
-    std::string get_phone_number() const
-    {
-    }
-    std::string get_darkest_secret() const
-    {
-    }
+	void setContact(std::string firstName,
+					std::string lastName,
+					std::string nickName,
+					std::string phoneNumber,
+					std::string darkestSecret);
+	void setFirstName(std::string name);
+	std::string getFirstName(void) const;
+	void setLastName(std::string name);
+	std::string getLastName(void) const;
+	void setNickName(std::string name);
+	std::string getNickName(void) const;
+	void setPhoneNumber(std::string number);
+	std::string getPhoneNumber(void) const;
+	void setDarkestSecret(std::string secret);
+	std::string getDarkestSecret(void) const;
 };
 
 #endif

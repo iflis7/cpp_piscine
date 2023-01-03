@@ -36,9 +36,11 @@ $(NAME): $(obj)
 
 clean: header
 	-@$(RM) $(obj)
+	@echo "🧹🧹🧹🧹🧹🧹 $(NAME) Cleaned! 🧹🧹🧹🧹🧹🧹"
 
 fclean: clean
 	-@$(RM) $(NAME)
+	
 
 re: fclean all 
 
