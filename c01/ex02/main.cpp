@@ -31,15 +31,13 @@ int main()
 
 The expression &s takes the address of the string object itself,
 which is not the same as the memory address of the character array held by the string.
-In fact, taking the address of a string object is not allowed in C++, and will
-result in a compilation error.
+
 
 On the other hand, the c_str() member function returns a pointer to the underlying character
 array of the string. This is the memory address of the actual string data.
 
 std::cout << "1- Memory address of the string variable: " << (void *)&brain << std::endl;
 std::cout << "2- Memory address of the string variable: " << (void *)brain.c_str() << std::endl;
-
 1- Memory address of the string variable: 0x7ffee2fed780
 2- Memory address of the string variable: 0x7ffee2fed781
 

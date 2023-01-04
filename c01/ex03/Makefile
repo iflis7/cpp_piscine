@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= zombie
+NAME	= brain
 # CC 	= clang++
 CC 		= g++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = main.cpp Zombie.cpp randomChump.cpp newZombie.cpp
+src = main.cpp Weapon.cpp HumanA.cpp  HumanB.cpp
 
 obj = $(src:.cpp=.o)
 
@@ -80,5 +80,5 @@ summary:
 	valgrind --leak-check=summary --trace-children=yes --track-fds=yes ./$(NAME)
 
 valgrind:
-	valgrind --leak-check=full  --show-leak-kinds=all --trace-children=yes --track-fds=yes ./$(NAME)
+	valgrind --leak-check=full  --show-leak-kinds=all -s --trace-children=yes --track-fds=yes ./$(NAME)
 

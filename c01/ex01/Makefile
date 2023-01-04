@@ -75,3 +75,10 @@ endif
 	@printf "%b" "$(DEFAULT)CC: 	$(OBJ_COLOR)$(CC)\n\033[m"
 	@printf "%b" "$(DEFAULT)Flags: 	$(OBJ_COLOR)$(CFLAGS)\n\033[m"
 	@echo
+
+summary:
+	valgrind --leak-check=summary --trace-children=yes --track-fds=yes ./$(NAME)
+
+valgrind:
+	valgrind --leak-check=full  --show-leak-kinds=all -s --trace-children=yes --track-fds=yes ./$(NAME)
+
