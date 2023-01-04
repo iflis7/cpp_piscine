@@ -6,7 +6,7 @@
  * @param name The name of the human
  * @param weapon An instance of the Weapon class
  */
-HumanA::HumanA(std::string name, Weapon &weapon) : weapon(weapon)
+HumanA::HumanA(std::string name, Weapon &_weapon) : _weapon(_weapon)
 {
     this->_name = name;
 }
@@ -25,5 +25,5 @@ HumanA::~HumanA()
  */
 void HumanA::attack()
 {
-    std::cout << this->_name << " attacks with his " << this->weapon.getType() << std::endl;
+    std::cout << this->_name << " attacks with his " << this->_weapon.getType() << std::endl;
 }

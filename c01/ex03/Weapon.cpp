@@ -5,9 +5,8 @@
  *
  * @param type The type of the weapon
  */
-Weapon::Weapon(std::string type)
+Weapon::Weapon(std::string type) : _type(type)
 {
-    this->_type = type;
 }
 
 /**

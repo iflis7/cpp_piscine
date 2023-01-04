@@ -4,6 +4,10 @@
 
 int main()
 {
+    /* Should print:
+        Bob attacks with his crude spiked club
+        Bob attacks with his some other type of club
+    */
     {
         Weapon club = Weapon("crude spiked club");
         HumanA bob("Bob", club);
@@ -11,7 +15,11 @@ int main()
         club.setType("some other type of club");
         bob.attack();
     }
-    
+
+    /* Should print:
+        Jim attacks with their crude spiked club
+        Jim attacks with their some other type of club
+    */
     std::cout << std::endl;
     {
         Weapon club = Weapon("crude spiked club");
@@ -22,6 +30,10 @@ int main()
         jim.attack();
     }
 
+    /*
+        Should print:
+        Jim is unarmed and cannot attack
+    */
     std::cout << std::endl;
     {
         HumanB dave("Jim");
