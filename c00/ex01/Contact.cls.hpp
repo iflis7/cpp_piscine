@@ -21,7 +21,7 @@ class Contact
 			std::string &darkestSecret);
 	~Contact(void);
 
-    // TODO Another way to set the values
+	// TODO Another way to set the values
 	// void setContact(std::string firstName,
 	// 				std::string lastName,
 	// 				std::string nickName,

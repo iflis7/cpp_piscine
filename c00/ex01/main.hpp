@@ -1,13 +1,11 @@
 #ifndef MAIN_HPP
 # define MAIN_HPP
 
+# include <cstdlib>
 # include <cstring>
 # include <iomanip>
 # include <iostream>
 # include <string>
-#include <cstdlib>
-
-// '\e[x;ym $PS1 \e[m'
 
 # define COLOR_DEFAULT "\033[0m"
 # define COLOR_RED "\033[31m"
