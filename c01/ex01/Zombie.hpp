@@ -30,5 +30,7 @@ public:
     void announce(void);
 };
 
+// The function that creates a horde of N Zombies
+Zombie *zombieHorde(int N, std::string name);
 
 #endif
