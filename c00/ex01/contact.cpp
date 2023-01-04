@@ -5,35 +5,21 @@ Contact::Contact(void)
 }
 
 Contact::Contact(std::string &firstName,
-					std::string &lastName,
-					std::string &nickName,
-					std::string &phoneNumber,
-					std::string &darkestSecret)
-	: firstName(firstName), // TODO set the values
-		lastName(lastName),
-		nickName(nickName),
-		phoneNumber(phoneNumber),
-		darkestSecret(darkestSecret)
+				 std::string &lastName,
+				 std::string &nickName,
+				 std::string &phoneNumber,
+				 std::string &darkestSecret)
+	: firstName(firstName),
+	  lastName(lastName),
+	  nickName(nickName),
+	  phoneNumber(phoneNumber),
+	  darkestSecret(darkestSecret)
 {
 }
 
 Contact::~Contact(void)
 {
 }
-
-// TODO Another way to set the values
-// void Contact::setContact(std::string firstName,
-// 							std::string lastName,
-// 							std::string nickName,
-// 							std::string phoneNumber,
-// 							std::string darkestSecret)
-// {
-// 	this->firstName = firstName;
-// 	this->lastName = lastName;
-// 	this->nickName = nickName;
-// 	this->phoneNumber = phoneNumber;
-// 	this->darkestSecret = darkestSecret;
-// }
 
 void Contact::setFirstName(std::string name)
 {
