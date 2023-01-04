@@ -5,6 +5,7 @@
 # include <iomanip>
 # include <iostream>
 # include <string>
+#include <cstdlib>
 
 // '\e[x;ym $PS1 \e[m'
 

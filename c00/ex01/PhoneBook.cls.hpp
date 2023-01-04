@@ -2,35 +2,32 @@
 # define PHONEBOOK_CLS_HPP
 
 # include "Contact.cls.hpp"
-#include "main.hpp"
-
+# include "main.hpp"
 
 class PhoneBook
 {
-
-public:
-	
+  public:
 	PhoneBook(void);
 	~PhoneBook(void);
 
-	void	prompt(void) const;
-	void	add(void);
-	void	add_contact(std::string FirstName,
-						std::string LastName,
-						std::string NickName,
-						std::string PhoneNumber,
-						std::string Secret);
-	void	search(void) const;
+	void prompt(void) const;
+	void add(void);
+	void search(void) const;
+	// TODO just for testing, delete afterwards.
+	// void add_contact(std::string firstName,
+	// 					std::string lastName,
+	// 					std::string nickName,
+	// 					std::string phoneNumber,
+	// 					std::string secret);
 
-private:
-
-	Contact			_contacts[8];
-	void			_show_contact(int index) const;
-	int				_index;
-	int				_count;
-	void			_check_index(void);
-	void			_set_userinput(std::string message, void (Contact::*f)(std::string));
-	std::string		_truncate(std::string input) const;
+  private:
+	Contact _contacts[8];
+	int _index;
+	int _count;
+	void _show_contact(int index) const;
+	void _check_index(void);
+	void _set_userinput(std::string message, void (Contact::*f)(std::string));
+	std::string _truncate(std::string input) const;
 	static int const _WIDTH = 10;
 };
 

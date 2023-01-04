@@ -14,7 +14,8 @@ PhoneBook::~PhoneBook(void)
 void PhoneBook::prompt(void) const
 {
 	std::cout << "=============[ " << COLOR_MAGENTA << "My Awesome PhoneBook"
-				<< COLOR_DEFAULT << " ]====================\n" << COLOR_CYAN
+				<< COLOR_DEFAULT << " ]=============\n"
+				<< COLOR_CYAN
 				<< "👇 To interact with the program enter: 👇\n"
 				<< "[" << COLOR_YELLOW << "ADD" << COLOR_DEFAULT << "] || "
 				<< "[" << COLOR_YELLOW << "SEARCH" << COLOR_DEFAULT << "] || "
@@ -32,16 +33,15 @@ void PhoneBook::_check_index(void)
 }
 
 void PhoneBook::_set_userinput(std::string message,
-		void (Contact::*f)(std::string))
+								void (Contact::*f)(std::string))
 {
 	std::string userinput;
 	while (true)
 	{
-		std::cout << "\nEnter " << message << ": ";
-		std::cout << COLOR_GREEN;
+		std::cout << "\nEnter " << message << ": " << COLOR_GREEN;
 		std::getline(std::cin, userinput);
 		std::cout << COLOR_DEFAULT;
-		if (userinput.size() != 0)
+		if (userinput.size() > 0)
 			break ;
 		std::cout << COLOR_RED << "Input can't be empty!\n"
 					<< COLOR_DEFAULT;
@@ -52,25 +52,11 @@ void PhoneBook::_set_userinput(std::string message,
 void PhoneBook::add(void)
 {
 	this->_check_index();
-	PhoneBook::_set_userinput("first name", &Contact::setFirstName);
-	PhoneBook::_set_userinput("last name", &Contact::setLastName);
-	PhoneBook::_set_userinput("nick name", &Contact::setNickName);
-	PhoneBook::_set_userinput("phone number", &Contact::setPhoneNumber);
-	PhoneBook::_set_userinput("darkest secret", &Contact::setDarkestSecret);
-}
-
-void PhoneBook::add_contact(std::string FirstName,
-							std::string LastName,
-							std::string NickName,
-							std::string PhoneNumber,
-							std::string Secret)
-{
-	this->_check_index();
-	this->_contacts[this->_index].setContact(FirstName,
-												LastName,
-												NickName,
-												PhoneNumber,
-												Secret);
+	PhoneBook::_set_userinput("First name", &Contact::setFirstName);
+	PhoneBook::_set_userinput("Last name", &Contact::setLastName);
+	PhoneBook::_set_userinput("Nick name", &Contact::setNickName);
+	PhoneBook::_set_userinput("Phone number", &Contact::setPhoneNumber);
+	PhoneBook::_set_userinput("Darkest secret", &Contact::setDarkestSecret);
 }
 
 void PhoneBook::search(void) const
@@ -125,22 +111,51 @@ void PhoneBook::search(void) const
 			std::cout << COLOR_RED << "Invalid Index!\n"
 						<< COLOR_DEFAULT;
 	}
+
+	// void PhoneBook::add_contact(std::string firstName,
+	// 							std::string lastName,
+	// 							std::string nickName,
+	// 							std::string phoneNumber,
+	// 							std::string secret)
+	// {
+	// 	this->_check_index();
+	// 	this->_contacts[this->_index].setContact(firstName,
+	// 												lastName,
+	// 												nickName,
+	// 												phoneNumber,
+	// 												secret);
+	// }
 }
+
+// void PhoneBook::_display_contact(int index) const
+// 	{
+// if (index < 0 || index >= num_contacts)
+// {
+// 	std::cout << "Error: index out of range." << std::endl;
+// 	return ;
+// }
+
+// 		std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
+// 		std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
+// 		std::cout << "Nickname: " << contacts[index].getNickName() << std::endl;
+// 		std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
+// 		std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
+// 	}
 
 void PhoneBook::_show_contact(int index) const
 {
 	std::cout << std::endl;
-	std::cout << this->_contacts[index].getFirstName() << std::endl;
-	std::cout << this->_contacts[index].getLastName() << std::endl;
-	std::cout << this->_contacts[index].getNickName() << std::endl;
-	std::cout << this->_contacts[index].getPhoneNumber() << std::endl;
-	std::cout << this->_contacts[index].getDarkestSecret() << std::endl;
+	std::cout << COLOR_CYAN << "First Name: " << COLOR_DEFAULT << this->_contacts[index].getFirstName() << std::endl;
+	std::cout << COLOR_CYAN << "Last Name: " << COLOR_DEFAULT << this->_contacts[index].getLastName() << std::endl;
+	std::cout << COLOR_CYAN << "Nickname: " << COLOR_DEFAULT << this->_contacts[index].getNickName() << std::endl;
+	std::cout << COLOR_CYAN << "Phone Number: " << COLOR_DEFAULT << this->_contacts[index].getPhoneNumber() << std::endl;
+	std::cout << COLOR_CYAN << "Darkest Secret: " << COLOR_DEFAULT << this->_contacts[index].getDarkestSecret() << std::endl;
 	std::cout << std::endl;
 }
 
-std::string PhoneBook::_truncate(std::string input) const
+std::string PhoneBook::_truncate(std::string str) const
 {
-	if (input.length() > 10)
-		return (input.substr(0, this->_WIDTH - 1) + ".");
-	return (input);
+	if (str.length() > 10)
+		return (str.substr(0, this->_WIDTH - 1) + ".");
+	return (str);
 }

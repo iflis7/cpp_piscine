@@ -21,11 +21,12 @@ class Contact
 			std::string &darkestSecret);
 	~Contact(void);
 
-	void setContact(std::string firstName,
-					std::string lastName,
-					std::string nickName,
-					std::string phoneNumber,
-					std::string darkestSecret);
+    // TODO Another way to set the values
+	// void setContact(std::string firstName,
+	// 				std::string lastName,
+	// 				std::string nickName,
+	// 				std::string phoneNumber,
+	// 				std::string darkestSecret);
 	void setFirstName(std::string name);
 	std::string getFirstName(void) const;
 	void setLastName(std::string name);
