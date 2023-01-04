@@ -4,10 +4,14 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @brief The Weapon class
+ *
+ */
 class Weapon
 {
 private:
-    std::string type;
+    std::string _type;
 
 public:
     Weapon(std::string type);
