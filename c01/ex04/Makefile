@@ -80,5 +80,8 @@ summary:
 	valgrind --leak-check=summary --trace-children=yes --track-fds=yes ./$(NAME)
 
 valgrind:
-	valgrind --leak-check=full  --show-leak-kinds=all -s --trace-children=yes --track-fds=yes ./$(NAME)
+	valgrind --leak-check=full  --show-leak-kinds=all --trace-children=yes --track-fds=yes ./$(NAME)
+
+full:
+	valgrind --leak-check=full ./$(NAME)
 
