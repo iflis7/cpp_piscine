@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = main.cpp
+src = main.cpp replaceInFile.cpp
 
 obj = $(src:.cpp=.o)
 

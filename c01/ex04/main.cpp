@@ -1,7 +1,5 @@
 #include "main.hpp"
 
-using namespace std;
-
 int main(int argc, char *argv[])
 {
     // Check if the correct number of arguments was provided
@@ -33,6 +31,12 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    
+    // Replace all occurrences of s1 with s2 in the input file and write the result to the output file
+    replaceInFile(inputFile, outputFile, argv[2], argv[3]);
+
+    // Close the input and output files
+    inputFile.close();
+    outputFile.close();
+
     return 0;
 }
