@@ -5,6 +5,11 @@
 #include <string>
 
 using namespace std;
+
+/**
+ * @brief Harl class
+ *
+ */
 class Harl
 {
 private:
