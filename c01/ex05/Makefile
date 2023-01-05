@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= sed
+NAME	= harl
 # CC 	= clang++
 CC 		= g++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
