@@ -22,6 +22,17 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    // Open the output file for writing
+    string filename = string(argv[1]) + ".replace";
+    ofstream outputFile(filename.c_str());
+
+    // Check if the file was successfully opened
+    if (!outputFile.is_open())
+    {
+        cerr << "Error: Could not open file for writing." << endl;
+        return 1;
+    }
+
     
     return 0;
 }
