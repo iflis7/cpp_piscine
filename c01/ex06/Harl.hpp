@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 /**
  * @brief Harl class
  *
@@ -21,7 +19,7 @@ private:
 public:
     Harl();
     ~Harl();
-    void complain(string level);
+    void complain(std::string level);
 };
 
 #endif

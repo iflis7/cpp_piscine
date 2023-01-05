@@ -6,8 +6,8 @@
  */
 Harl::Harl()
 {
-    cout << "Harl:: Created!" << endl;
-    cout << endl;
+    std::cout << "Harl:: Created!" << std::endl;
+    std::cout << std::endl;
 }
 
 /**
@@ -16,8 +16,8 @@ Harl::Harl()
  */
 Harl::~Harl()
 {
-    cout << endl;
-    cout << "Harl:: Destroyed!" << endl;
+    std::cout << std::endl;
+    std::cout << "Harl:: Destroyed!" << std::endl;
 }
 
 /**
@@ -28,7 +28,7 @@ Harl::~Harl()
 void Harl::debug()
 {
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
-    cout << endl;
+    std::cout << std::endl;
 }
 
 /**
@@ -38,7 +38,7 @@ void Harl::debug()
 void Harl::info()
 {
     std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
-    cout << endl;
+    std::cout << std::endl;
 }
 
 /**
@@ -48,7 +48,7 @@ void Harl::info()
 void Harl::warning()
 {
     std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
-    cout << endl;
+    std::cout << std::endl;
 }
 
 /**
@@ -58,7 +58,7 @@ void Harl::warning()
 void Harl::error()
 {
     std::cout << "This is unacceptable, I want to speak to the manager now." << std::endl;
-    cout << endl;
+    std::cout << std::endl;
 }
 
 /**
@@ -97,14 +97,10 @@ void Harl::complain(std::string level)
             (this->*levels[i])();
         break;
     case 2:
-        // // (this->*levels[0])();
-        // (this->*levels[1])();
-        // (this->*levels[2])();
+        (this->*levels[2])();
+        (this->*levels[3])();
         break;
     case 3:
-        // (this->*levels[0])();
-        // (this->*levels[1])();
-        (this->*levels[2])();
         (this->*levels[3])();
         break;
     default:
