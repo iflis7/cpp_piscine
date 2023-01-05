@@ -84,4 +84,3 @@ valgrind:
 
 full:
 	valgrind --leak-check=full ./$(NAME)
-
