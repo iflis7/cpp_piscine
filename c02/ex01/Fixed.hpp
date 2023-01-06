@@ -16,15 +16,20 @@ class Fixed
   public:
 	Fixed(void);
 	Fixed(const int value);
+	Fixed(const float value);
 	Fixed(Fixed const &src);
 	Fixed &operator=(Fixed const &rhs);
 	~Fixed(void);
-    
-    /* Getters */
+
+	/* Getters */
 	int getRawBits(void) const;
-    
-    /* Setters */
+
+	/* Setters */
 	void setRawBits(int const raw);
+
+	/* Converters */
+	float toFloat(void) const;
+	int toInt(void) const;
 };
 
 #endif
