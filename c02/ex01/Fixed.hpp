@@ -15,6 +15,7 @@ class Fixed
 
   public:
 	Fixed(void);
+	Fixed(const int value);
 	Fixed(Fixed const &src);
 	Fixed &operator=(Fixed const &rhs);
 	~Fixed(void);

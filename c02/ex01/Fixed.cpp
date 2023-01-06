@@ -11,6 +11,13 @@ Fixed::Fixed(void)
 	std::cout << std::endl;
 }
 
+Fixed::Fixed(int const value)
+	: _fixedPointValue(value << this->_fractionalBits)
+{
+	std::cout << "Int constructor called" << std::endl;
+	std::cout << std::endl;
+}
+
 /**
  * @brief Construct a new Fixed:: Fixed object
  *
