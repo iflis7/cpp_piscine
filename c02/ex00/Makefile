@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= harlFilter
+NAME	= fixed
 # CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = main.cpp Harl.cpp
+src = main.cpp Fixed.cpp
 
 obj = $(src:.cpp=.o)
 
