@@ -4,8 +4,7 @@
  * @brief Construct a new Fixed:: Fixed object
  *
  */
-Fixed::Fixed(void)
-	: _fixedPointValue(0)
+Fixed::Fixed(void) : _fixedPointValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 	std::cout << std::endl;
