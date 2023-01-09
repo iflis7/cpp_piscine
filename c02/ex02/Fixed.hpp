@@ -22,7 +22,7 @@ public:
 	~Fixed(void);
 
 	// Assignment operators
-	Fixed &operator=(Fixed const &rhs) const;
+	Fixed &operator=(Fixed const &rhs);
 
 	// Arithmetic operators
 	Fixed operator+(Fixed const &rhs) const;
@@ -42,7 +42,7 @@ public:
 	Fixed &operator++(void);
 	Fixed operator++(int);
 	Fixed &operator--(void);
-	Fixed operator--(void);
+	Fixed operator--(int);
 
 	// Min and max overloading
 	static Fixed &min(Fixed &val, Fixed &val1);

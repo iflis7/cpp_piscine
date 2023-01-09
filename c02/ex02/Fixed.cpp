@@ -19,8 +19,8 @@ Fixed::Fixed(void)
 Fixed::Fixed(int const value)
 	: _fixedPointValue(value << this->_fractionalBits)
 {
-	std::cout << "Int constructor called" << std::endl;
-	std::cout << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
+	// std::cout << std::endl;
 }
 
 /**
@@ -31,8 +31,8 @@ Fixed::Fixed(int const value)
 Fixed::Fixed(float const value)
 	: _fixedPointValue(roundf(value * (1 << this->_fractionalBits)))
 {
-	std::cout << "Float constructor called" << std::endl;
-	std::cout << std::endl;
+	// std::cout << "Float constructor called" << std::endl;
+	// std::cout << std::endl;
 }
 
 /**
@@ -89,7 +89,7 @@ void Fixed::setRawBits(int const raw)
  */
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 
 	return this->_fixedPointValue;
 }
@@ -114,15 +114,29 @@ int Fixed::toInt(void) const
 	return this->_fixedPointValue >> this->_fractionalBits;
 }
 
-// FUNCTIONS SUP ===============================================================
-
+/**
+ * @brief Overload the << operator
+ *
+ * @param out The output stream
+ * @param fixe The Fixed object to output
+ * @return std::ostream& The output stream
+ */
 std::ostream &operator<<(std::ostream &out, const Fixed &fixe)
 {
 	out << fixe.toFloat();
 	return (out);
 }
 
-// Fixed Fixed::operator+(const Fixed &rsh) const
-// {
+/**
+ * @brief Overload  the + and Add two Fixed objects together and return the result as new obj
+ *
+ * @param rsh The right hand side of the operator
+ * @return Fixed The object to return
+ */
+Fixed Fixed::operator+(const Fixed &rsh) const
+{
+	Fixed rtn;
+	rtn.setRawBits(this->_fixedPointValue + rsh.getRawBits());
+	return (rtn);
+}
 
-// }
