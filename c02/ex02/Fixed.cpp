@@ -217,3 +217,15 @@ Fixed Fixed::operator++(int)
 	return (rtn);
 }
 
+/**
+ * @brief Overload the -- and decrement the Fixed object
+ *
+ * @return Fixed The object to return
+ */
+Fixed Fixed::operator--(int)
+{
+	Fixed rtn(*this);
+	this->_fixedPointValue--;
+	return (rtn);
+}
+
