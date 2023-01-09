@@ -30,6 +30,14 @@ public:
 	Fixed operator*(Fixed const &rhs) const;
 	Fixed operator/(Fixed const &rhs) const;
 
+	// Comparison operators
+	Fixed operator>(Fixed const &rhs) const;
+	Fixed operator<(Fixed const &rhs) const;
+	Fixed operator>=(Fixed const &rhs) const;
+	Fixed operator<=(Fixed const &rhs) const;
+	Fixed operator==(Fixed const &rhs) const;
+	Fixed operator!=(Fixed const &rhs) const;
+
 
 
 	/* Setters */
