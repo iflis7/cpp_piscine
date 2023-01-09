@@ -38,6 +38,12 @@ public:
 	Fixed operator==(Fixed const &rhs) const;
 	Fixed operator!=(Fixed const &rhs) const;
 
+	// Incrementations and decrementations
+	Fixed &operator++(void);
+	Fixed operator++(void);
+	Fixed &operator--(void);
+	Fixed operator--(void);
+
 
 
 	/* Setters */
