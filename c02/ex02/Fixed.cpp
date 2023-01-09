@@ -345,3 +345,26 @@ const Fixed &Fixed::max(const Fixed &val1, const Fixed &val2)
 	return (val1 > val2 ? val1 : val2);
 }
 
+/**
+ * @brief Compares between two Fixed objs and returns the smallet
+ *
+ * @param val1 The first obj to compare
+ * @param val2 The second obj to compare
+ * @return Fixed& A refrence to the smallest obj
+ */
+Fixed &min(Fixed &val1, Fixed &val2)
+{
+	return (val1 < val2 ? val1 : val2);
+}
+
+/**
+ * @brief Compares between two Fixed objs and returns the largest
+ *
+ * @param val1 The first obj to compare
+ * @param val2 The second obj to compare
+ * @return Fixed& The largest obj
+ */
+Fixed &max(Fixed &val1, Fixed &val2)
+{
+	return (val1 > val2 ? val1 : val2);
+}
