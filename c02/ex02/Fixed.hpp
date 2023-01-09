@@ -19,8 +19,18 @@ public:
 	Fixed(const int value);
 	Fixed(const float value);
 	Fixed(Fixed const &src);
-	Fixed &operator=(Fixed const &rhs);
 	~Fixed(void);
+
+	// Assignment operators
+	Fixed &operator=(Fixed const &rhs) const;
+
+	// Arithmetic operators
+	Fixed operator+(Fixed const &rhs) const;
+	Fixed operator-(Fixed const &rhs) const;
+	Fixed operator*(Fixed const &rhs) const;
+	Fixed operator/(Fixed const &rhs) const;
+
+
 
 	/* Setters */
 	void setRawBits(int const raw);
@@ -32,6 +42,9 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 };
+
+Fixed &min(Fixed &val, Fixed &val1);
+Fixed &max(Fixed &val, Fixed &val1);
 
 // FUNCTIONS PROTOYPES =========================================================
 std::ostream &operator<<(std::ostream &out, const Fixed &fixe);

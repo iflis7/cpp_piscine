@@ -22,10 +22,10 @@ public:
 	Fixed &operator=(Fixed const &rhs);
 	~Fixed(void);
 
-	/* Setters */
+	/* Getters */
 	void setRawBits(int const raw);
 
-	/* Getters */
+	/* Setters */
 	int getRawBits(void) const;
 
 	/* Converters */
