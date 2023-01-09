@@ -114,6 +114,13 @@ int Fixed::toInt(void) const
 	return this->_fixedPointValue >> this->_fractionalBits;
 }
 
+// FUNCTIONS SUP ===============================================================
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixe)
+{
+	out << fixe.toFloat();
+	return (out);
+}
 
 /*
 Shifting the bits of the integer value to the left by the number of fractional bits is a way
