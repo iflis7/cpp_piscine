@@ -64,11 +64,9 @@ public:
 	int toInt(void) const;
 };
 
+// FUNCTIONS PROTOYPES =========================================================
 Fixed &min(Fixed &val1, Fixed &val2);
 Fixed &max(Fixed &val1, Fixed &val2);
-
-// FUNCTIONS PROTOYPES =========================================================
 std::ostream &operator<<(std::ostream &out, const Fixed &fixe);
-// =============================================================================
 
 #endif
