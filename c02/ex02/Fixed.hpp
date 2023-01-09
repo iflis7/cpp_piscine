@@ -13,7 +13,7 @@ using namespace std;
 class Fixed
 {
 private:
-	int _fixedPointval1ue;
+	int _fixedPointvalue;
 	static const int _fractionalBits = 8;
 
 public:
