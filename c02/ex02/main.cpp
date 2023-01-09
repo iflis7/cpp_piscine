@@ -3,7 +3,8 @@
 int main()
 {
 	Fixed a;
-	Fixed const b(10);
+	Fixed const b(16);
+	Fixed const g(8);
 	Fixed const c(42.42f);
 	Fixed const d(b);
 
@@ -34,9 +35,10 @@ int main()
 	// 			  << "a is equal to c" << std::endl;
 
 	std::cout << "b + c = " << b + c << std::endl;
-	// std::cout << "c - b = " << c - b << std::endl;
+	std::cout << "c - b = " << c - b << std::endl;
 	// std::cout << "b * b = " << b * b << std::endl;
-	// std::cout << "b / b = " << b / b << std::endl;
+	std::cout << "b / b = " << b / b << std::endl;
+	std::cout << "b * g = " << b * g << std::endl;
 
 	// Fixed e;
 	// Fixed const f(Fixed(5.05f) * Fixed(2));

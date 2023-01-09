@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cmath>
 
+using namespace std;
+
 /**
  * @brief Fixed point number class
  *
@@ -31,12 +33,12 @@ public:
 	Fixed operator/(Fixed const &rhs) const;
 
 	// Comparison operators
-	Fixed operator>(Fixed const &rhs) const;
-	Fixed operator<(Fixed const &rhs) const;
-	Fixed operator>=(Fixed const &rhs) const;
-	Fixed operator<=(Fixed const &rhs) const;
-	Fixed operator==(Fixed const &rhs) const;
-	Fixed operator!=(Fixed const &rhs) const;
+	bool operator>(Fixed const &rhs) const;
+	bool operator<(Fixed const &rhs) const;
+	bool operator>=(Fixed const &rhs) const;
+	bool operator<=(Fixed const &rhs) const;
+	bool operator==(Fixed const &rhs) const;
+	bool operator!=(Fixed const &rhs) const;
 
 	// Incrementations and decrementations
 	Fixed &operator++(void);

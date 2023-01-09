@@ -7,8 +7,8 @@
 Fixed::Fixed(void)
 	: _fixedPointValue(0)
 {
-	std::cout << "Default constructor called" << std::endl;
-	std::cout << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
+	// std::cout << std::endl;
 }
 
 /**
@@ -42,8 +42,8 @@ Fixed::Fixed(float const value)
  */
 Fixed::Fixed(Fixed const &src)
 {
-	std::cout << "Copy constructor called" << std::endl;
-	std::cout << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
+	// std::cout << std::endl;
 	*this = src;
 }
 
@@ -55,7 +55,7 @@ Fixed::Fixed(Fixed const &src)
  */
 Fixed &Fixed::operator=(Fixed const &rhs)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
 		this->_fixedPointValue = rhs.getRawBits();
 	std::cout << std::endl;
@@ -68,8 +68,8 @@ Fixed &Fixed::operator=(Fixed const &rhs)
  */
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
-	std::cout << std::endl;
+	// std::cout << "Destructor called" << std::endl;
+	// std::cout << std::endl;
 }
 
 /**
@@ -162,6 +162,10 @@ Fixed Fixed::operator-(const Fixed &rsh) const
 Fixed Fixed::operator*(const Fixed &rsh) const
 {
 	Fixed rtn;
+	cout << "this->_fixedPointValue: " << this->_fixedPointValue << endl;
+	cout << "rsh.getRawBits(): " << rsh.getRawBits() << endl;
+	std::cout << "this->_fixedPointValue: " << (this->_fixedPointValue * rsh.getRawBits()) << endl;
+	// std::cout << "this::: " << ((this->_fixedPointValue * rsh.getRawBits()) >> this->_fractionalBits) << endl;
 	rtn.setRawBits((this->_fixedPointValue * rsh.getRawBits()) >> this->_fractionalBits);
 	return (rtn);
 }
@@ -178,3 +182,16 @@ Fixed Fixed::operator/(const Fixed &rsh) const
 	rtn.setRawBits((this->_fixedPointValue << this->_fractionalBits) / rsh.getRawBits());
 	return (rtn);
 }
+
+/**
+ * @brief Overload the ++ and increment the Fixed object
+ *
+ * @return Fixed& The object to return
+ */
+Fixed &Fixed::operator++(void)
+{
+	this->_fixedPointValue++;
+	return (*this);
+}
+
+
