@@ -194,4 +194,14 @@ Fixed &Fixed::operator++(void)
 	return (*this);
 }
 
+/**
+ * @brief Overload the -- and decrement the Fixed object
+ *
+ * @return Fixed& The object to return
+ */
+Fixed &Fixed::operator--(void)
+{
+	this->_fixedPointValue--;
+	return (*this);
+}
 
