@@ -47,15 +47,6 @@ Fixed::Fixed(Fixed const &src)
 	*this = src;
 }
 
-/**
- * @brief Destroy the Fixed:: Fixed object
- *
- */
-Fixed::~Fixed(void)
-{
-	std::cout << "Destructor called" << std::endl;
-	std::cout << std::endl;
-}
 
 /**
  * @brief Copy assignment operator
@@ -72,15 +63,13 @@ Fixed &Fixed::operator=(Fixed const &rhs)
 }
 
 /**
- * @brief Get the Raw Bits object
+ * @brief Destroy the Fixed:: Fixed object
  *
- * @return int The raw bits
  */
-int Fixed::getRawBits(void) const
+Fixed::~Fixed(void)
 {
-	std::cout << "getRawBits member function called" << std::endl;
-
-	return this->_fixedPointValue;
+	std::cout << "Destructor called" << std::endl;
+	std::cout << std::endl;
 }
 
 /**
@@ -91,6 +80,18 @@ int Fixed::getRawBits(void) const
 void Fixed::setRawBits(int const raw)
 {
 	this->_fixedPointValue = raw;
+}
+
+/**
+ * @brief Get the Raw Bits object
+ *
+ * @return int The raw bits
+ */
+int Fixed::getRawBits(void) const
+{
+	std::cout << "getRawBits member function called" << std::endl;
+
+	return this->_fixedPointValue;
 }
 
 /**
@@ -112,6 +113,7 @@ int Fixed::toInt(void) const
 {
 	return this->_fixedPointValue >> this->_fractionalBits;
 }
+
 
 /*
 Shifting the bits of the integer value to the left by the number of fractional bits is a way

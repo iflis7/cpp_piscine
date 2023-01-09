@@ -22,15 +22,20 @@ class Fixed
 	Fixed &operator=(Fixed const &rhs);
 	~Fixed(void);
 
+	/* Setters */
+	void setRawBits(int const raw);
+	
 	/* Getters */
 	int getRawBits(void) const;
 
-	/* Setters */
-	void setRawBits(int const raw);
 
 	/* Converters */
 	float toFloat(void) const;
 	int toInt(void) const;
 };
+
+// FUNCTIONS PROTOYPES =========================================================
+std::ostream &operator<<(std::ostream &out, const Fixed &fixe);
+// =============================================================================
 
 #endif
