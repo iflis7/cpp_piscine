@@ -205,3 +205,15 @@ Fixed &Fixed::operator--(void)
 	return (*this);
 }
 
+/**
+ * @brief Overload the ++ and increment the Fixed object
+ *
+ * @return Fixed The object to return
+ */
+Fixed Fixed::operator++(int)
+{
+	Fixed rtn(*this);
+	this->_fixedPointValue++;
+	return (rtn);
+}
+
