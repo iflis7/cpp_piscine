@@ -289,4 +289,14 @@ bool Fixed::operator==(const Fixed &rsh) const
 	return (this->_fixedPointValue == rsh.getRawBits());
 }
 
-
+/**
+ * @brief Overload the != and compare two Fixed objects
+ *
+ * @param rsh The right hand side of the operator
+ * @return true The objects are not equal
+ * @return false The objects are equal
+ */
+bool Fixed::operator!=(const Fixed &rsh) const
+{
+	return (this->_fixedPointValue != rsh.getRawBits());
+}
