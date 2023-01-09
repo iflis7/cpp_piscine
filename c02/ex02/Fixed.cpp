@@ -140,3 +140,16 @@ Fixed Fixed::operator+(const Fixed &rsh) const
 	return (rtn);
 }
 
+/**
+ * @brief Overload the - and Subtract two Fixed objects together and return the result as new obj
+ *
+ * @param rsh The right hand side of the operator
+ * @return Fixed The object to return
+ */
+Fixed Fixed::operator-(const Fixed &rsh) const
+{
+	Fixed rtn;
+	rtn.setRawBits(this->_fixedPointValue - rsh.getRawBits());
+	return (rtn);
+}
+
