@@ -56,7 +56,8 @@ Fixed::Fixed(Fixed const &src)
 Fixed &Fixed::operator=(Fixed const &rhs)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_fixedPointValue = rhs.getRawBits();
+	if (this != &rhs)
+		this->_fixedPointValue = rhs.getRawBits();
 	std::cout << std::endl;
 	return *this;
 }
@@ -120,3 +121,8 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixe)
 	out << fixe.toFloat();
 	return (out);
 }
+
+// Fixed Fixed::operator+(const Fixed &rsh) const
+// {
+
+// }

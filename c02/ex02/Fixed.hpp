@@ -40,7 +40,7 @@ public:
 
 	// Incrementations and decrementations
 	Fixed &operator++(void);
-	Fixed operator++(void);
+	Fixed operator++(int);
 	Fixed &operator--(void);
 	Fixed operator--(void);
 
