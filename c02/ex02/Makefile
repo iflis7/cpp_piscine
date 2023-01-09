@@ -77,10 +77,10 @@ endif
 	@echo
 
 summary:
-	valgrind --leak-check=summary --trace-children=yes --track-fds=yes ./$(NAME)
+	val1grind --leak-check=summary --trace-children=yes --track-fds=yes ./$(NAME)
 
-valgrind:
-	valgrind --leak-check=full  --show-leak-kinds=all --trace-children=yes --track-fds=yes ./$(NAME)
+val1grind:
+	val1grind --leak-check=full  --show-leak-kinds=all --trace-children=yes --track-fds=yes ./$(NAME)
 
 full:
-	valgrind --leak-check=full ./$(NAME)
+	val1grind --leak-check=full ./$(NAME)

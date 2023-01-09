@@ -13,13 +13,13 @@ using namespace std;
 class Fixed
 {
 private:
-	int _fixedPointValue;
+	int _fixedPointval1ue;
 	static const int _fractionalBits = 8;
 
 public:
 	Fixed(void);
-	Fixed(const int value);
-	Fixed(const float value);
+	Fixed(const int val1ue);
+	Fixed(const float val1ue);
 	Fixed(Fixed const &src);
 	~Fixed(void);
 
@@ -47,11 +47,11 @@ public:
 	Fixed operator--(int);
 
 	// Min and max overloading
-	static Fixed &min(Fixed &val, Fixed &val1);
-	const static Fixed &min(const Fixed &val, const Fixed &val1);
+	static Fixed &min(Fixed &val1, Fixed &val2);
+	const static Fixed &min(const Fixed &val1, const Fixed &val2);
 
-	static Fixed &max(Fixed &val, Fixed &val1);
-	const static Fixed &max(const Fixed &val, const Fixed &val1);
+	static Fixed &max(Fixed &val1, Fixed &val2);
+	const static Fixed &max(const Fixed &val1, const Fixed &val2);
 
 	/* Setters */
 	void setRawBits(int const raw);
@@ -64,8 +64,8 @@ public:
 	int toInt(void) const;
 };
 
-Fixed &min(Fixed &val, Fixed &val1);
-Fixed &max(Fixed &val, Fixed &val1);
+Fixed &min(Fixed &val1, Fixed &val2);
+Fixed &max(Fixed &val1, Fixed &val2);
 
 // FUNCTIONS PROTOYPES =========================================================
 std::ostream &operator<<(std::ostream &out, const Fixed &fixe);

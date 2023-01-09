@@ -5,7 +5,7 @@
  *
  */
 Fixed::Fixed(void)
-	: _fixedPointValue(0)
+	: _fixedPointval1ue(0)
 {
 	// std::cout << "Default constructor called" << std::endl;
 	// std::cout << std::endl;
@@ -14,10 +14,10 @@ Fixed::Fixed(void)
 /**
  * @brief Construct a new Fixed:: Fixed object
  *
- * @param value The value to set
+ * @param val1ue The val1ue to set
  */
-Fixed::Fixed(int const value)
-	: _fixedPointValue(value << this->_fractionalBits)
+Fixed::Fixed(int const val1ue)
+	: _fixedPointval1ue(val1ue << this->_fractionalBits)
 {
 	// std::cout << "Int constructor called" << std::endl;
 	// std::cout << std::endl;
@@ -26,10 +26,10 @@ Fixed::Fixed(int const value)
 /**
  * @brief Construct a new Fixed:: Fixed object
  *
- * @param value The value to set
+ * @param val1ue The val1ue to set
  */
-Fixed::Fixed(float const value)
-	: _fixedPointValue(roundf(value * (1 << this->_fractionalBits)))
+Fixed::Fixed(float const val1ue)
+	: _fixedPointval1ue(roundf(val1ue * (1 << this->_fractionalBits)))
 {
 	// std::cout << "Float constructor called" << std::endl;
 	// std::cout << std::endl;
@@ -57,7 +57,7 @@ Fixed &Fixed::operator=(Fixed const &rhs)
 {
 	// std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
-		this->_fixedPointValue = rhs.getRawBits();
+		this->_fixedPointval1ue = rhs.getRawBits();
 	std::cout << std::endl;
 	return *this;
 }
@@ -79,7 +79,7 @@ Fixed::~Fixed(void)
  */
 void Fixed::setRawBits(int const raw)
 {
-	this->_fixedPointValue = raw;
+	this->_fixedPointval1ue = raw;
 }
 
 /**
@@ -91,27 +91,27 @@ int Fixed::getRawBits(void) const
 {
 	// std::cout << "getRawBits member function called" << std::endl;
 
-	return this->_fixedPointValue;
+	return this->_fixedPointval1ue;
 }
 
 /**
- * @brief Convert the fixed-point value to a float
+ * @brief Convert the fixed-point val1ue to a float
  *
- * @return float The float value
+ * @return float The float val1ue
  */
 float Fixed::toFloat(void) const
 {
-	return (float)this->_fixedPointValue / (1 << this->_fractionalBits);
+	return (float)this->_fixedPointval1ue / (1 << this->_fractionalBits);
 }
 
 /**
- * @brief Convert the fixed-point value to an integer
+ * @brief Convert the fixed-point val1ue to an integer
  *
- * @return int The integer value
+ * @return int The integer val1ue
  */
 int Fixed::toInt(void) const
 {
-	return this->_fixedPointValue >> this->_fractionalBits;
+	return this->_fixedPointval1ue >> this->_fractionalBits;
 }
 
 /**
@@ -136,7 +136,7 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixe)
 Fixed Fixed::operator+(const Fixed &rsh) const
 {
 	Fixed rtn;
-	rtn.setRawBits(this->_fixedPointValue + rsh.getRawBits());
+	rtn.setRawBits(this->_fixedPointval1ue + rsh.getRawBits());
 	return (rtn);
 }
 
@@ -149,7 +149,7 @@ Fixed Fixed::operator+(const Fixed &rsh) const
 Fixed Fixed::operator-(const Fixed &rsh) const
 {
 	Fixed rtn;
-	rtn.setRawBits(this->_fixedPointValue - rsh.getRawBits());
+	rtn.setRawBits(this->_fixedPointval1ue - rsh.getRawBits());
 	return (rtn);
 }
 
@@ -162,11 +162,7 @@ Fixed Fixed::operator-(const Fixed &rsh) const
 Fixed Fixed::operator*(const Fixed &rsh) const
 {
 	Fixed rtn;
-	cout << "this->_fixedPointValue: " << this->_fixedPointValue << endl;
-	cout << "rsh.getRawBits(): " << rsh.getRawBits() << endl;
-	std::cout << "this->_fixedPointValue: " << (this->_fixedPointValue * rsh.getRawBits()) << endl;
-	// std::cout << "this::: " << ((this->_fixedPointValue * rsh.getRawBits()) >> this->_fractionalBits) << endl;
-	rtn.setRawBits((this->_fixedPointValue * rsh.getRawBits()) >> this->_fractionalBits);
+	rtn.setRawBits((this->_fixedPointval1ue * rsh.getRawBits()) >> this->_fractionalBits);
 	return (rtn);
 }
 
@@ -179,7 +175,7 @@ Fixed Fixed::operator*(const Fixed &rsh) const
 Fixed Fixed::operator/(const Fixed &rsh) const
 {
 	Fixed rtn;
-	rtn.setRawBits((this->_fixedPointValue << this->_fractionalBits) / rsh.getRawBits());
+	rtn.setRawBits((this->_fixedPointval1ue << this->_fractionalBits) / rsh.getRawBits());
 	return (rtn);
 }
 
@@ -190,7 +186,7 @@ Fixed Fixed::operator/(const Fixed &rsh) const
  */
 Fixed &Fixed::operator++(void)
 {
-	this->_fixedPointValue++;
+	this->_fixedPointval1ue++;
 	return (*this);
 }
 
@@ -201,7 +197,7 @@ Fixed &Fixed::operator++(void)
  */
 Fixed &Fixed::operator--(void)
 {
-	this->_fixedPointValue--;
+	this->_fixedPointval1ue--;
 	return (*this);
 }
 
@@ -213,7 +209,7 @@ Fixed &Fixed::operator--(void)
 Fixed Fixed::operator++(int)
 {
 	Fixed rtn(*this);
-	this->_fixedPointValue++;
+	this->_fixedPointval1ue++;
 	return (rtn);
 }
 
@@ -225,7 +221,7 @@ Fixed Fixed::operator++(int)
 Fixed Fixed::operator--(int)
 {
 	Fixed rtn(*this);
-	this->_fixedPointValue--;
+	this->_fixedPointval1ue--;
 	return (rtn);
 }
 
@@ -238,7 +234,7 @@ Fixed Fixed::operator--(int)
  */
 bool Fixed::operator>(const Fixed &rsh) const
 {
-	return (this->_fixedPointValue > rsh.getRawBits());
+	return (this->_fixedPointval1ue > rsh.getRawBits());
 }
 
 /**
@@ -250,7 +246,7 @@ bool Fixed::operator>(const Fixed &rsh) const
  */
 bool Fixed::operator<(const Fixed &rsh) const
 {
-	return (this->_fixedPointValue < rsh.getRawBits());
+	return (this->_fixedPointval1ue < rsh.getRawBits());
 }
 
 /**
@@ -262,7 +258,7 @@ bool Fixed::operator<(const Fixed &rsh) const
  */
 bool Fixed::operator>=(const Fixed &rsh) const
 {
-	return (this->_fixedPointValue >= rsh.getRawBits());
+	return (this->_fixedPointval1ue >= rsh.getRawBits());
 }
 
 /**
@@ -274,7 +270,7 @@ bool Fixed::operator>=(const Fixed &rsh) const
  */
 bool Fixed::operator<=(const Fixed &rsh) const
 {
-	return (this->_fixedPointValue <= rsh.getRawBits());
+	return (this->_fixedPointval1ue <= rsh.getRawBits());
 }
 
 /**
@@ -286,7 +282,7 @@ bool Fixed::operator<=(const Fixed &rsh) const
  */
 bool Fixed::operator==(const Fixed &rsh) const
 {
-	return (this->_fixedPointValue == rsh.getRawBits());
+	return (this->_fixedPointval1ue == rsh.getRawBits());
 }
 
 /**
@@ -298,5 +294,30 @@ bool Fixed::operator==(const Fixed &rsh) const
  */
 bool Fixed::operator!=(const Fixed &rsh) const
 {
-	return (this->_fixedPointValue != rsh.getRawBits());
+	return (this->_fixedPointval1ue != rsh.getRawBits());
 }
+
+/**
+ * @brief Compares between two Fixed objs and returns the smallet
+ *
+ * @param val1 The first obj to compare
+ * @param val2 The second obj to compare
+ * @return Fixed& A refrence to the smallest obj
+ */
+Fixed &Fixed::min(Fixed &val1, Fixed &val2)
+{
+	return (val1 < val2 ? val1 : val2);
+}
+
+/**
+ * @brief Compares between two Fixed objs and returns the smallet
+ *
+ * @param val1 The first obj to compare
+ * @param val2 The second obj to compare
+ * @return const Fixed& The (const) refrenced obj to return
+ */
+const Fixed &Fixed::min(const Fixed &val1, const Fixed &val2)
+{
+	return (val1 < val2 ? val1 : val2);
+}
+
