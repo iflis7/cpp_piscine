@@ -44,7 +44,12 @@ public:
 	Fixed &operator--(void);
 	Fixed operator--(void);
 
+	// Min and max overloading
+	static Fixed &min(Fixed &val, Fixed &val1);
+	const static Fixed &min(const Fixed &val, const Fixed &val1);
 
+	static Fixed &max(Fixed &val, Fixed &val1);
+	const static Fixed &max(const Fixed &val, const Fixed &val1);
 
 	/* Setters */
 	void setRawBits(int const raw);
