@@ -265,3 +265,16 @@ bool Fixed::operator>=(const Fixed &rsh) const
 	return (this->_fixedPointValue >= rsh.getRawBits());
 }
 
+/**
+ * @brief Overload the <= and compare two Fixed objects
+ *
+ * @param rsh The right hand side of the operator
+ * @return true The left hand side is less than or equal to the right hand side
+ * @return false The left hand side is not less than or equal to the right hand side
+ */
+bool Fixed::operator<=(const Fixed &rsh) const
+{
+	return (this->_fixedPointValue <= rsh.getRawBits());
+}
+
+
