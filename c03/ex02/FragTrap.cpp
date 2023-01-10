@@ -35,4 +35,12 @@ FragTrap::~FragTrap()
     std::cout << "FragTrap " << this->_name << " destroyed" << std::endl;
 }
 
-
+/**
+ * @brief High five the target
+ *
+ * @param string target: The target to high five
+ */
+void FragTrap::highFivesGuys()
+{
+    std::cout << "FragTrap " << this->_name << " high fives the guys" << std::endl;
+}
