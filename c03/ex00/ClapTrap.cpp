@@ -29,4 +29,22 @@ ClapTrap::~ClapTrap()
     std::cout << "ClapTrap " << this->_name << " destroyed" << std::endl;
 }
 
+/**
+ * @brief Attack the target
+ *
+ * @param string target: The target to attack
+ */
+void ClapTrap::attack(std::string const &target)
+{
+    if (this->_energyPoints > 0)
+    {
+        std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+        this->_energyPoints--;
+    }
+    else
+    {
+        std::cout << "ClapTrap " << this->_name << " has no energy points left!" << std::endl;
+    }
+}
+
 
