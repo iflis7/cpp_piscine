@@ -4,6 +4,10 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @brief ClapTrap class declaration
+ *
+ */
 class ClapTrap
 {
 private:
