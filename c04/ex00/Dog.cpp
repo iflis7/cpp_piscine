@@ -33,8 +33,8 @@ Dog::Dog(const Dog &other)
 /**
  * @brief Construct by assignment the object Overload
  *
- * @param other
- * @return Dog&
+ * @param other The rsh 
+ * @return Dog& The obj returned
  */
 Dog &Dog::operator=(const Dog &other)
 {
