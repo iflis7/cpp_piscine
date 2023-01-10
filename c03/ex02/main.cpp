@@ -3,14 +3,15 @@
 
 int main()
 {
-    ClapTrap clapTrap;
-    ClapTrap clapTrap2("Bob");
+    // ClapTrap clapTrap;
+    // ClapTrap clapTrap2("Bob");
 
-    clapTrap.attack("bad guy");
-    clapTrap2.takeDamage(3);
-    clapTrap2.beRepaired(1);
+    // clapTrap.attack("bad guy");
+    // clapTrap2.takeDamage(3);
+    // clapTrap2.beRepaired(1);
 
-    std::cout << std::endl;
+    // std::cout << std::endl;
+
     FragTrap fragtrap;
     FragTrap fragtrap2("John");
 
