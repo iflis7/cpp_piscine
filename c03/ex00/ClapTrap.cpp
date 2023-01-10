@@ -47,4 +47,22 @@ void ClapTrap::attack(std::string const &target)
     }
 }
 
+/**
+ * @brief Take damage
+ *
+ * @param unsigned int amount: The amount of damage to take
+ */
+void ClapTrap::takeDamage(unsigned int amount)
+{
+    if (this->_hitPoints > 0)
+    {
+        std::cout << "ClapTrap " << this->_name << " takes " << amount << " points of damage!" << std::endl;
+        this->_hitPoints -= amount;
+    }
+    else
+    {
+        std::cout << "ClapTrap " << this->_name << " has no hit points left!" << std::endl;
+    }
+}
+
 
