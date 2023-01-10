@@ -65,4 +65,21 @@ void ClapTrap::takeDamage(unsigned int amount)
     }
 }
 
-
+/**
+ * @brief Be repaired
+ *
+ * @param unsigned int amount: The amount of hit points to repair
+ */
+void ClapTrap::beRepaired(unsigned int amount)
+{
+    if (this->_hitPoints > 0)
+    {
+        std::cout << "ClapTrap " << this->_name << " repairs " << amount << " points of damage!" << std::endl;
+        this->_hitPoints += amount;
+        this->_energyPoints--;
+    }
+    else
+    {
+        std::cout << "ClapTrap " << this->_name << " has no hit points left!" << std::endl;
+    }
+}
