@@ -11,11 +11,11 @@ int main()
     clapTrap2.beRepaired(1);
 
     std::cout << std::endl;
-    // FragTrap fragtrap;
-    // FragTrap fragtrap2("John");
+    FragTrap fragtrap;
+    FragTrap fragtrap2("John");
 
-    // scavTrap.attack("bad guy");
-    // scavTrap2.guardGate();
+    fragtrap.attack("bad guy");
+    fragtrap2.highFivesGuys();
 
     return 0;
 }
