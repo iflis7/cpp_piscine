@@ -26,3 +26,22 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     this->_guardeMode = false;
 }
 
+/**
+ * @brief Destroy the Scav Trap:: Scav Trap object
+ *
+ */
+ScavTrap::~ScavTrap()
+{
+    std::cout << "ScavTrap Deconstructor for " << this->_name << " called" << std::endl;
+}
+
+/**
+ * @brief Attack the target
+ *
+ * @param string target: The target to attack
+ */
+void ScavTrap::attack(const std::string &target)
+{
+    std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+}
+
