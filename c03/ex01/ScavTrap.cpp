@@ -45,3 +45,17 @@ void ScavTrap::attack(const std::string &target)
     std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
 }
 
+/**
+ * @brief Guard the gate
+ *
+ */
+void ScavTrap::guardGate()
+{
+    if (this->_guardeMode == false)
+    {
+        this->_guardeMode = true;
+        std::cout << "ScavTrap " << this->_name << " is now guarding the gate." << std::endl;
+    }
+    else
+        std::cout << "\033[33mScavTrap " << this->_name << " is already guarding the gate.\033[0m" << std::endl;
+}
