@@ -4,9 +4,9 @@
  * @brief Construct a new Clap Trap:: Clap Trap object
  *
  */
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-    std::cout << "Default Constructor Called!" << std::endl;
+    std::cout << "Default ClapTrap Constructor Called!" << std::endl;
 }
 
 /**
@@ -72,7 +72,7 @@ void ClapTrap::takeDamage(unsigned int amount)
  */
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (this->_hitPoints > 0)
+    if (this->_hitPoints > 0 || this->_energyPoints > 0)
     {
         std::cout << "ClapTrap " << this->_name << " repairs " << amount << " points of damage!" << std::endl;
         this->_hitPoints += amount;
