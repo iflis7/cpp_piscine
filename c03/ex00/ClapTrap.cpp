@@ -21,6 +21,33 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 }
 
 /**
+ * @brief Construct a new Clap Trap:: Clap Trap object
+ *
+ * @param other
+ */
+ClapTrap::ClapTrap(const ClapTrap &other)
+{
+    std::cout << "Copy ClapTrap Constructor Called!" << std::endl;
+    *this = other;
+}
+
+/**
+ * @brief Copy the Clap Trap:: Clap Trap object
+ *
+ * @param other
+ * @return ClapTrap& The instance copied
+ */
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+{
+    std::cout << "Assignation ClapTrap Constructor Called!" << std::endl;
+    this->_name = other._name;
+    this->_hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
+    return *this;
+}
+
+/**
  * @brief Destroy the Clap Trap:: Clap Trap object
  *
  */
