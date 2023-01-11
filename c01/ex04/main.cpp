@@ -5,29 +5,29 @@ int main(int argc, char *argv[])
     // Check if the correct number of arguments was provided
     if (argc != 4)
     {
-        cerr << "Error: Invalid number of arguments." << endl;
-        cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << endl;
+        std::cerr << "Error: Invalid number of arguments." << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
         return 1;
     }
 
     // Open the input file for reading
-    ifstream inputFile(argv[1]);
+    std::ifstream inputFile(argv[1]);
 
     // Check if the file was successfully opened
     if (!inputFile.is_open())
     {
-        cerr << "Error: Could not open file for reading." << endl;
+        std::cerr << "Error: Could not open file for reading." << std::endl;
         return 1;
     }
 
     // Open the output file for writing
-    string filename = string(argv[1]) + ".replace";
-    ofstream outputFile(filename.c_str());
+    std::string filename = std::string(argv[1]) + ".replace";
+   std::ofstream outputFile(filename.c_str());
 
     // Check if the file was successfully opened
     if (!outputFile.is_open())
     {
-        cerr << "Error: Could not open file for writing." << endl;
+        std::cerr << "Error: Could not open file for writing." << std::endl;
         return 1;
     }
 

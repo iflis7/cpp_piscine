@@ -4,7 +4,7 @@
 
 NAME	= sed
 # CC 	= clang++
-CC 		= g++
+CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
 RM 		= rm -f
