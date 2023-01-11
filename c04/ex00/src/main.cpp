@@ -43,5 +43,6 @@ int	main(void)
 {
 	test_animals();
 	test_wrong_animals();
+
 	return (0);
 }
