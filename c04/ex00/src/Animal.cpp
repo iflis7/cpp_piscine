@@ -1,23 +1,13 @@
-#include "Animal.hpp"
-
-/**
- * @brief Construct a new Animal:: Animal object
- *
- */
-Animal::Animal()
-{
-	std::cout << "Animal constructor called" << std::endl;
-}
+#include "../include/Animal.hpp"
 
 /**
  * @brief Construct a new Animal:: Animal object
  *
  * @param type The type
  */
-Animal::Animal(std::string type)
-	: _type(type)
+Animal::Animal() : _type("default")
 {
-	std::cout << "Animal constructor called" << std::endl;
+	std::cout << "Animal Default Constructor called" << std::endl;
 }
 
 /**
@@ -64,20 +54,10 @@ std::string Animal::getType() const
 }
 
 /**
- * @brief Set the type method
- *
- * @param type The type string
- */
-void Animal::setType(std::string type)
-{
-	this->_type = type;
-}
-
-/**
  * @brief Make sound method
  *
  */
 void Animal::makeSound() const
 {
-	std::cout << "Animal sound" << std::endl;
+	std::cout << "This animal doesn't make any sound." << std::endl;
 }
