@@ -1,4 +1,4 @@
-#include "Brain.hpp"
+#include "../include/Brain.hpp"
 
 /**
  * @brief Construct a new Brain:: Brain object

@@ -8,7 +8,7 @@ Dog::Dog()
 	: Animal()
 {
 	this->_type = "Dog";
-	this->brain = new Brain();
+	this->_brain = new Brain();
 	std::cout << this->_type << " constructor called" << std::endl;
 }
 
@@ -33,7 +33,7 @@ Dog &Dog::operator=(const Dog &other)
 {
 	std::cout << "Dog Assignation operator called" << std::endl;
 	this->_type = other._type;
-	this->brain = new Brain(*other.brain);
+	this->_brain = new Brain(*other._brain);
 	return (*this);
 }
 
@@ -43,7 +43,7 @@ Dog &Dog::operator=(const Dog &other)
  */
 Dog::~Dog()
 {
-	delete this->brain;
+	delete this->_brain;
 	std::cout << this->_type << " destructor called" << std::endl;
 }
 

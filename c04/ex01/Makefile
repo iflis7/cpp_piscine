@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Animal.cpp src/Dog.cpp src/Cat.cpp src/WrongAnimal.cpp src/WrongCat.cpp
+src = src/main.cpp src/Animal.cpp src/Dog.cpp src/Cat.cpp src/WrongAnimal.cpp src/WrongCat.cpp src/Brain.cpp
 
 obj = $(src:.cpp=.o)
 
