@@ -6,8 +6,8 @@
  */
 Harl::Harl()
 {
-    cout << "Harl:: Created!" << endl;
-    cout << endl;
+    std::cout << "Harl:: Created!" << std::endl;
+    std::cout << std::endl;
 }
 
 /**
@@ -16,8 +16,8 @@ Harl::Harl()
  */
 Harl::~Harl()
 {
-    cout << endl;
-    cout << "Harl:: Destroyed!" << endl;
+    std::cout << std::endl;
+    std::cout << "Harl:: Destroyed!" << std::endl;
 }
 
 /**
