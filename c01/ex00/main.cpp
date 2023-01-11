@@ -3,7 +3,6 @@
 int	main(void)
 {
 	Zombie	*heapZombie;
-	delete	heapZombie;
 
 	// Create a zombie on the stack
 	randomChump("Stack Zombie");
@@ -11,6 +10,8 @@ int	main(void)
 	heapZombie = newZombie("Heap Zombie");
 	heapZombie->announce();
 	// Delete the heap zombie when we're done with it
+	delete	heapZombie;
+	
 	return (0);
 }
 
