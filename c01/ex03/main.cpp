@@ -32,11 +32,11 @@ int main()
 
     /*
         Should print:
-        Jim is unarmed and cannot attack
+        Dave is unarmed and cannot attack
     */
     std::cout << std::endl;
     {
-        HumanB dave("Jim");
+        HumanB dave("Dave");
         dave.attack();
     }
     return 0;
