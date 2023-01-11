@@ -8,7 +8,6 @@
 Zombie::Zombie(std::string name)
 {
     this->_name = name;
-    // this->_type = type;
 }
 
 /**
