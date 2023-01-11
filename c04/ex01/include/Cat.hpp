@@ -2,13 +2,15 @@
 # define CAT_HPP
 
 # include "Animal.hpp"
-
+# include "Brain.hpp"
 /**
  * @brief Cat class
  * 
  */
 class Cat : public Animal
 {
+
+
   public:
 	Cat();
 	Cat(const Cat &other);
@@ -19,5 +21,3 @@ class Cat : public Animal
 };
 
 #endif
-
-

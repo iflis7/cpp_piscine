@@ -8,6 +8,7 @@ Dog::Dog()
 	: Animal()
 {
 	this->_type = "Dog";
+	this->brain = new Brain();
 	std::cout << this->_type << " constructor called" << std::endl;
 }
 
@@ -32,6 +33,7 @@ Dog &Dog::operator=(const Dog &other)
 {
 	std::cout << "Dog Assignation operator called" << std::endl;
 	this->_type = other._type;
+	this->brain = new Brain(*other.brain);
 	return (*this);
 }
 
@@ -41,6 +43,7 @@ Dog &Dog::operator=(const Dog &other)
  */
 Dog::~Dog()
 {
+	delete this->brain;
 	std::cout << this->_type << " destructor called" << std::endl;
 }
 
