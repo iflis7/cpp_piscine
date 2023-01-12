@@ -7,7 +7,7 @@
 ClapTrap::ClapTrap()
 	: _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "Default Constructor Called!" << std::endl;
+	std::cout << "ClapTrap Default Constructor Called!" << std::endl;
 }
 
 /**
@@ -55,7 +55,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
  */
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << this->_name << " destroyed" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " destroyed!" << std::endl;
 }
 
 /**
@@ -65,11 +65,9 @@ ClapTrap::~ClapTrap()
  */
 void ClapTrap::attack(std::string const &target)
 {
-	std::cout << "Energy:: " << this->_energyPoints << std::endl;
 	if (this->_energyPoints > 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " attacks " << target << ",
-			causing " << this->_attackDamage << " points of damage!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
 		this->_energyPoints--;
 	}
 	else
