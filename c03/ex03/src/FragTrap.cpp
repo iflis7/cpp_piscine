@@ -1,16 +1,17 @@
+
 #include "../include/FragTrap.hpp"
 
 /**
  * @brief Construct a new Frag Trap:: Frag Trap object
  *
  */
-FragTrap::FragTrap()
-	: ClapTrap()
+FragTrap::FragTrap() : ClapTrap()
 {
-	this->_hitPoints = 100;
+	if (this->_hitPoints == 10)
+		this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
-	std::cout << "FragTrap default constructor called" << std::endl;
+	std::cout << "FragTrap Default Constructor for " << this->_name << " called" << std::endl;
 }
 
 /**
@@ -19,13 +20,15 @@ FragTrap::FragTrap()
  * @param string name: The name of the FragTrap
  * @return FragTrap& The instance created
  */
-FragTrap::FragTrap(std::string name)
-	: ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	this->_hitPoints = 100;
+	// this->_name = name;
+	if (this->_hitPoints == 10)
+		this->_hitPoints = 100;
 	this->_energyPoints = 100;
-	this->_attackDamage = 30;
-	std::cout << "FragTrap " << this->_name << " created" << std::endl;
+	if (this->_attackDamage == 0)
+		this->_attackDamage = 30;
+	std::cout << "FragTrap Constructor for the name " << this->_name << " called" << std::endl;
 }
 
 /**
@@ -33,10 +36,8 @@ FragTrap::FragTrap(std::string name)
  *
  * @param copy The copy to make
  */
-FragTrap::FragTrap(const FragTrap &copy)
-	: ClapTrap(copy)
+FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
-	this->_name = copy._name;
 	std::cout << "FragTrap Copy Constructor called" << std::endl;
 }
 
@@ -53,7 +54,7 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
 	this->_hitPoints = src._hitPoints;
 	this->_energyPoints = src._energyPoints;
 	this->_attackDamage = src._attackDamage;
-	return (*this);
+	return *this;
 }
 
 /**
@@ -62,7 +63,7 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
  */
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap " << this->_name << " destroyed" << std::endl;
+	std::cout << "FragTrap Deconstructor for " << this->_name << " called" << std::endl;
 }
 
 /**
@@ -70,7 +71,7 @@ FragTrap::~FragTrap()
  *
  * @param string target: The target to high five
  */
-void FragTrap::highFivesGuys()
+void FragTrap::highFiveGuys(void)
 {
-	std::cout << "FragTrap " << this->_name << " high fives the guys" << std::endl;
+	std::cout << "FragTrap " << this->_name << ": You want a high five?\n\t*WHAMM*\nHere you go." << std::endl;
 }

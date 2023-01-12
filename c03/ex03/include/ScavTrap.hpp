@@ -1,30 +1,31 @@
 #ifndef SCRAPTRAP_HPP
 #define SCRAPTRAP_HPP
 
-// Header protection
+// Header-protection
 #pragma once
 
+// Includes
 #include "ClapTrap.hpp"
 
 /**
  * @brief ScavTrap class declaration
  *
  */
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 private:
-    bool _guardeMode;
+	bool _guarding_gate;
 
 public:
-    ScavTrap();
-    ScavTrap(std::string name);
-    ScavTrap(const ScavTrap &copy);
-    ScavTrap &operator=(const ScavTrap &src);
-    ~ScavTrap();
+	ScavTrap();
+	ScavTrap(const ScavTrap &copy);
+	ScavTrap(std::string name);
+	ScavTrap &operator=(const ScavTrap &src);
+	~ScavTrap();
 
-    // Overide with a new message
-    void attack(const std::string &target);
-    void guardGate();
+	// Public Methods
+	void attack(const std::string &target);
+	void guardGate(void);
 };
 
 #endif

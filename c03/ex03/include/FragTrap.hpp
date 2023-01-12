@@ -1,25 +1,28 @@
 #ifndef FRAGTRAP_HPP
 #define FRAGTRAP_HPP
 
-// Header protection
+// Header-protection
 #pragma once
 
+// Includes
 #include "ClapTrap.hpp"
 
 /**
  * @brief FragTrap class declaration
  *
  */
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
+private:
 public:
-    FragTrap();
-    FragTrap(std::string name);
-    FragTrap(const FragTrap &other);
-    FragTrap &operator=(const FragTrap &other);
-    ~FragTrap();
+	FragTrap();
+	FragTrap(const FragTrap &copy);
+	FragTrap(std::string name);
+	FragTrap &operator=(const FragTrap &src);
+	~FragTrap();
 
-    void highFivesGuys();
+	// Public Methods
+	void highFiveGuys(void);
 };
 
 #endif

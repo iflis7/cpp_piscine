@@ -1,13 +1,13 @@
+
 #include "../include/ClapTrap.hpp"
 
 /**
  * @brief Construct a new Clap Trap:: Clap Trap object
  *
  */
-ClapTrap::ClapTrap()
-	: _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap() : _name("default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "Default ClapTrap Constructor Called!" << std::endl;
+	std::cout << "ClapTrap Default Constructor called" << std::endl;
 }
 
 /**
@@ -16,10 +16,9 @@ ClapTrap::ClapTrap()
  * @param string name: The name of the ClpaTrap
  * @return ClapTrap& The instance created
  */
-ClapTrap::ClapTrap(std::string name)
-	: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "ClapTrap " << this->_name << " created" << std::endl;
+	std::cout << "ClapTrap Constructor for the name " << this->_name << " called" << std::endl;
 }
 
 /**
@@ -27,10 +26,10 @@ ClapTrap::ClapTrap(std::string name)
  *
  * @param other
  */
-ClapTrap::ClapTrap(const ClapTrap &other)
+ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-	std::cout << "Copy ClapTrap Constructor Called!" << std::endl;
-	*this = other;
+	std::cout << "ClapTrap Copy Constructor called" << std::endl;
+	*this = copy;
 }
 
 /**
@@ -39,14 +38,14 @@ ClapTrap::ClapTrap(const ClapTrap &other)
  * @param other
  * @return ClapTrap& The instance copied
  */
-ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
-	std::cout << "Assignation ClapTrap Constructor Called!" << std::endl;
-	this->_name = other._name;
-	this->_hitPoints = other._hitPoints;
-	this->_energyPoints = other._energyPoints;
-	this->_attackDamage = other._attackDamage;
-	return (*this);
+	std::cout << "ClapTrap Assignation operator called" << std::endl;
+	this->_name = src._name;
+	this->_hitPoints = src._hitPoints;
+	this->_energyPoints = src._energyPoints;
+	this->_attackDamage = src._attackDamage;
+	return *this;
 }
 
 /**
@@ -55,7 +54,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
  */
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << this->_name << " destroyed" << std::endl;
+	std::cout << "ClapTrap Deconstructor for " << this->_name << " called" << std::endl;
 }
 
 /**
@@ -63,53 +62,55 @@ ClapTrap::~ClapTrap()
  *
  * @param string target: The target to attack
  */
-void ClapTrap::attack(std::string const &target)
+void ClapTrap::attack(const std::string &target)
 {
-	if (this->_energyPoints > 0)
+	if (this->_energyPoints > 0 && this->_hitPoints > 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " attacks " << target 
-		<< ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
 		this->_energyPoints--;
 	}
+	else if (this->_energyPoints == 0)
+		std::cout << "\033[31mClapTrap " << this->_name << " is not able to attack " << target << ", because he has no energy points left.\033[0m" << std::endl;
 	else
-	{
-		std::cout << "ClapTrap " << this->_name << " has no energy points left!" << std::endl;
-	}
+		std::cout << "\033[31mClapTrap " << this->_name << " is not able to attack " << target << ", because he has not enough hit points.\033[0m" << std::endl;
 }
 
 /**
  * @brief Take damage
  *
- * @param unsigned int amount: The amount of damage to take
+ * @param  int amount: The amount of damage to take
  */
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->_hitPoints > 0)
-	{
-		std::cout << "ClapTrap " << this->_name << " takes " << amount << " points of damage!" << std::endl;
+	if (this->_hitPoints > amount)
 		this->_hitPoints -= amount;
-	}
+	else if (this->_hitPoints > 0)
+		this->_hitPoints = 0;
 	else
 	{
-		std::cout << "ClapTrap " << this->_name << " has no hit points left!" << std::endl;
+		std::cout << "\033[33mClapTrap " << this->_name << " is already dead, stop beating it.\033[0m" << std::endl;
+		return;
 	}
+	std::cout << "ClapTrap " << this->_name << " was attacked and lost " << amount << " hit points, he now has " << this->_hitPoints << " hit points." << std::endl;
 }
 
 /**
  * @brief Be repaired
  *
- * @param unsigned int amount: The amount of hit points to repair
+ * @param  int amount: The amount of hit points to repair
  */
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hitPoints > 0 || this->_energyPoints > 0)
+	if (this->_energyPoints > 0 && this->_hitPoints > 0 && this->_hitPoints + amount <= 10)
 	{
-		std::cout << "ClapTrap " << this->_name << " repairs " << amount << " points of damage!" << std::endl;
 		this->_hitPoints += amount;
+		std::cout << "ClapTrap " << this->_name << " repaired itself and gained " << amount << " of hit points, he now has " << this->_hitPoints << "hit points." << std::endl;
 		this->_energyPoints--;
 	}
+	else if (this->_energyPoints == 0)
+		std::cout << "\033[31mClapTrap " << this->_name << " is not able to repair itself, because he doesn't have enough energy points.\033[0m" << std::endl;
+	else if (this->_hitPoints == 0)
+		std::cout << "\033[31mClapTrap " << this->_name << " is not able to repair itself, because he doesn't have enough hit points.\033[0m" << std::endl;
 	else
-	{
-		std::cout << "ClapTrap " << this->_name << " has no hit points left!" << std::endl;
-	}
+		std::cout << "\033[33mClapTrap " << this->_name << " can't be repaired to have more than 10 hit points.\033[0m" << std::endl;
 }

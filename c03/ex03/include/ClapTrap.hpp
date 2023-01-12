@@ -1,8 +1,12 @@
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
-#include <iostream>
+// Header-protection
+#pragma once
+
+// Includes
 #include <string>
+#include <iostream>
 
 /**
  * @brief ClapTrap class declaration
@@ -10,22 +14,22 @@
  */
 class ClapTrap
 {
-protected:
-    std::string _name;
-    int _hitPoints;
-    int _energyPoints;
-    int _attackDamage;
+	protected:
+		std::string _name;
+		unsigned int _hitPoints;
+		unsigned int _energyPoints;
+		unsigned int _attackDamage;
 
-public:
-    ClapTrap();
-    ClapTrap(std::string name);
-    ClapTrap(const ClapTrap &other);
-    ClapTrap &operator=(const ClapTrap &other);
-    virtual ~ClapTrap();
+	public:
+		ClapTrap();
+		ClapTrap(const ClapTrap &copy);
+		ClapTrap(std::string name);
+		ClapTrap &operator=(const ClapTrap &src);
+		virtual ~ClapTrap();
 
-    void attack(std::string const &target);
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
+		void attack(const std::string &target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
 };
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef DIAMONDTRAP_HPP
 #define DIAMONDTRAP_HPP
 
-//Header protection
+// Header-protection
 #pragma once
 
 // Includes
@@ -15,19 +15,17 @@
 class DiamondTrap : public ScavTrap, public FragTrap
 {
 private:
-    std::string _name;
+	std::string _name;
 
 public:
-    // Constructors
-    DiamondTrap();
-    DiamondTrap(std::string name);
-    DiamondTrap(const DiamondTrap &copy);
-    DiamondTrap &operator=(const DiamondTrap &src);
-    virtual ~DiamondTrap();
+	DiamondTrap();
+	DiamondTrap(const DiamondTrap &copy);
+	DiamondTrap(std::string name);
+	DiamondTrap &operator=(const DiamondTrap &src);
+	virtual ~DiamondTrap();
 
-    // Public Methods
-    void attack(const std::string &target);
-    void whoAmI(void);
+	void attack(const std::string &target);
+	void whoAmI(void);
 };
 
 #endif
