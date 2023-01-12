@@ -1,5 +1,5 @@
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "../include/ClapTrap.hpp"
+#include "../include/ScavTrap.hpp"
 
 int main()
 {
