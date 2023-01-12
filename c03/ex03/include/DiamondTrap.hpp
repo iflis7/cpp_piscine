@@ -1,6 +1,7 @@
 #ifndef DIAMONDTRAP_HPP
 #define DIAMONDTRAP_HPP
 
+//Header protection
 #pragma once
 
 // Includes
@@ -9,7 +10,7 @@
 
 /**
  * @brief DiamondTrap class inheriting from ScavTrap and FragTrap
- * 
+ *
  */
 class DiamondTrap : public ScavTrap, public FragTrap
 {
@@ -19,19 +20,14 @@ private:
 public:
     // Constructors
     DiamondTrap();
-    DiamondTrap(const DiamondTrap &copy);
     DiamondTrap(std::string name);
-
-    // Deconstructors
-    virtual ~DiamondTrap();
-
-    // Overloaded Operators
+    DiamondTrap(const DiamondTrap &copy);
     DiamondTrap &operator=(const DiamondTrap &src);
+    virtual ~DiamondTrap();
 
     // Public Methods
     void attack(const std::string &target);
     void whoAmI(void);
-
 };
 
 #endif

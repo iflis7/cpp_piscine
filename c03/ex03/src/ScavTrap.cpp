@@ -1,4 +1,4 @@
-#include "ScavTrap.hpp"
+#include "../include/ScavTrap.hpp"
 
 /**
  * @brief Construct a new Scav Trap:: Scav Trap object
