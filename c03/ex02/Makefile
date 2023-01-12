@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = main.cpp ClapTrap.cpp FragTrap.cpp
+src = src/main.cpp src/ClapTrap.cpp src/FragTrap.cpp
 
 obj = $(src:.cpp=.o)
 
