@@ -1,5 +1,3 @@
-
-
 #include "../include/DiamondTrap.hpp"
 
 int main()
