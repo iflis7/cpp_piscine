@@ -1,6 +1,9 @@
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
+// Header protection
+#pragma once
+
 #include <iostream>
 #include <string>
 
