@@ -27,7 +27,7 @@ class Brain
     Brain &operator=(const Brain &src);
 
     // // Public Methods
-    // std::string getIdea(int index) const;
+    std::string getIdea(int index) const;
     // void setIdea(int index, std::string idea);
 };
 

@@ -13,6 +13,17 @@ Animal::Animal() : _type("default")
 /**
  * @brief Construct a new Animal:: Animal object
  *
+ * @param type The type
+ */
+Animal::Animal(std::string type)
+{
+	this->_type = type;
+	std::cout << "Animal Default Constructor called" << std::endl;
+}
+
+/**
+ * @brief Construct a new Animal:: Animal object
+ *
  * @param other
  */
 Animal::Animal(const Animal &other)

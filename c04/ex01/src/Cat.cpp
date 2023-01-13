@@ -5,10 +5,19 @@
  *
  */
 Cat::Cat()
-	: Animal()
+	: Animal("Cat"), _brain(new Brain())
 {
-	this->_type = "Cat";
-	this->_brain = new Brain();
+	std::cout << "Cat constructor called" << std::endl;
+}
+
+/**
+ * @brief Construct a new Cat:: Cat object
+ *
+ * @param type The type
+ */
+Cat::Cat(std::string type)
+	: Animal(type), _brain(new Brain())
+{
 	std::cout << "Cat constructor called" << std::endl;
 }
 
@@ -45,6 +54,16 @@ Cat::~Cat()
 {
 	delete this->_brain;
 	std::cout << "Cat destructor called" << std::endl;
+}
+
+/**
+ * @brief Get the Brain object
+ *
+ * @return Brain* The brain
+ */
+Brain *Cat::getBrain() const
+{
+	return this->_brain;
 }
 
 /**

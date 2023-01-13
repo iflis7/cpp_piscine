@@ -5,10 +5,19 @@
  *
  */
 Dog::Dog()
-	: Animal()
+	: Animal("Dog"), _brain(new Brain())
 {
-	this->_type = "Dog";
-	this->_brain = new Brain();
+	std::cout << this->_type << " constructor called" << std::endl;
+}
+
+/**
+ * @brief Construct a new Dog:: Dog object
+ *
+ * @param type The type
+ */
+Dog::Dog(std::string type)
+	: Animal(type), _brain(new Brain())
+{
 	std::cout << this->_type << " constructor called" << std::endl;
 }
 
@@ -26,7 +35,7 @@ Dog::Dog(const Dog &other)
 /**
  * @brief Construct by assignment the object Overload
  *
- * @param other The rsh 
+ * @param other The rsh
  * @return Dog& The obj returned
  */
 Dog &Dog::operator=(const Dog &other)
@@ -45,6 +54,16 @@ Dog::~Dog()
 {
 	delete this->_brain;
 	std::cout << this->_type << " destructor called" << std::endl;
+}
+
+/**
+ * @brief Get the Brain object
+ *
+ * @return Brain* The brain
+ */
+Brain *Dog::getBrain() const
+{
+	return (this->_brain);
 }
 
 /**
