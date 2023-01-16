@@ -1,8 +1,6 @@
 #include "../include/Animal.hpp"
 #include "../include/Cat.hpp"
 #include "../include/Dog.hpp"
-#include "../include/WrongAnimal.hpp"
-#include "../include/WrongCat.hpp"
 #include "../include/Brain.hpp"
 
 void	test_animals(void)
