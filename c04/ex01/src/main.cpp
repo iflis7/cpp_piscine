@@ -23,24 +23,24 @@ void	test_animals(void)
 	delete			i;
 }
 
-void	test_wrong_animals(void)
-{
-	const Animal	*wrong_meta;
-	const Animal	*wrong_i;
+// void	test_wrong_animals(void)
+// {
+// 	const Animal	*wrong_meta;
+// 	const Animal	*wrong_i;
 
-	wrong_meta = new WrongAnimal();
-	wrong_i = new WrongCat();
-	std::cout << "Type of wrong_meta = " << wrong_meta->getType() << std::endl;
-	std::cout << "Type of wrong_i = " << wrong_i->getType() << std::endl;
-	wrong_i->makeSound();    // output: WrongAnimals make a generic sound.
-	wrong_meta->makeSound(); // output: WrongAnimals make a generic sound.
-	delete			wrong_meta;
-	delete			wrong_i;
-}
+// 	wrong_meta = new WrongAnimal();
+// 	wrong_i = new WrongCat();
+// 	std::cout << "Type of wrong_meta = " << wrong_meta->getType() << std::endl;
+// 	std::cout << "Type of wrong_i = " << wrong_i->getType() << std::endl;
+// 	wrong_i->makeSound();    // output: WrongAnimals make a generic sound.
+// 	wrong_meta->makeSound(); // output: WrongAnimals make a generic sound.
+// 	delete			wrong_meta;
+// 	delete			wrong_i;
+// }
 
 int	main(void)
 {
 	test_animals();
-	test_wrong_animals();
+	// test_wrong_animals();
 	return (0);
 }
