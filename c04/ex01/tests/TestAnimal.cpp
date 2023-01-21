@@ -4,20 +4,14 @@
 #include "../../../catch.hpp"
 #include <iostream>
 
-using namespace std;
-
-bool inOrder(const vector<int> &v)
-{
-    for (int i = 0; i < v.size() - 1; i++)
-    {
-        if (v[i] > v[i + 1])
-            return false;
-    }
-    return true;
+// This is the function we want to test
+int add(int a, int b) {
+    return a + b;
 }
 
-TEST_CASE("My Tests", "[inOrder]")
-{
-    REQUIRE(inOrder({2, 3, 4, 10}) == true);
-    REQUIRE(inOrder({12, 3, 4, 10}) == false);
+TEST_CASE("Adding two numbers", "[add]") {
+    REQUIRE(add(1, 2) == 3);
+    REQUIRE(add(2, 2) == 4);
+    REQUIRE(add(-1, 2) == 1);
+    REQUIRE(add(0, 0) == 0);
 }
