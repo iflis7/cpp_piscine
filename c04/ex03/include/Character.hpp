@@ -1,6 +1,8 @@
 
 #pragma once
 #include "ICharacter.hpp"
+#include <iostream>
+#include <iomanip>
 
 /**
  * @brief Character class
