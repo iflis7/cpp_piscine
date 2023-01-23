@@ -26,7 +26,7 @@ Dog::Dog(std::string type)
  *
  * @param other
  */
-Dog::Dog(const Dog &other)
+Dog::Dog(const Dog &other) : Animal()
 {
 	std::cout << "Dog copy constructor called" << std::endl;
 	*this = other;

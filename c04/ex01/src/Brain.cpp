@@ -43,7 +43,7 @@ Brain::~Brain()
 	std::cout << "Brain destructor called" << std::endl;
 }
 
-const std::string& Brain::getIdea(int index) const
-{
-	return this->_ideas[index];
-}
+// const std::string& Brain::getIdea(int index) const
+// {
+// 	return this->_ideas[index];
+// }
