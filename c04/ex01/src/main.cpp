@@ -30,6 +30,7 @@ int main()
 	}
 }
 
+<<<<<<< HEAD
 // TEST_CASE("Test case 1") {
 //     CHECK(1 + 1 == 2);
 //     CHECK(2 * 2 == 4);
@@ -58,3 +59,26 @@ int main()
 // 		return res;
 // 	}
 // }
+=======
+// void	test_wrong_animals(void)
+// {
+// 	const Animal	*wrong_meta;
+// 	const Animal	*wrong_i;
+
+// 	wrong_meta = new WrongAnimal();
+// 	wrong_i = new WrongCat();
+// 	std::cout << "Type of wrong_meta = " << wrong_meta->getType() << std::endl;
+// 	std::cout << "Type of wrong_i = " << wrong_i->getType() << std::endl;
+// 	wrong_i->makeSound();    // output: WrongAnimals make a generic sound.
+// 	wrong_meta->makeSound(); // output: WrongAnimals make a generic sound.
+// 	delete			wrong_meta;
+// 	delete			wrong_i;
+// }
+
+int	main(void)
+{
+	test_animals();
+	// test_wrong_animals();
+	return (0);
+}
+>>>>>>> ad1befb088b1786556af918d454ee3a8ca9d1dfc

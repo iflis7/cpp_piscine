@@ -3,6 +3,11 @@
 ################################################################################
 
 NAME	= animal
+<<<<<<< HEAD
+=======
+NAME_T  = test
+# CC 	= clang++
+>>>>>>> ad1befb088b1786556af918d454ee3a8ca9d1dfc
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
@@ -15,9 +20,17 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
+<<<<<<< HEAD
 src = src/main.cpp src/Animal.cpp src/Dog.cpp src/Cat.cpp src/Brain.cpp 
+=======
+src = src/main.cpp src/Animal.cpp src/Dog.cpp src/Cat.cpp src/Brain.cpp
+
+src_test = tests/TestAnimal.cpp 
+#tests/TestDog.cpp tests/TestCat.cpp tests/TestBrain.cpp
+>>>>>>> ad1befb088b1786556af918d454ee3a8ca9d1dfc
 
 obj = $(src:.cpp=.o)
+obj_test = $(src_test:.cpp=.o)
 
 ################################################################################
 #                                 Makefile rules                             #
@@ -26,14 +39,20 @@ obj = $(src:.cpp=.o)
 all: header $(NAME)
 	@echo "BOOM 💥💥💥💥💥 $(NAME) Compiled! 💯 $(DEFAULT)"
 
+test: $(NAME_T)
+	@echo "BOOM 💥💥💥💥💥 $(NAME_T) Compiled! 💯 $(DEFAULT)"
+
 $(NAME): $(obj)
 	-@$(CC) $(CFLAGS) -o $(NAME) $(obj)
+
+$(NAME_T): $(obj_test)
+	-@$(CC) $(CFLAGS) -o $(NAME_T) $(obj_test)
 
 %.o: %.cpp
 	-@$(CC) $(CFLAGS) -c $< -o $@
 
 clean: header
-	-@$(RM) $(obj)
+	-@$(RM) $(obj) $(obj_test)
 	@echo "🧹🧹🧹🧹🧹🧹 $(NAME) Cleaned! 🧹🧹🧹🧹🧹🧹"
 
 fclean: clean kabylia
