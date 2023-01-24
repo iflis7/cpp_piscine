@@ -6,7 +6,17 @@
  */
 Brain::Brain()
 {
-	std::cout << "Brain constructor called" << std::endl;
+	const std::string examples[] = {
+		"I want to sleep",
+		"I want food",
+		"I want pets",
+		"I want to go for a walk",
+		"I want water",
+		"I want a treat"
+	};
+	for (int i = 0; i < 100; i++)
+		this->_ideas[i] = examples[rand() % (sizeof(examples) / sizeof(std::string))];
+	std::cout << "Brain(void) constructor called" << std::endl;
 }
 
 /**
@@ -14,10 +24,11 @@ Brain::Brain()
  * 
  * @param copy The boject to copy
  */
-Brain::Brain(const Brain &copy)
+Brain::Brain(const Brain &other)
 {
 	std::cout << "Brain copy constructor called" << std::endl;
-	*this = copy;
+		for (int i = 0; i < 100; i++)
+		this->_ideas[i] = other._ideas[i];
 }
 
 /**
@@ -26,12 +37,15 @@ Brain::Brain(const Brain &copy)
  * @param src The src object
  * @return Brain& The object returned
  */
-Brain &Brain::operator=(const Brain &src)
+Brain &Brain::operator=(const Brain &rhs)
 {
 	std::cout << "Brain assignation operator called" << std::endl;
-	if (this == &src)
-		return (*this);
-	return (*this);
+	if (this != &rhs)
+	{
+		for (int i = 0; i < 100; i++)
+			this->_ideas[i] = rhs._ideas[i];
+	}
+	return *this;
 }
 
 /**
@@ -43,7 +57,7 @@ Brain::~Brain()
 	std::cout << "Brain destructor called" << std::endl;
 }
 
-const std::string& Brain::getIdea(int index) const
+const std::string Brain::getIdea(int index) const
 {
 	return this->_ideas[index];
 }

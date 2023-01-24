@@ -1,4 +1,5 @@
 #include "../include/Cat.hpp"
+// #include "../include/Brain.hpp"
 
 /**
  * @brief Construct a new Cat:: Cat object
@@ -28,8 +29,8 @@ Cat::Cat(std::string type)
  */
 Cat::Cat(const Cat &other)
 {
+	this->_brain = new Brain(*other._brain);
 	std::cout << "Cat copy constructor called" << std::endl;
-	*this = other;
 }
 
 /**

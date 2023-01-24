@@ -13,21 +13,21 @@ class Brain
 {
   protected:
     // Private Members
-    std::string ideas[100];
+    std::string _ideas[100];
 
   public:
     // Constructors
     Brain();
-    Brain(const Brain &copy);
+    Brain(const Brain &other);
 
     // Deconstructors
     ~Brain();
 
     // Overloaded Operators
-    Brain &operator=(const Brain &src);
+    Brain &operator=(const Brain &rhs);
 
     // // Public Methods
-    std::string getIdea(int index) const;
+    const std::string getIdea(int index) const;
     // void setIdea(int index, std::string idea);
 };
 

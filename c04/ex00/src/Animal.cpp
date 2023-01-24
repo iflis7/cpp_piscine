@@ -5,7 +5,7 @@
  *
  * @param type The type
  */
-Animal::Animal() : _type("default")
+Animal::Animal() : _type("Animal")
 {
 	std::cout << "Animal Default Constructor called" << std::endl;
 }

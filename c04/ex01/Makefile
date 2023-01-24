@@ -3,7 +3,6 @@
 ################################################################################
 
 NAME	= animal
-# CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
@@ -16,7 +15,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Animal.cpp src/Dog.cpp src/Cat.cpp src/WrongAnimal.cpp src/WrongCat.cpp src/Brain.cpp
+src = src/main.cpp src/Animal.cpp src/Dog.cpp src/Cat.cpp src/Brain.cpp 
 
 obj = $(src:.cpp=.o)
 
@@ -64,6 +63,7 @@ header:
 	@echo "     / /_| |  / /  | |\/| |/ _\` | |/ / _ \\"
 	@echo "     \___  |./ /___| |  | | (_| |   <  __/"
 	@echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| "
+	@echo "                                           "
 
 ifneq ($(HASH),)
 	@printf "%b" "$(DEFAULT)Name:	$(OBJ_COLOR)$(NAME)@$(HASH)\n"

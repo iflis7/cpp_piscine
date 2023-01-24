@@ -1,48 +1,60 @@
 #include "../include/Animal.hpp"
 #include "../include/Cat.hpp"
 #include "../include/Dog.hpp"
-#include "../include/WrongAnimal.hpp"
-#include "../include/WrongCat.hpp"
 #include "../include/Brain.hpp"
+// #include "../../doctest.hpp"
 
-void	test_animals(void)
+int main()
 {
-	const Animal	*meta;
-	const Animal	*j;
-	const Animal	*i;
 
-	meta = new Animal();
-	j = new Dog();
-	i = new Cat();
-	std::cout << "Type of meta = " << meta->getType() << std::endl;
-	std::cout << "Type of j = " << j->getType() << std::endl;
-	std::cout << "Type of i = " << i->getType() << std::endl;
-	i->makeSound();    // output: Cat says: Meow!
-	j->makeSound();    // output: Dog says: Woof!
-	meta->makeSound(); // output: Animals make a generic sound.
-	delete			meta;
-	delete			j;
-	delete			i;
+	Animal *animals[10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (i >= 5)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
+	Cat copy(*(Cat *)animals[0]);
+	std::cout << std::endl;
+	for (int i = 0; i < 100; i++)
+	{
+		std::cout << std::setw(30) << std::left << copy.getBrain()->getIdea(i);
+		std::cout << std::setw(30) << std::left << ((Cat *)animals[0])->getBrain()->getIdea(i) << std::endl;
+	}
+	std::cout << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		delete animals[i];
+	}
 }
 
-void	test_wrong_animals(void)
-{
-	const Animal	*wrong_meta;
-	const Animal	*wrong_i;
+// TEST_CASE("Test case 1") {
+//     CHECK(1 + 1 == 2);
+//     CHECK(2 * 2 == 4);
+// }
 
-	wrong_meta = new WrongAnimal();
-	wrong_i = new WrongCat();
-	std::cout << "Type of wrong_meta = " << wrong_meta->getType() << std::endl;
-	std::cout << "Type of wrong_i = " << wrong_i->getType() << std::endl;
-	wrong_i->makeSound();    // output: WrongAnimals make a generic sound.
-	wrong_meta->makeSound(); // output: WrongAnimals make a generic sound.
-	delete			wrong_meta;
-	delete			wrong_i;
-}
+// TEST_CASE("Test case 2") {
+//     CHECK(3 - 1 == 2);
+//     CHECK(4 / 2 == 2);
+// }
 
-int	main(void)
-{
-	test_animals();
-	test_wrong_animals();
-	return (0);
-}
+// int main(int argc, const char *const *argv){
+// 	doctest::Context ctx;
+// ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
+// ctx.applyCommandLine(argc, argv); // apply command line - argc / argv
+// ctx.setOption("no-breaks", true); // override - don't break in the debugger
+// int res = ctx.run();              // run test cases unless with --no-run
+// if(ctx.shouldExit())              // query flags (and --exit) rely on this
+//     return res;                   // propagate the result of the tests
+// // your actual program execution goes here - only if we haven't exited
+// return res; // + your_prog
+// 	doctest::Context ctx;
+// 	ctx.applyCommandLine(argc, argv);
+// 	int res = ctx.run();
+// 	if (ctx.shouldExit())
+// 	{
+// 		return res;
+// 	}
+// }

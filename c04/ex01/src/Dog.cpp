@@ -28,8 +28,8 @@ Dog::Dog(std::string type)
  */
 Dog::Dog(const Dog &other)
 {
+	this->_brain = new Brain(*other._brain);
 	std::cout << "Dog copy constructor called" << std::endl;
-	*this = other;
 }
 
 /**
