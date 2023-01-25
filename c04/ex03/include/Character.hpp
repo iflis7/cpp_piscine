@@ -10,8 +10,11 @@
  */
 class Character : public ICharacter
 {
+private:
+    std::string _name;
+    AMateria *_materia[4];
+
 public:
-    // Constructors
     Character(const std::string &name);
     Character(const Character &other);
 
@@ -23,10 +26,6 @@ public:
 
     std::string const &getName() const;
     void equip(AMateria *m);
-    void unequip(int idx);
+    void unequip(int index);
     void use(int idx, ICharacter &target);
-
-private:
-    std::string _name;
-    AMateria *_materia[4];
 };

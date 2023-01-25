@@ -1,6 +1,8 @@
 #pragma once
-#include <string>
 #include "ICharacter.hpp"
+
+#include <string>
+#include <iostream>
 
 /**
  * @brief Base class for all materia
@@ -13,8 +15,7 @@ protected:
 
 public:
     AMateria();
-    AMateria(std::string type);
-    AMateria(std::string const &type);
+    AMateria(std::string const &_type);
     AMateria(const AMateria &other);
 
     AMateria &operator=(const AMateria &rhs);
@@ -26,3 +27,4 @@ public:
     virtual void use(ICharacter &target);
 
 };
+ 

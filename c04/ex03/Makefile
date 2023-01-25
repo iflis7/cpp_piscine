@@ -37,7 +37,7 @@ clean: header
 	-@$(RM) $(obj)
 	@echo "🧹🧹🧹🧹🧹🧹 $(NAME) Cleaned! 🧹🧹🧹🧹🧹🧹"
 
-fclean: clean kabylia
+fclean: clean 
 	-@$(RM) $(NAME)
 	
 
