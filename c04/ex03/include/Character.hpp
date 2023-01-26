@@ -27,5 +27,5 @@ public:
     const std::string &getName() const;
     void equip(AMateria *m);
     void unequip(int index);
-    void use(int idx, ICharacter &target);
+    void use(int index, ICharacter &target);
 };

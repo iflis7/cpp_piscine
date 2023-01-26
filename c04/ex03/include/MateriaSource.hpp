@@ -6,14 +6,17 @@
 
 /**
  * @brief MateriaSource class
- * 
+ *
  */
 class MateriaSource : public IMateriaSource
 {
+private:
+    AMateria *_materia[4];
+
 public:
     // Constructors
     MateriaSource();
-    MateriaSource(const MateriaSource &other);
+    MateriaSource(const MateriaSource &rhs);
 
     // Assignment operator overload
     MateriaSource &operator=(const MateriaSource &rhs);
@@ -21,11 +24,8 @@ public:
     // Destructor
     ~MateriaSource();
 
-    void learnMateria(AMateria *m);
+    void learnMateria(AMateria *Mat);
     AMateria *createMateria(const std::string &type);
-
-private:
-    AMateria *_materia[4];
 };
 
 #endif
