@@ -18,6 +18,24 @@ public:
     Bureaucrat &operator=(const Bureaucrat &rhs);
     ~Bureaucrat();
 
+    class GradeTooHighException : public std::exception
+	{
+	public:
+		const char* what() const throw()
+		{
+			return ("Grade too high");
+		}
+	};
+
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		const char* what() const throw()
+		{
+			return ("Grade too low");
+		}
+	};
+
     void setName(const std::string name);
     const std::string getName() const;
 
@@ -28,5 +46,4 @@ public:
     void decrementGrade();
 };
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &fixe);
-
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs);

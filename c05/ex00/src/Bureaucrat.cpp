@@ -4,18 +4,9 @@
  * @brief Construct a new Bureaucrat:: Bureaucrat object
  *
  */
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 {
     std::cout << "Bureaucrat Created by Default!" << std::endl;
-}
-
-/**
- * @brief Construct a new Bureaucrat:: Bureaucrat object
- *
- * @param name The name
- */
-Bureaucrat::Bureaucrat(const std::string &name) : _name(name)
-{
 }
 
 /**
@@ -24,8 +15,17 @@ Bureaucrat::Bureaucrat(const std::string &name) : _name(name)
  * @param name The name of
  * @param grade The grade to initilized at
  */
-Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
 {
+    if (grade > 150)
+    {
+        throw GradeTooLowException();
+    }
+    else if (grade < 1)
+    {
+        throw GradeTooHighException();
+    }
+    _grade = grade;
 }
 
 /**
@@ -38,17 +38,6 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src)
     *this = src;
     // return this;
 }
-
-// /**
-//  * @brief Construct a new Bureaucrat:: Bureaucrat object
-//  *
-//  * @param other
-//  */
-// Bureaucrat::Bureaucrat(const std::string &other)
-// {
-//     *this = other;
-//     // return *this;
-// }
 
 /**
  * @brief Overload = operator
@@ -90,6 +79,16 @@ void Bureaucrat::setName(const std::string name)
 }
 
 /**
+ * @brief Get the name
+ *
+ * @return const std::string
+ */
+const std::string Bureaucrat::getName() const
+{
+    return (this->_name);
+};
+
+/**
  * @brief Set the Grade attribute
  *
  * @param grade
@@ -100,24 +99,46 @@ void Bureaucrat::setGrade(const int grade)
 }
 
 /**
- * @brief Get the name
+ * @brief Get the grade
  *
- * @return const std::string
+ * @return int the grade
  */
-const std::string Bureaucrat::getName() const
-{
-    return (this->_name);
-};
-
 int Bureaucrat::getGrade() const
 {
     return (this->_grade);
 };
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
+/**
+ * @brief Increases the grade
+ *
+ */
+void Bureaucrat::incrementGrade()
 {
-    out << bureaucrat.getName();
-    out << bureaucrat.getGrade();
-    // operator<<(out, bureaucrat);
+    if (this->_grade <= 1)
+        throw GradeTooHighException();
+    this->_grade--;
+}
+
+/**
+ * @brief Decreases the grade
+ *
+ */
+void Bureaucrat::decrementGrade()
+{
+    if (this->_grade >= 150)
+        throw GradeTooLowException();
+    this->_grade++;
+}
+
+/**
+ * @brief
+ *
+ * @param out
+ * @param bureaucrat
+ * @return std::ostream&
+ */
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs)
+{
+    out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
     return (out);
 };
