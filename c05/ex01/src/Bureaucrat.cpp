@@ -1,4 +1,5 @@
 #include "../include/Bureaucrat.hpp"
+#include "../include/Form.hpp"
 
 /**
  * @brief Construct a new Bureaucrat:: Bureaucrat object
@@ -67,6 +68,14 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 Bureaucrat::~Bureaucrat(){
 
 };
+
+
+void Bureaucrat::signForm(Form &form) const
+{
+    // if(form->get)
+    std::cout << this->getName() << " has signed " << form.getName() << std::endl;
+
+}
 
 /**
  * @brief Set the Name attribute

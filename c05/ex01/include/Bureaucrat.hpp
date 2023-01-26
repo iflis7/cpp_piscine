@@ -3,6 +3,7 @@
 #pragma once
 
 #include <iostream>
+class Form;
 
 class Bureaucrat
 {
@@ -19,22 +20,24 @@ public:
     ~Bureaucrat();
 
     class GradeTooHighException : public std::exception
-	{
-	public:
-		const char* what() const throw()
-		{
-			return ("Grade too high");
-		}
-	};
+    {
+    public:
+        const char *what() const throw()
+        {
+            return ("Grade too high");
+        }
+    };
 
-	class GradeTooLowException : public std::exception
-	{
-	public:
-		const char* what() const throw()
-		{
-			return ("Grade too low");
-		}
-	};
+    class GradeTooLowException : public std::exception
+    {
+    public:
+        const char *what() const throw()
+        {
+            return ("Grade too low");
+        }
+    };
+
+    void signForm(Form &form) const;
 
     void setName(const std::string name);
     const std::string getName() const;
