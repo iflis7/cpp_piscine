@@ -65,8 +65,6 @@ public:
 };
 
 // FUNCTIONS PROTOYPES =========================================================
-Fixed &min(Fixed &val1, Fixed &val2);
-Fixed &max(Fixed &val1, Fixed &val2);
 std::ostream &operator<<(std::ostream &out, const Fixed &fixe);
 
 #endif
