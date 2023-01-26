@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= animal
+NAME	= bureaucrat
 # CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Icharacter.cpp src/ICharacter.cpp src/AMateria.cppk0 src/Character.cpp src/MateriaSource.cpp src/Cure.cpp src/Ice.cpp
+src = src/main.cpp src/Bureaucrat.cpp
 
 obj = $(src:.cpp=.o)
 
@@ -37,7 +37,7 @@ clean: header
 	-@$(RM) $(obj)
 	@echo "🧹🧹🧹🧹🧹🧹 $(NAME) Cleaned! 🧹🧹🧹🧹🧹🧹"
 
-fclean: clean kabylia
+fclean: clean 
 	-@$(RM) $(NAME)
 	
 
@@ -64,6 +64,7 @@ header:
 	@echo "     / /_| |  / /  | |\/| |/ _\` | |/ / _ \\"
 	@echo "     \___  |./ /___| |  | | (_| |   <  __/"
 	@echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| "
+	@echo "         								  "
 
 ifneq ($(HASH),)
 	@printf "%b" "$(DEFAULT)Name:	$(OBJ_COLOR)$(NAME)@$(HASH)\n"
