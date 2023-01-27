@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Bureaucrat.cpp
+src = src/main.cpp src/Bureaucrat.cpp src/Form.cpp
 
 obj = $(src:.cpp=.o)
 

@@ -24,7 +24,7 @@ public:
     public:
         const char *what() const throw()
         {
-            return ("Grade too high");
+            return ("Exception: Grade too high!");
         }
     };
 
@@ -33,7 +33,7 @@ public:
     public:
         const char *what() const throw()
         {
-            return ("Grade too low");
+            return ("Exception: Grade too low!");
         }
     };
 

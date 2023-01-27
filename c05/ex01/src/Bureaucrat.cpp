@@ -5,9 +5,10 @@
  * @brief Construct a new Bureaucrat:: Bureaucrat object
  *
  */
-Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
+Bureaucrat::Bureaucrat()
+	: _name("Default"), _grade(150)
 {
-    std::cout << "Bureaucrat Created by Default!" << std::endl;
+	std::cout << "Bureaucrat Created by Default!" << std::endl;
 }
 
 /**
@@ -16,17 +17,18 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
  * @param name The name of
  * @param grade The grade to initilized at
  */
-Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(const std::string &name, int grade)
+	: _name(name)
 {
-    if (grade > 150)
-    {
-        throw GradeTooLowException();
-    }
-    else if (grade < 1)
-    {
-        throw GradeTooHighException();
-    }
-    _grade = grade;
+	if (grade > 150)
+	{
+		throw GradeTooLowException();
+	}
+	else if (grade < 1)
+	{
+		throw GradeTooHighException();
+	}
+	_grade = grade;
 }
 
 /**
@@ -36,8 +38,8 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
  */
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {
-    *this = src;
-    // return this;
+	*this = src;
+	// return (this);
 }
 
 /**
@@ -48,12 +50,12 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src)
  */
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
-    if (this != &rhs)
-    {
-        this->_name = rhs._name;
-        this->_grade = rhs._grade;
-    }
-    return *this;
+	if (this != &rhs)
+	{
+		this->_name = rhs._name;
+		this->_grade = rhs._grade;
+	}
+	return (*this);
 }
 
 // void operator<<(std::ostream &COUT, Bureaucrat &bureaucrat)
@@ -69,22 +71,20 @@ Bureaucrat::~Bureaucrat(){
 
 };
 
-
 void Bureaucrat::signForm(Form &form) const
 {
-    // if(form->get)
-    std::cout << this->getName() << " has signed " << form.getName() << std::endl;
-
+	// if(form->get)
+	std::cout << this->getName() << " has signed the Form: " << form.getName() << std::endl;
 }
 
 /**
  * @brief Set the Name attribute
  *
  * @param name The name of the Bureaucrat
- */
+ *  */
 void Bureaucrat::setName(const std::string name)
 {
-    this->_name = name;
+	this->_name = name;
 }
 
 /**
@@ -94,7 +94,7 @@ void Bureaucrat::setName(const std::string name)
  */
 const std::string Bureaucrat::getName() const
 {
-    return (this->_name);
+	return (this->_name);
 };
 
 /**
@@ -104,7 +104,7 @@ const std::string Bureaucrat::getName() const
  */
 void Bureaucrat::setGrade(const int grade)
 {
-    this->_grade = grade;
+	this->_grade = grade;
 }
 
 /**
@@ -114,7 +114,7 @@ void Bureaucrat::setGrade(const int grade)
  */
 int Bureaucrat::getGrade() const
 {
-    return (this->_grade);
+	return (this->_grade);
 };
 
 /**
@@ -123,9 +123,9 @@ int Bureaucrat::getGrade() const
  */
 void Bureaucrat::incrementGrade()
 {
-    if (this->_grade <= 1)
-        throw GradeTooHighException();
-    this->_grade--;
+	if (this->_grade <= 1)
+		throw GradeTooHighException();
+	this->_grade--;
 }
 
 /**
@@ -134,9 +134,9 @@ void Bureaucrat::incrementGrade()
  */
 void Bureaucrat::decrementGrade()
 {
-    if (this->_grade >= 150)
-        throw GradeTooLowException();
-    this->_grade++;
+	if (this->_grade >= 150)
+		throw GradeTooLowException();
+	this->_grade++;
 }
 
 /**
@@ -148,6 +148,6 @@ void Bureaucrat::decrementGrade()
  */
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs)
 {
-    out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
-    return (out);
+	out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+	return (out);
 };

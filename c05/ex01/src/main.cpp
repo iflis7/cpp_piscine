@@ -1,17 +1,16 @@
 #include "../include/Bureaucrat.hpp"
 #include "../include/Form.hpp"
 
-int main()
+int test_john()
 {
-	Bureaucrat john("John", 5);
-
+	Bureaucrat john("John", 2);
 	std::cout << john << std::endl;
 
 	try
 	{
 		john.incrementGrade();
 		john.incrementGrade();
-		std::cout << john << std::endl;
+		std::cout << "Latest Stable Grade: " << john.getGrade() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -37,18 +36,27 @@ int main()
 	john.signForm(b);
 	john.signForm(b);
 	
-	try
-	{
-		john.decrementGrade();
-		std::cout << john << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	// try
+	// {
+	// 	john.decrementGrade();
+	// 	std::cout << john << std::endl;
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << e.what() << std::endl;
+	// }
 	
 	john.signForm(c);
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << c << std::endl;
+	return(0);
+}
+
+
+
+int main()
+{
+	test_john();
+
 }

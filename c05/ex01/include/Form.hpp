@@ -9,13 +9,14 @@ class Form
 {
 private:
     std::string _name;
-    bool _is_signed = false;
+    bool _is_signed;
     int _signGrade;
     int _execGrade;
 
 public:
     Form();
-    Form(const std::string &name, int signGrade, int execGrade);
+    Form(const std::string name);
+    Form(const std::string name, int signGrade, int execGrade);
     Form(const Form &rhs);
     Form &operator=(const Form &rhs);
     ~Form();
@@ -25,7 +26,7 @@ public:
     public:
         const char *what() const throw()
         {
-            return ("Grade too high");
+            return ("Exception: Grade too high!");
         }
     };
 
@@ -43,14 +44,14 @@ public:
     void setName(const std::string name);
     const std::string getName() const;
 
-    void setName(const std::string _is_signed);
-    const std::string getName() const;
+    void setSigned(bool isSigned);
+    bool getSigned() const;
 
-    void setName(const std::string _sign_grade);
-    const std::string getName() const;
+    void setSignGrade(const int signGrade);
+    int getSignGrade() const;
 
-    void setGrade(const int _exec_grade);
-    int getGrade() const;
+    void setExecGrade(const int execGrade);
+    int getExecGrade() const;
 
     void incrementGrade();
     void decrementGrade();
