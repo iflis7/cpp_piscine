@@ -18,6 +18,10 @@ Form::Form(const std::string name, int signGrade, int execGrade)
     : _name(name), _is_signed(false),
       _signGrade(signGrade), _execGrade(execGrade)
 {
+    if (signGrade < 1 || execGrade < 1)
+        throw Form::GradeTooHighException();
+    else if (signGrade > 150 || execGrade > 150)
+        throw Form::GradeTooLowException();
     std::cout << "Default Constructor Called On Form" << std::endl;
 }
 
@@ -131,10 +135,10 @@ int Form::getExecGrade() const
  */
 std::ostream &operator<<(std::ostream &out, const Form &rhs)
 {
-    out << "Name: " << rhs.getName() << std::endl;
-    out << "Signed: " << rhs.getSigned() << std::endl;
-    out << "SignGrade: " << rhs.getSignGrade() << std::endl;
-    out << "SignGrade: " << rhs.getExecGrade() << std::endl;
+    out << "Name: " << rhs.getName();
+    out << " |Signed: " << rhs.getSigned();
+    out << " |SignGrade: " << rhs.getSignGrade();
+    out << " |SignGrade: " << rhs.getExecGrade() << std::endl;
     return (out);
 }
 

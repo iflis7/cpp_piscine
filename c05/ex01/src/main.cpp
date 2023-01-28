@@ -4,60 +4,49 @@
 int test_john()
 {
 	Bureaucrat john("John", 2);
-	std::cout << john << std::endl;
+	std::cout << john << std::endl; // Print John's info
 
 	try
 	{
 		john.incrementGrade();
-		john.incrementGrade();
+		john.incrementGrade(); // Throw an exception
 		std::cout << "Latest Stable Grade: " << john.getGrade() << std::endl;
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
+
 	try
 	{
 		Form test("test", 151, 42);
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
 		std::cerr << "Cannot initialize test because " << e.what() << std::endl;
 	}
 
-	// Form a("a");
 	Form b("b", 3, 3);
-	// Form c("c", 3, 20);
 	std::cout << john << std::endl;
-	// std::cout << a << std::endl;
 	std::cout << b << std::endl;
-	// john.signForm(a);
 	john.signForm(b);
 	john.signForm(b);
-	
+
 	try
 	{
 		// john.decrementGrade();
 		john.incrementGrade();
 		std::cout << john << std::endl;
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
-	// john.signForm(c);
-	// std::cout << a << std::endl;
 	std::cout << b << std::endl;
-	// std::cout << c << std::endl;
-	return(0);
+	return (0);
 }
-
-
 
 int main()
 {
 	test_john();
-
 }

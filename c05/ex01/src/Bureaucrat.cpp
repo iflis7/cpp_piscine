@@ -68,7 +68,6 @@ Bureaucrat::~Bureaucrat(){
 
 };
 
-
 /**
  * @brief Set the Name attribute
  *
@@ -135,7 +134,7 @@ void Bureaucrat::decrementGrade()
 
 /**
  * @brief Sign a form by the bureaucrat
- * 
+ *
  * @param form The form to sign
  */
 void Bureaucrat::signForm(Form &form) const
@@ -145,11 +144,11 @@ void Bureaucrat::signForm(Form &form) const
 		form.beSigned(*this);
 		std::cout << *this << " signed " << form << std::endl;
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
-		std::cerr << *this << " cannot sign " << form << " because " << e.what() << std::endl;
+		std::cerr << *this << " cannot sign " << form
+				  << " because " << e.what() << std::endl;
 	}
-	
 }
 
 /**
