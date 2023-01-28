@@ -4,6 +4,10 @@
 
 class Bureaucrat;
 
+/**
+ * @brief The Form class
+ * 
+ */
 class Form
 {
 private:
