@@ -40,7 +40,7 @@ public:
     public:
         const char *what() const throw()
         {
-            return ("Grade too high");
+            return ("Execption:: Grade too high");
         }
     };
 
@@ -49,9 +49,9 @@ public:
     public:
         const char *what() const throw()
         {
-            return ("Grade too low");
+            return ("Execption:: Grade too low");
         }
     };
 };
 
-std::ostream &operator<<(std::ostream &o, const Bureaucrat &rhs);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs);

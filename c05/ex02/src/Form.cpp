@@ -63,6 +63,7 @@ Form::Form(const std::string &name, const std::string &target, const unsigned in
 Form::Form(const Form &other)
     : _name(other._name), _signed(other._signed), _gradeSign(other._gradeSign), _gradeExec(other._gradeExec)
 {
+    std::cout << "Copy Constructor Called!" << std::endl;
 }
 
 /**
