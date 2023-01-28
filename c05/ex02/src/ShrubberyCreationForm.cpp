@@ -53,7 +53,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 /**
  * @brief Tries to execute the form and returns an error if it can't
  *
- * @param executor
+ * @param executor The Bureaucrat executing it
  */
 void ShrubberyCreationForm::action(const Bureaucrat &executor) const
 {
