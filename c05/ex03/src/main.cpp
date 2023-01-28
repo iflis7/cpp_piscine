@@ -18,6 +18,7 @@ int main()
 	std::cout << jim << std::endl;
 	std::cout << jane << std::endl;
 
+// Test the Intern class
 	Intern intern;
 
 	Form* formA;
