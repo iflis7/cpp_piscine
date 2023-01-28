@@ -26,30 +26,31 @@ int test_john()
 		std::cerr << "Cannot initialize test because " << e.what() << std::endl;
 	}
 
-	Form a("a");
+	// Form a("a");
 	Form b("b", 3, 3);
-	Form c("c", 3, 20);
+	// Form c("c", 3, 20);
 	std::cout << john << std::endl;
-	std::cout << a << std::endl;
+	// std::cout << a << std::endl;
 	std::cout << b << std::endl;
-	john.signForm(a);
+	// john.signForm(a);
 	john.signForm(b);
 	john.signForm(b);
 	
-	// try
-	// {
-	// 	john.decrementGrade();
-	// 	std::cout << john << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << std::endl;
-	// }
+	try
+	{
+		// john.decrementGrade();
+		john.incrementGrade();
+		std::cout << john << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	
-	john.signForm(c);
-	std::cout << a << std::endl;
+	// john.signForm(c);
+	// std::cout << a << std::endl;
 	std::cout << b << std::endl;
-	std::cout << c << std::endl;
+	// std::cout << c << std::endl;
 	return(0);
 }
 

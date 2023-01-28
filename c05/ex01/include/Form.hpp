@@ -39,7 +39,16 @@ public:
         }
     };
 
-    void beSigned(const Bureaucrat &rhs) const;
+    class FormAlreadySignedException : public std::exception
+    {
+    public:
+        const char *what() const throw()
+        {
+            return ("form is already signed");
+        }
+    };
+
+    void beSigned(const Bureaucrat &rhs);
 
     void setName(const std::string name);
     const std::string getName() const;
