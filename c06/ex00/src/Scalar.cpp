@@ -78,7 +78,25 @@ void Scalar::setType(std::string type)
     this->_type = type;
 }
 
+void Scalar::fromChar() const
+{
+    std::cout << "char: " << this->_char << std::endl;
+    std::cout << "int: " << static_cast<int>(this->_char) << std::endl;
+    std::cout << "float: " << static_cast<float>(this->_char) << ".0f" << std::endl;
+    std::cout << "double: " << static_cast<double>(this->_char) << ".0" << std::endl;
+}
 
+void Scalar::fromInt() const
+{
+    std::cout << "char: ";
+    if (std::isprint(this->_int))
+        std::cout << static_cast<char>(this->_int) << std::endl;
+    else
+        std::cout << "Non displayable" << std::endl;
+    std::cout << "int: " << this->_int << std::endl;
+    std::cout << "float: " << static_cast<float>(this->_int) << ".0f" << std::endl;
+    std::cout << "double: " << static_cast<double>(this->_int) << ".0" << std::endl;
+}
 
 const std::string Scalar::findType(std::string input) 
 {
