@@ -4,7 +4,7 @@
  * @brief Construct a new Wrong Animal:: Wrong Animal object
  * 
  */
-WrongAnimal::WrongAnimal() : Animal()
+WrongAnimal::WrongAnimal() // TODO incvestigate more lol!
 {
 	this->_type = "WrongAnimal";
 	std::cout << "WrongAnimal Default Constructor called" << std::endl;

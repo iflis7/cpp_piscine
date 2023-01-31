@@ -3,7 +3,6 @@
 ################################################################################
 
 NAME	= animal
-# CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
@@ -25,7 +24,7 @@ obj = $(src:.cpp=.o)
 ################################################################################
 
 all: header $(NAME)
-	@echo "BOOM 💥💥💥💥💥 $(NAME) Compiled! 💯 $(DEFAULT)"
+# @echo "BOOM 💥💥💥💥💥 $(NAME) Compiled! 💯 $(DEFAULT)"
 
 $(NAME): $(obj)
 	-@$(CC) $(CFLAGS) -o $(NAME) $(obj)

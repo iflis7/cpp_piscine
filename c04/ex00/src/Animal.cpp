@@ -17,8 +17,8 @@ Animal::Animal() : _type("Animal")
  */
 Animal::Animal(const Animal &other)
 {
-	std::cout << "Animal copy constructor called" << std::endl;
 	*this = other;
+	std::cout << "Animal copy constructor called" << std::endl;
 }
 
 /**
@@ -29,8 +29,8 @@ Animal::Animal(const Animal &other)
  */
 Animal &Animal::operator=(const Animal &other)
 {
-	std::cout << "Animal Assignation operator called" << std::endl;
 	this->_type = other._type;
+	std::cout << "Animal Assignation operator called" << std::endl;
 	return (*this);
 }
 

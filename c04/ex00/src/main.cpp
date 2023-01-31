@@ -4,47 +4,56 @@
 #include "../include/WrongAnimal.hpp"
 #include "../include/WrongCat.hpp"
 
-void test_animals(void)
+void testAnimals(void)
 {
-	const Animal *meta;
+	// const Animal *anim;
 	const Animal *doggy;
-	const Animal *kitty;
+	// const Animal *kitty;
 
-	meta = new Animal();
+	// anim = new Animal();
 	doggy = new Dog();
-	kitty = new Cat();
-	std::cout << "Type of meta = " << meta->getType() << std::endl;
-	std::cout << "Type of doggy = " << doggy->getType() << std::endl;
-	std::cout << "Type of kitty = " << kitty->getType() << std::endl;
-	kitty->makeSound(); // output: Cat says: Meow!
-	doggy->makeSound(); // output: Dog says: Woof!
-	meta->makeSound();	// output: Animals make a generic sound.
+	// kitty = new Cat();
 
-	delete meta;
+	std::cout << std::endl;
+	// std::cout << "Type of anim = " << anim->getType() << std::endl;
+	std::cout << "Type of doggy = " << doggy->getType() << std::endl;
+	// std::cout << "Type of kitty = " << kitty->getType() << std::endl;
+
+	std::cout << std::endl;
+	// anim->makeSound();	// output: Animals make a generic sound.
+	doggy->makeSound(); // output: Dog says: Woof!
+	// kitty->makeSound(); // output: Cat says: Meow!
+
+	std::cout << std::endl;
+	// delete anim;
 	delete doggy;
-	delete kitty;
+	// delete kitty;
 }
 
-void test_wrong_animals(void)
+void testWrongAnimal(void)
 {
-	const Animal *wrong_meta;
-	const Animal *wrong_i;
+	const Animal *wrongAnimal;
+	// const Animal *wrongCat;
 
-	wrong_meta = new WrongAnimal();
-	wrong_i = new WrongCat();
-	std::cout << "Type of wrong_meta = " << wrong_meta->getType() << std::endl;
-	std::cout << "Type of wrong_i = " << wrong_i->getType() << std::endl;
-	wrong_i->makeSound();	 // output: WrongAnimals make a generic sound.
-	wrong_meta->makeSound(); // output: WrongAnimals make a generic sound.
-	delete wrong_meta;
-	delete wrong_i;
+	wrongAnimal = new WrongAnimal();
+	// wrongCat = new WrongCat();
+
+	std::cout << "Type of wrongAnimal = " << wrongAnimal->getType() << std::endl;
+	// std::cout << "Type of wrongCat = " << wrongCat->getType() << std::endl;
+
+	wrongAnimal->makeSound(); // output: WrongAnimals make a generic sound.
+	// wrongCat->makeSound();	 // output: WrongAnimals make a generic sound.
+
+	delete wrongAnimal;
+	// delete wrongCat;
 }
 
 int main(void)
 {
-	test_animals();
 	std::cout << std::endl;
-	test_wrong_animals();
+	// testAnimals();
+	// std::cout << std::endl;
+	testWrongAnimal();
 
 	return (0);
 }
