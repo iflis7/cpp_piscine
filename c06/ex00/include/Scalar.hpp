@@ -33,14 +33,17 @@ public:
     double getDouble() const;
     void setDouble(double db);
 
-    const std::string findType(std::string type);
+    bool isChar(std::string str);
+    bool isInt(std::string str);
+
+    void findType(std::string type);
     const std::string getType() const;
     void setType(std::string input);
 
-    void fromChar() const;
-    void fromInt() const;
-    void fromFloat() const;
-    void fromDouble() const;
+    void fromChar();
+    void fromInt(std::string str);
+    void fromFloat();
+    void fromDouble();
 
     // class InvalidInput : public std::exception
     // {
