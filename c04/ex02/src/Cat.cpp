@@ -5,7 +5,7 @@
  *
  */
 Cat::Cat()
-	: Animal()
+	: AAnimal()
 {
 	this->_type = "Cat";
 	this->_brain = new Brain();

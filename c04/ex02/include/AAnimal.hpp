@@ -1,5 +1,5 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 // Header-protection
 # pragma once
@@ -8,19 +8,19 @@
 # include <string>
 
 /**
- * @brief Animal class
+ * @brief AAnimal class
  *
  */
-class Animal
+class AAnimal
 {
   protected:
 	std::string _type;
 
   public:
-	Animal();
-	Animal(const Animal &other);
-	Animal &operator=(const Animal &other);
-	virtual ~Animal();
+	AAnimal();
+	AAnimal(const AAnimal &other);
+	AAnimal &operator=(const AAnimal &other);
+	virtual ~AAnimal();
 
 	virtual void makeSound() const = 0;
 	std::string getType() const;

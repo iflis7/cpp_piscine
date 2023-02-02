@@ -1,19 +1,19 @@
 #ifndef DOG_HPP
-# define DOG_HPP
+#define DOG_HPP
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 
 /**
  * @brief Dog class
  *
  */
-class Dog : public Animal
+class Dog : public AAnimal
 {
-  private:
-	Brain * _brain;
+private:
+	Brain *_brain;
 
-  public:
+public:
 	Dog();
 	Dog(const Dog &other);
 	Dog &operator=(const Dog &other);

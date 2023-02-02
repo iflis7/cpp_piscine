@@ -5,7 +5,7 @@
  *
  */
 Dog::Dog()
-	: Animal()
+	: AAnimal()
 {
 	this->_type = "Dog";
 	this->_brain = new Brain();
@@ -26,7 +26,7 @@ Dog::Dog(const Dog &other)
 /**
  * @brief Construct by assignment the object Overload
  *
- * @param other The rsh 
+ * @param other The rsh
  * @return Dog& The obj returned
  */
 Dog &Dog::operator=(const Dog &other)

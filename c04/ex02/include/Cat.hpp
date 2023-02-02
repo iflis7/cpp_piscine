@@ -1,18 +1,18 @@
 #ifndef CAT_HPP
-# define CAT_HPP
+#define CAT_HPP
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 /**
  * @brief Cat class
- * 
+ *
  */
-class Cat : public Animal
+class Cat : public AAnimal
 {
-  private:
-	Brain * _brain;
+private:
+	Brain *_brain;
 
-  public:
+public:
 	Cat();
 	Cat(const Cat &other);
 	Cat &operator=(const Cat &other);

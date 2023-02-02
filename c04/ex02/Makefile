@@ -3,7 +3,6 @@
 ################################################################################
 
 NAME	= animal
-# CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
@@ -16,7 +15,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Animal.cpp src/Dog.cpp src/Cat.cpp src/Brain.cpp
+src = src/main.cpp src/AAnimal.cpp src/Dog.cpp src/Cat.cpp src/Brain.cpp
 
 obj = $(src:.cpp=.o)
 
