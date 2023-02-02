@@ -3,7 +3,6 @@
 ################################################################################
 
 NAME	= bureaucrat
-# CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
