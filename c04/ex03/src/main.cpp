@@ -66,11 +66,11 @@ int otherTests()
 int main()
 {
     std::cout << std::endl;
-    std::cout << "                -*--*--*--*--              " << std::endl;
+    std::cout << "               -*--*--*--*--              " << std::endl;
     subjectTests();
     std::cout << std::endl;
     std::cout << " -*--*--*--*-- subjectTests --*--*--*--*-- " << std::endl;
     otherTests();
-    std::cout << " -*--*--*--*-- otherTests --*--*--*--*-- " << std::endl;
+    std::cout << " -*--*--*--*-- Done√ --*--*--*--*-- " << std::endl;
     return 0;
 }
