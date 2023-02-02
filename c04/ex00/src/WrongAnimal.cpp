@@ -53,13 +53,3 @@ void WrongAnimal::makeSound(void) const
 {
 	std::cout << this->getType() << " says: **WrongAnimal sounds**" << std::endl;
 }
-
-// /**
-//  * @brief Get the type object
-//  * 
-//  * @return std::string The type returned
-//  */
-// std::string WrongAnimal::getType(void) const
-// {
-// 	return (this->_type);
-// }
