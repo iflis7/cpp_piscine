@@ -14,8 +14,8 @@ int main(int argc, char **argv)
 			std::cout << "----------- :Scalar: -----------" << std::endl;
 			std::cout << "Char: " << scalar.getChar() << std::endl;
 			std::cout << "int: " << scalar.getInt() << std::endl;
-			std::cout << "float: " << scalar.getFloat() << ".0f" << std::endl;
-			std::cout << "double: " << scalar.getDouble() << ".0" << std::endl;
+			std::cout << "float: " << scalar.getFloat() << std::endl;
+			std::cout << "double: " << scalar.getDouble() << std::endl;
 			std::cout << scalar.getType() << std::endl;
 		}
 		catch (const std::exception &e)

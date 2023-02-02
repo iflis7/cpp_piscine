@@ -40,7 +40,7 @@ public:
     const std::string getType() const;
     void setType(std::string input);
 
-    void fromChar();
+    void fromChar(std::string str);
     void fromInt(std::string str);
     void fromFloat();
     void fromDouble();

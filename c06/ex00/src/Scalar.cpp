@@ -6,8 +6,10 @@ Scalar::Scalar(const std::string str) : _str(str)
         throw std::invalid_argument("Invalid input!");
     // this->findType(str);
     std::cout << "Scalar::isInt:: " << Scalar::isInt(str) << std::endl;
-    if(Scalar::isInt(str))
-        Scalar::fromInt();
+    if(Scalar::isChar(str))
+        Scalar::fromChar(str);
+    else if(Scalar::isInt(str))
+        Scalar::fromInt(str);
 
     // std::cout << "Scalar Constructor Called!" << std::endl;
 }
@@ -85,12 +87,15 @@ bool Scalar::isInt(std::string str)
 }
 
 
-void Scalar::fromChar()
+void Scalar::fromChar(std::string str)
 {
-    std::cout << "char: " << this->_char << std::endl;
-    std::cout << "int: " << static_cast<int>(this->_char) << std::endl;
-    std::cout << "float: " << static_cast<float>(this->_char) << ".0f" << std::endl;
-    std::cout << "double: " << static_cast<double>(this->_char) << ".0" << std::endl;
+    std::cout << "----------- :FromChar: -----------" << std::endl;
+    this->setChar(str[0]);
+    this->setInt(str[0]);
+    // std::cout << "char: " << this->_char << std::endl;
+    // std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
+    // std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;
+    // std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;
 }
 
 void Scalar::fromInt(std::string str)
@@ -99,9 +104,9 @@ void Scalar::fromInt(std::string str)
     std::cout << "int: " << this->_int << std::endl;
     std::cout << "float: " << static_cast<float>(this->_int) << ".0f" << std::endl;
     std::cout << "Malade:: " <<std::isprint(this->_int) << std::endl;
-    if (std::isprint(this->_int))
+    if (std::isprint(str[0]))
     {
-        std::cout << "char: " << static_cast<char>(this->_int) << std::endl;
+        std::cout << "char:: " << static_cast<char>(this->_int) << std::endl;
     }
     else
         std::cout << "Non displayable!" << std::endl;
