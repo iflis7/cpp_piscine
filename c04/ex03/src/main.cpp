@@ -5,7 +5,7 @@
 #include "../include/Cure.hpp"
 #include "../include/Character.hpp"
 
-int subject_tests()
+int subjectTests()
 {
     IMateriaSource *src = new MateriaSource();
     src->learnMateria(new Ice());
@@ -25,7 +25,7 @@ int subject_tests()
     return 0;
 }
 
-int other_tests()
+int otherTests()
 {
 
     IMateriaSource *src = new MateriaSource();
@@ -65,8 +65,12 @@ int other_tests()
 
 int main()
 {
-    subject_tests();
-    // other_tests();
-    // std::cout << "-*--*--*--*-- Done --*--*--*--*-- " << std::endl;
+    std::cout << std::endl;
+    std::cout << "                -*--*--*--*--              " << std::endl;
+    subjectTests();
+    std::cout << std::endl;
+    std::cout << " -*--*--*--*-- subjectTests --*--*--*--*-- " << std::endl;
+    otherTests();
+    std::cout << " -*--*--*--*-- otherTests --*--*--*--*-- " << std::endl;
     return 0;
 }
