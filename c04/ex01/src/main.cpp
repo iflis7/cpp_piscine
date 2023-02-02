@@ -4,81 +4,76 @@
 #include "../include/Brain.hpp"
 // #include "../../doctest.hpp"
 
-int main()
+int animalTest()
 {
+	int nb = 10;
 
-	Animal *animals[10];
+	Animal *animals[nb];
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < nb; i++)
 	{
-		if (i >= 5)
+		if (i >= (nb / 2))
 			animals[i] = new Dog();
 		else
 			animals[i] = new Cat();
 	}
 	Cat copy(*(Cat *)animals[0]);
 	std::cout << std::endl;
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < nb; i++)
 	{
 		std::cout << std::setw(30) << std::left << copy.getBrain()->getIdea(i);
 		std::cout << std::setw(30) << std::left << ((Cat *)animals[0])->getBrain()->getIdea(i) << std::endl;
 	}
 	std::cout << std::endl;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < nb; i++)
 	{
 		delete animals[i];
 	}
+	return (0);
 }
 
-<<<<<<< HEAD
-// TEST_CASE("Test case 1") {
-//     CHECK(1 + 1 == 2);
-//     CHECK(2 * 2 == 4);
-// }
+#include <iostream>
+#include <string>
 
-// TEST_CASE("Test case 2") {
-//     CHECK(3 - 1 == 2);
-//     CHECK(4 / 2 == 2);
-// }
-
-// int main(int argc, const char *const *argv){
-// 	doctest::Context ctx;
-// ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
-// ctx.applyCommandLine(argc, argv); // apply command line - argc / argv
-// ctx.setOption("no-breaks", true); // override - don't break in the debugger
-// int res = ctx.run();              // run test cases unless with --no-run
-// if(ctx.shouldExit())              // query flags (and --exit) rely on this
-//     return res;                   // propagate the result of the tests
-// // your actual program execution goes here - only if we haven't exited
-// return res; // + your_prog
-// 	doctest::Context ctx;
-// 	ctx.applyCommandLine(argc, argv);
-// 	int res = ctx.run();
-// 	if (ctx.shouldExit())
-// 	{
-// 		return res;
-// 	}
-// }
-=======
-// void	test_wrong_animals(void)
-// {
-// 	const Animal	*wrong_meta;
-// 	const Animal	*wrong_i;
-
-// 	wrong_meta = new WrongAnimal();
-// 	wrong_i = new WrongCat();
-// 	std::cout << "Type of wrong_meta = " << wrong_meta->getType() << std::endl;
-// 	std::cout << "Type of wrong_i = " << wrong_i->getType() << std::endl;
-// 	wrong_i->makeSound();    // output: WrongAnimals make a generic sound.
-// 	wrong_meta->makeSound(); // output: WrongAnimals make a generic sound.
-// 	delete			wrong_meta;
-// 	delete			wrong_i;
-// }
-
-int	main(void)
+int copyTest()
 {
-	test_animals();
+	// Test if a copy is deep or shallow
+	Dog d1("Max");
+	Dog d2 = d1;
+	int nb = 5;
+
+	if (d1.getType() == d2.getType())
+		std::cout << std::endl
+				  << "The copy is shallow :(" << std::endl
+				  << std::endl;
+	else
+		std::cout << std::endl
+				  << "The copy is deep :)" << std::endl
+				  << std::endl;
+
+	// Creating and deleting an array of Animal objects
+	Animal *animals[nb];
+	for (int i = 0; i < nb; i++)
+	{
+		if (i % 2 == 0)
+			animals[i] = new Dog("Dog " + std::to_string(i));
+		else
+			animals[i] = new Cat("Cat " + std::to_string(i));
+	}
+
+	for (int i = 0; i < nb; i++)
+	{
+		std::cout << animals[i]->getType() << std::endl;
+		delete animals[i];
+	}
+
+	return 0;
+}
+
+int main(void)
+{
+	// 	testAnimal();
+	copyTest();
 	// test_wrong_animals();
 	return (0);
 }
->>>>>>> ad1befb088b1786556af918d454ee3a8ca9d1dfc
