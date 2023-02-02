@@ -10,13 +10,13 @@ int main(int argc, char **argv)
 		{
 			Scalar scalar(argv[1]);
 			std::cout << std::endl;
-			// std::cout << scalar;
 			std::cout << "----------- :Scalar: -----------" << std::endl;
-			std::cout << "Char: " << scalar.getChar() << std::endl;
-			std::cout << "int: " << scalar.getInt() << std::endl;
-			std::cout << "float: " << scalar.getFloat() << std::endl;
-			std::cout << "double: " << scalar.getDouble() << std::endl;
-			std::cout << scalar.getType() << std::endl;
+			std::cout << scalar;
+			// std::cout << "Char: " << scalar.getChar() << std::endl;
+			// std::cout << "int: " << scalar.getInt() << std::endl;
+			// std::cout << "float: " << scalar.getFloat() << std::endl;
+			// std::cout << "double: " << scalar.getDouble() << std::endl;
+			// std::cout << scalar.getType() << std::endl;
 		}
 		catch (const std::exception &e)
 		{

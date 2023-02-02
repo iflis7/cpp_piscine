@@ -117,7 +117,7 @@ void Scalar::fromInt(std::string str)
     // }
     // else
     //     std::cout << "Non displayable!" << std::endl;
-    this->setInt(this->_int);
+    this->setInt(atoi(str.c_str()));
     this->setFloat(static_cast<float>(this->_int));
     this->setDouble(static_cast<float>(this->_int));
 
