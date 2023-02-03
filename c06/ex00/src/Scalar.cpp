@@ -5,7 +5,7 @@ Scalar::Scalar(const std::string str) : _str(str)
     if (str.empty())
         throw std::invalid_argument("Invalid input!");
     // this->findType(str);
-    std::cout << "Scalar::isInt:: " << Scalar::isInt(str) << std::endl;
+    // std::cout << "Scalar::isInt:: " << Scalar::isInt(str) << std::endl;
     if(Scalar::isChar(str))
         Scalar::fromChar(str);
     else if(Scalar::isInt(str))
@@ -29,7 +29,6 @@ char Scalar::getChar() const
 }
 void Scalar::setChar(char c)
 {
-    std::cout << "char: " << c << std::endl;
     this->_char = c;
 }
 
@@ -89,7 +88,8 @@ bool Scalar::isInt(std::string str)
 
 void Scalar::fromChar(std::string str)
 {
-    std::cout << "----------- :FromChar: -----------" << std::endl;
+    // std::cout << "----------- :FromChar: -----------" << std::endl;
+    this->setType("Char");
     this->setChar(str[0]);
     this->setInt(str[0]);
     // std::cout << "char: " << this->_char << std::endl;
@@ -100,24 +100,19 @@ void Scalar::fromChar(std::string str)
 
 void Scalar::fromInt(std::string str)
 {
-    std::cout << "----------- :FromInt: -----------" << std::endl;
-    std::cout << "int: " << this->_int << std::endl;
-    std::cout << "float: " << static_cast<float>(this->_int) << ".0f" << std::endl;
-    std::cout << "Malade:: " <<std::isprint(this->_int) << std::endl;
+    // std::cout << "----------- :FromInt: -----------" << std::endl;
+    // std::cout << "int: " << this->_int << std::endl;
+    // std::cout << "float: " << static_cast<float>(this->_int) << ".0f" << std::endl;
+    // std::cout << "Malade:: " <<std::isprint(this->_int) << std::endl;
     if (std::isprint(str[0]))
     {
-        std::cout << "char:: " << static_cast<char>(this->_int) << std::endl;
+        // std::cout << "char:: " << static_cast<char>(this->_int) << std::endl;
+        std::cout << std::endl;
     }
     else
         std::cout << "Non displayable!" << std::endl;
-    // if (std::isprint(this->_int))
-    // {
-    //     std::cout << "char: -";
-    //     this->setChar(static_cast<char>(this->_int));
-    // }
-    // else
-    //     std::cout << "Non displayable!" << std::endl;
-    this->setInt(atoi(str.c_str()));
+    this->setType("Int");
+    this->setInt(this->_int);
     this->setFloat(static_cast<float>(this->_int));
     this->setDouble(static_cast<float>(this->_int));
 
