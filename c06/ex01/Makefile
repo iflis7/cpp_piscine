@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= bureaucrat
+NAME	= data
 # CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Bureaucrat.cpp src/Form.cpp 
+src = src/main.cpp src/Data.cpp 
 
 obj = $(src:.cpp=.o)
 
