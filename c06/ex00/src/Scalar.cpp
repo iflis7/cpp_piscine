@@ -4,14 +4,17 @@ Scalar::Scalar(const std::string str) : _str(str)
 {
     if (str.empty())
         throw std::invalid_argument("Invalid input!");
-    // this->findType(str);
-    // std::cout << "Scalar::isInt:: " << Scalar::isInt(str) << std::endl;
-    if(Scalar::isChar(str))
-        Scalar::fromChar(str);
-    else if(Scalar::isInt(str))
-        Scalar::fromInt(str);
 
-    // std::cout << "Scalar Constructor Called!" << std::endl;
+    if (Scalar::isChar(str))
+        Scalar::fromChar(str);
+    else if (Scalar::isInt(str))
+        Scalar::fromInt(str);
+    else if (Scalar::isFloat(str))
+        Scalar::fromFloat(str);
+    else if (Scalar::isDouble(str))
+        Scalar::fromDouble(str);
+    else
+        throw std::invalid_argument("Invalid input!");
 }
 
 Scalar::~Scalar()
@@ -70,55 +73,95 @@ void Scalar::setType(std::string type)
 
 bool Scalar::isChar(std::string str)
 {
-    if (str.size() == 1 && std::isprint(str[0]))
-        return(true);
-    return(false);
+    if (str.size() == 1 && std::isprint(str[0]) && !std::isdigit(str[0]))
+        return (true);
+    return (false);
 }
 bool Scalar::isInt(std::string str)
 {
-    for(int i = 0; i < (int)str.size(); i++)
-        {
-            if(!std::isdigit(str[i]))
-                return false;
-            
-        }
-    return(true);
+    if (!std::isdigit(str[0]) && str[0] != '-')
+        return (false);
+    for (int i = 0; i < (int)str.size(); i++)
+    {
+        if (str[i] == '-')
+            i++;
+        if (!std::isdigit(str[i]))
+            return false;
+    }
+    return (true);
 }
-
+bool Scalar::isFloat(std::string str)
+{
+    if (str[(int)str.size() - 1] != 'f' || !std::isdigit(str[(int)str.size() - 2]) ||
+        str[(int)str.size() - 3] != '.')
+        return (false);
+    for (int i = 0; i < (int)str.size() - 3; i++)
+    {
+        if (str[i] == '-')
+            i++;
+        if (!std::isdigit(str[i]))
+            return false;
+    }
+    return (true);
+}
+bool Scalar::isDouble(std::string str)
+{
+    if (!std::isdigit(str[(int)str.size() - 1]) || str[(int)str.size() - 2] != '.')
+        return (false);
+    for (int i = 0; i < (int)str.size() - 2; i++)
+    {
+        if (str[i] == '-')
+            i++;
+        if (!std::isdigit(str[i]))
+            return false;
+    }
+    return (true);
+}
 
 void Scalar::fromChar(std::string str)
 {
     // std::cout << "----------- :FromChar: -----------" << std::endl;
     this->setType("Char");
     this->setChar(str[0]);
-    this->setInt(str[0]);
-    // std::cout << "char: " << this->_char << std::endl;
-    // std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
-    // std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;
-    // std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;
+    this->setInt(static_cast<int>(str[0]));
+    this->setFloat(static_cast<float>(str[0]));
+    this->setDouble(static_cast<double>(str[0]));
 }
-
 void Scalar::fromInt(std::string str)
 {
     // std::cout << "----------- :FromInt: -----------" << std::endl;
-    // std::cout << "int: " << this->_int << std::endl;
-    // std::cout << "float: " << static_cast<float>(this->_int) << ".0f" << std::endl;
-    // std::cout << "Malade:: " <<std::isprint(this->_int) << std::endl;
-    if (std::isprint(str[0]))
-    {
-        // std::cout << "char:: " << static_cast<char>(this->_int) << std::endl;
-        std::cout << std::endl;
-    }
-    else
-        std::cout << "Non displayable!" << std::endl;
     this->setType("Int");
-    this->setInt(this->_int);
+    this->setInt(atoi(str.c_str()));
+    if (std::isprint(this->_int))
+        this->setChar(static_cast<char>(this->_int));
+    else
+        this->setChar(0);
     this->setFloat(static_cast<float>(this->_int));
     this->setDouble(static_cast<float>(this->_int));
-
-    // std::cout << "int: " << this->_int << std::endl;
-    // std::cout << "float: " << static_cast<float>(this->_int) << ".0f" << std::endl;
-    // std::cout << "double: " << static_cast<double>(this->_int) << ".0" << std::endl;
+}
+void Scalar::fromFloat(std::string str)
+{
+    // std::cout << "----------- :FromFloat: -----------" << std::endl;
+    this->setType("Float");
+    this->setInt(static_cast<int>(atof(str.c_str())));
+    if (std::isprint(this->_int))
+        this->setChar(static_cast<char>(this->_int));
+    else
+        this->setChar(0);
+    this->setFloat(static_cast<float>(atof(str.c_str())));
+    this->setDouble(static_cast<double>(atof(str.c_str())));
+}
+void Scalar::fromDouble(std::string str)
+{
+    // std::cout << "----------- :FromDouble: -----------" << std::endl;
+    this->setType("Double");
+    this->setInt(static_cast<int>(atof(str.c_str())));
+    if (std::isprint(this->_int))
+        this->setChar(static_cast<char>(this->_int));
+    else
+        this->setChar(0);
+    this->setFloat(static_cast<float>(atof(str.c_str())));
+    this->setDouble(static_cast<double>(atof(str.c_str())));
 }
 
 void Scalar::findType(std::string input)
@@ -168,17 +211,25 @@ void Scalar::findType(std::string input)
 std::ostream &operator<<(std::ostream &out, const Scalar &rhs)
 {
     std::cout << std::endl;
-    out << "The String: " + rhs.getStr() << std::endl;
-    out << "The Char: ";
-    out << rhs.getChar() << std::endl;
-    out << "The Integer: ";
-    out << rhs.getInt() << std::endl;
-    out << "The Float: ";
-    out << rhs.getFloat() << std::endl;
-    out << "The Double: ";
-    out << rhs.getDouble() << std::endl;
+    out << "The String:     " + rhs.getStr() << std::endl;
+    out << "The Char:       ";
+    if (rhs.getChar())
+        out << rhs.getChar() << std::endl;
+    else
+        out << "Non displayable!" << std::endl;
 
-    out << "The Type: ";
+    out << "The Integer:    ";
+    out << rhs.getInt() << std::endl;
+
+    out << "The Float:      ";
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(1) << rhs.getFloat() << "f";
+    std::cout << stream.str() << std::endl;
+
+    out << "The Double:     ";
+    std::cout << std::fixed << std::setprecision(1) << rhs.getDouble() << std::endl;
+
+    out << "The Type:       ";
     out << rhs.getType() << std::endl;
 
     std::cout << std::endl;

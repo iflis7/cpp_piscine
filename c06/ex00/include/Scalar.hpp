@@ -4,8 +4,11 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <iomanip>
+#include <sstream> 
 #include <typeinfo> // get data type info
-#include "../../doctest.h"
+#include <cstdlib> 
+#include "../../doctest.hpp"
 
 class Scalar
 {
@@ -38,6 +41,8 @@ public:
 
     bool isChar(std::string str);
     bool isInt(std::string str);
+    bool isFloat(std::string str);
+    bool isDouble(std::string str);
 
     void findType(std::string type);
     const std::string getType() const;
@@ -45,8 +50,8 @@ public:
 
     void fromChar(std::string str);
     void fromInt(std::string str);
-    void fromFloat();
-    void fromDouble();
+    void fromFloat(std::string str);
+    void fromDouble(std::string str);
 
     // class InvalidInput : public std::exception
     // {
