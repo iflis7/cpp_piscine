@@ -52,6 +52,7 @@ public:
     void fromInt(std::string str);
     void fromFloat(std::string str);
     void fromDouble(std::string str);
+    void impossible(std::string str);
 
     // class InvalidInput : public std::exception
     // {

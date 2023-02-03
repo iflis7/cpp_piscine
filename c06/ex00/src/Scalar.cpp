@@ -14,9 +14,8 @@ Scalar::Scalar(const std::string str) : _str(str)
     else if (Scalar::isDouble(str))
         Scalar::fromDouble(str);
     else
-        throw std::invalid_argument("Invalid input!");
+        Scalar::impossible(str);
 }
-
 Scalar::~Scalar()
 {
     // std::cout << "Scalar Destructor" << std::endl;
@@ -164,63 +163,51 @@ void Scalar::fromDouble(std::string str)
     this->setDouble(static_cast<double>(atof(str.c_str())));
 }
 
-void Scalar::findType(std::string input)
+void Scalar::impossible(std::string str)
 {
-    if (input.size() == 1)
+    if (str == "-inff" || str == "-inf")
     {
-        if (std::isdigit(input[0]))
-        {
-            this->setType("int");
-            this->setInt(static_cast<int>(strtol(input.c_str(), NULL, 10)));
-            // this->_int = static_cast<int>(strtol(input.c_str(), NULL, 10));
-            // fromInt();
-            // return ("int");
-        }
-        else if (std::isprint(input[0]))
-        {
-            this->setType("char");
-            this->setChar(static_cast<char>(input[0]));
+        this->setFloat(-INFINITY);
+        this->setDouble(-INFINITY);
+        this->setType("Impossible");
+    }
+    else if (str == "+inff" | str == "+inf")
+    {
 
-            // return ("char");
-        }
-        else
-        {
-            this->setType("Non displayable");
-            throw std::invalid_argument("Non displayable!");
-        }
+        this->setFloat(INFINITY);
+        this->setDouble(INFINITY);
+        this->setType("Impossible");
+    }
+    else if (str == "nan" | str == "nanf")
+    {
+
+        this->setFloat(NAN);
+        this->setDouble(NAN);
+        this->setType("Impossible");
     }
     else
-    {
-        for (int i = 0; i < (int)input.size(); i++)
-        {
-            if (!std::isdigit(input[i]) || input[i] != '.')
-                throw std::invalid_argument("Invalid input while!");
-        }
-        if (std::isdigit(input[0]))
-        {
-            // return ("double");
-        }
-        else
-        {
-            // return ("string");
-        }
-    }
-    // return (NULL);
+        throw std::invalid_argument("Invalid input!");
 }
 
 std::ostream &operator<<(std::ostream &out, const Scalar &rhs)
 {
     std::cout << std::endl;
-    out << "The String:     " + rhs.getStr() << std::endl;
-    out << "The Char:       ";
-    if (rhs.getChar())
-        out << rhs.getChar() << std::endl;
+    out << "The String:     " << rhs.getStr() << std::endl;
+    if (rhs.getType() == "Impossible")
+    {
+        out << "The Char:       impossible" << std::endl;
+        out << "The Int:        impossible" << std::endl;
+    }
     else
-        out << "Non displayable!" << std::endl;
+    {
+        out << "The Char:       ";
+        if (rhs.getChar())
+            out << rhs.getChar() << std::endl;
+        else
+            out << "Non displayable!" << std::endl;
 
-    out << "The Integer:    ";
-    out << rhs.getInt() << std::endl;
-
+        out << "The Integer:    " << rhs.getInt() << std::endl;
+    }
     out << "The Float:      ";
     std::stringstream stream;
     stream << std::fixed << std::setprecision(1) << rhs.getFloat() << "f";
@@ -229,9 +216,7 @@ std::ostream &operator<<(std::ostream &out, const Scalar &rhs)
     out << "The Double:     ";
     std::cout << std::fixed << std::setprecision(1) << rhs.getDouble() << std::endl;
 
-    out << "The Type:       ";
-    out << rhs.getType() << std::endl;
+    out << "The Type:       " << rhs.getType() << std::endl;
 
-    std::cout << std::endl;
     return (out);
 }
