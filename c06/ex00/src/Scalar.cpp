@@ -90,6 +90,7 @@ bool Scalar::isInt(std::string str)
 void Scalar::fromChar(std::string str)
 {
     std::cout << "----------- :FromChar: -----------" << std::endl;
+    this->setType("Char");
     this->setChar(str[0]);
     this->setInt(str[0]);
     // std::cout << "char: " << this->_char << std::endl;
@@ -101,23 +102,17 @@ void Scalar::fromChar(std::string str)
 void Scalar::fromInt(std::string str)
 {
     std::cout << "----------- :FromInt: -----------" << std::endl;
-    std::cout << "int: " << this->_int << std::endl;
-    std::cout << "float: " << static_cast<float>(this->_int) << ".0f" << std::endl;
-    std::cout << "Malade:: " <<std::isprint(this->_int) << std::endl;
+    // std::cout << "int: " << this->_int << std::endl;
+    // std::cout << "float: " << static_cast<float>(this->_int) << ".0f" << std::endl;
+    // std::cout << "Malade:: " <<std::isprint(this->_int) << std::endl;
     if (std::isprint(str[0]))
     {
         std::cout << "char:: " << static_cast<char>(this->_int) << std::endl;
     }
     else
         std::cout << "Non displayable!" << std::endl;
-    // if (std::isprint(this->_int))
-    // {
-    //     std::cout << "char: -";
-    //     this->setChar(static_cast<char>(this->_int));
-    // }
-    // else
-    //     std::cout << "Non displayable!" << std::endl;
-    this->setInt(atoi(str.c_str()));
+    this->setType("Int");
+    this->setInt(this->_int);
     this->setFloat(static_cast<float>(this->_int));
     this->setDouble(static_cast<float>(this->_int));
 

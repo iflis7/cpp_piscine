@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <cmath>
+#include <string>
+#include <typeinfo> // get data type info
+#include "../../doctest.h"
 
 class Scalar
 {
