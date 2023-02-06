@@ -21,33 +21,6 @@ public:
     Form &operator=(const Form &rhs);
     ~Form();
 
-    class GradeTooHighException : public std::exception
-    {
-    public:
-        const char *what() const throw()
-        {
-            return ("Exception: Grade too high!");
-        }
-    };
-
-    class GradeTooLowException : public std::exception
-    {
-    public:
-        const char *what() const throw()
-        {
-            return ("Grade too low");
-        }
-    };
-
-    class FormAlreadySignedException : public std::exception
-    {
-    public:
-        const char *what() const throw()
-        {
-            return ("form is already signed");
-        }
-    };
-
     void beSigned(const Bureaucrat &rhs);
 
     void setName(const std::string name);
@@ -62,8 +35,23 @@ public:
     void setExecGrade(const int execGrade);
     int getExecGrade() const;
 
-    void incrementGrade();
-    void decrementGrade();
+    class GradeTooHighException : public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
+
+    class GradeTooLowException : public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
+
+    class FormAlreadySignedException : public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &rhs);

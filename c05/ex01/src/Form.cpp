@@ -138,7 +138,7 @@ std::ostream &operator<<(std::ostream &out, const Form &rhs)
     out << "Name: " << rhs.getName();
     out << " |Signed: " << rhs.getSigned();
     out << " |SignGrade: " << rhs.getSignGrade();
-    out << " |SignGrade: " << rhs.getExecGrade() << std::endl;
+    out << " |ExecGrade: " << rhs.getExecGrade();
     return (out);
 }
 
@@ -159,3 +159,31 @@ void Form::beSigned(const Bureaucrat &rhs)
     else
         throw Form::FormAlreadySignedException();
 }
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Form::GradeTooHighException::what() const throw()
+{
+    return "Grade too high";
+}
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Form::GradeTooLowException::what() const throw()
+{
+    return "Grade too low";
+}
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Form::FormAlreadySignedException::what() const throw()
+{
+
+    return ("form is already signed");
+};

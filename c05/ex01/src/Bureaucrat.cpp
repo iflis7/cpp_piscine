@@ -49,7 +49,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
 	if (this != &rhs)
 	{
-		this->_name = rhs._name;
+		// this->_name = rhs._name;
 		this->_grade = rhs._grade;
 	}
 	return (*this);
@@ -68,15 +68,15 @@ Bureaucrat::~Bureaucrat(){
 
 };
 
-/**
- * @brief Set the Name attribute
- *
- * @param name The name of the Bureaucrat
- *  */
-void Bureaucrat::setName(const std::string name)
-{
-	this->_name = name;
-}
+// /**
+//  * @brief Set the Name attribute
+//  *
+//  * @param name The name of the Bureaucrat
+//  *  */
+// void Bureaucrat::setName(const std::string name)
+// {
+// 	this->_name = name;
+// }
 
 /**
  * @brief Get the name
@@ -142,13 +142,31 @@ void Bureaucrat::signForm(Form &form) const
 	try
 	{
 		form.beSigned(*this);
-		std::cout << *this << " signed " << form << std::endl;
+		std::cout << *this << " has signed " << form << std::endl << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << *this << " cannot sign " << form
-				  << " because " << e.what() << std::endl;
+		std::cerr << this->getName() << " cannot sign the Form " << form
+				  << " Because " << e.what() << std::endl << std::endl;
 	}
+}
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade too high";
+}
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade too low";
 }
 
 /**
@@ -160,6 +178,6 @@ void Bureaucrat::signForm(Form &form) const
  */
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs)
 {
-	out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+	out << rhs.getName() << ", bureaucrat grade: " << rhs.getGrade();
 	return (out);
 };

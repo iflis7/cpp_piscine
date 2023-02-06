@@ -6,6 +6,7 @@ int test_john()
 	Bureaucrat john("John", 2);
 	std::cout << john << std::endl; // Print John's info
 
+	std::cout << " ===== Test 1 ===== " << std::endl;
 	try
 	{
 		john.incrementGrade();
@@ -17,6 +18,7 @@ int test_john()
 		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << std::endl <<  " ===== Test 2 ===== " << std::endl;
 	try
 	{
 		Form test("test", 151, 42);
@@ -26,11 +28,13 @@ int test_john()
 		std::cerr << "Cannot initialize test because " << e.what() << std::endl;
 	}
 
+	std::cout << std::endl << " ===== Test 3 ===== " << std::endl;
+
 	Form b("b", 3, 3);
-	std::cout << john << std::endl;
 	std::cout << b << std::endl;
 	john.signForm(b);
-	john.signForm(b);
+	john.execute(b);
+	john.signForm(b); // Sould throw an error 
 
 	try
 	{
