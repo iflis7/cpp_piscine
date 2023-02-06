@@ -15,6 +15,7 @@ Scalar::Scalar(const std::string str) : _str(str)
         Scalar::fromDouble(str);
     else
         Scalar::impossible(str);
+    // std::cout << "Scalar Constructor" << std::endl;
 }
 Scalar::~Scalar()
 {
@@ -78,15 +79,21 @@ bool Scalar::isChar(std::string str)
 }
 bool Scalar::isInt(std::string str)
 {
+    int j = 0;
     if (!std::isdigit(str[0]) && str[0] != '-')
         return (false);
     for (int i = 0; i < (int)str.size(); i++)
     {
-        if (str[i] == '-')
+        if (i == 0 && str[i] == '-')
+        {
             i++;
+            j++;
+        }
         if (!std::isdigit(str[i]))
             return false;
     }
+    if ((j == 1 && str.size() >= 11 && str[10] > '8') || (j == 0 && str.size() >= 10 && str[9] > '7'))
+        throw std::invalid_argument("Invalid input! <INT_MIN or INT_MAX>");
     return (true);
 }
 bool Scalar::isFloat(std::string str)
@@ -129,9 +136,10 @@ void Scalar::fromChar(std::string str)
 void Scalar::fromInt(std::string str)
 {
     // std::cout << "----------- :FromInt: -----------" << std::endl;
+    int nb = atol(str.c_str());
     this->setType("Int");
-    this->setInt(atoi(str.c_str()));
-    if (std::isprint(this->_int))
+    this->setInt(nb);
+    if (this->_int < 127 && this->_int > 31)
         this->setChar(static_cast<char>(this->_int));
     else
         this->setChar(0);
@@ -167,18 +175,18 @@ void Scalar::impossible(std::string str)
 {
     if (str == "-inff" || str == "-inf")
     {
-        this->setFloat(-INFINITY);
+        this->setFloat(-INFINITY); // Use the macro Infinity to assogn the value
         this->setDouble(-INFINITY);
         this->setType("Impossible");
     }
-    else if (str == "+inff" | str == "+inf")
+    else if (str == "+inff" || str == "+inf")
     {
 
         this->setFloat(INFINITY);
         this->setDouble(INFINITY);
         this->setType("Impossible");
     }
-    else if (str == "nan" | str == "nanf")
+    else if (str == "nan" || str == "nanf")
     {
 
         this->setFloat(NAN);
@@ -193,6 +201,11 @@ std::ostream &operator<<(std::ostream &out, const Scalar &rhs)
 {
     std::cout << std::endl;
     out << "The String:     " << rhs.getStr() << std::endl;
+    out << "The Type:       " << rhs.getType() << std::endl;
+    out << std::endl
+        << std::right << std::setw(30) << "  *-*-*-*-*-*-*-*-*-*  " << std::endl
+        << std::endl;
+
     if (rhs.getType() == "Impossible")
     {
         out << "The Char:       impossible" << std::endl;
@@ -200,9 +213,9 @@ std::ostream &operator<<(std::ostream &out, const Scalar &rhs)
     }
     else
     {
-        out << "The Char:       ";
+        out << "The Char:       |";
         if (rhs.getChar())
-            out << rhs.getChar() << std::endl;
+            out << rhs.getChar() << "|" <<std::endl;
         else
             out << "Non displayable!" << std::endl;
 
@@ -215,8 +228,6 @@ std::ostream &operator<<(std::ostream &out, const Scalar &rhs)
 
     out << "The Double:     ";
     std::cout << std::fixed << std::setprecision(1) << rhs.getDouble() << std::endl;
-
-    out << "The Type:       " << rhs.getType() << std::endl;
 
     return (out);
 }

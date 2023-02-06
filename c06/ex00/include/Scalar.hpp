@@ -7,8 +7,9 @@
 #include <iomanip>
 #include <sstream> 
 #include <typeinfo> // get data type info
-#include <cstdlib> 
-#include "../../doctest.hpp"
+#include <cstdlib>
+#include <limits.h>
+#include "../../../doctest.hpp"
 
 class Scalar
 {

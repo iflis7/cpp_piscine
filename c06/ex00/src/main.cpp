@@ -45,6 +45,7 @@ TEST_CASE("Scalar Test Int Arg")
 	CHECK(i3.getInt() == -420);
 	CHECK(i3.getFloat() == -420.0f);
 	CHECK(i3.getDouble() == -420.0);
+
 }
 
 TEST_CASE("Scalar Test Float Arg")
