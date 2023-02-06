@@ -6,7 +6,7 @@ class Bureaucrat;
 
 /**
  * @brief The Form class
- * 
+ *
  */
 class Form
 {
@@ -45,37 +45,25 @@ public:
     class GradeTooHighException : public std::exception
     {
     public:
-        const char *what() const throw()
-        {
-            return ("grade is too high");
-        }
+        virtual const char *what() const throw();
     };
 
     class GradeTooLowException : public std::exception
     {
     public:
-        const char *what() const throw()
-        {
-            return ("grade is too low");
-        }
-    };
-
-    class FormAlreadySignedException : public std::exception
-    {
-    public:
-        const char *what() const throw()
-        {
-            return ("form is already signed");
-        }
+        virtual const char *what() const throw();
     };
 
     class FormNotSignedException : public std::exception
     {
     public:
-        const char *what() const throw()
-        {
-            return ("form is not signed");
-        }
+        virtual const char *what() const throw();
+    };
+
+    class FormAlreadySignedException : public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
     };
 };
 

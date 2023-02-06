@@ -58,7 +58,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void RobotomyRequestForm::action(const Bureaucrat &executor) const
 {
     this->Form::execute(executor);
-    std::cout << "Makes some drilling noises" << std::endl;
+    std::cout << "Makes some weird noises" << std::endl;
     if (rand() < RAND_MAX / 2)
         std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
     else

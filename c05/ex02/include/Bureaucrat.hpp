@@ -6,7 +6,7 @@ class Form;
 
 /**
  * @brief The Bureaucrat Class
- * 
+ *
  */
 class Bureaucrat
 {
@@ -38,19 +38,13 @@ public:
     class GradeTooHighException : public std::exception
     {
     public:
-        const char *what() const throw()
-        {
-            return ("Execption:: Grade too high");
-        }
+        virtual const char *what() const throw();
     };
 
     class GradeTooLowException : public std::exception
     {
     public:
-        const char *what() const throw()
-        {
-            return ("Execption:: Grade too low");
-        }
+        virtual const char *what() const throw();
     };
 };
 

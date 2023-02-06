@@ -170,6 +170,42 @@ void Form::execute(const Bureaucrat &executor) const
 }
 
 /**
+ * @brief Throw an Exception
+ *
+ */
+const char *Form::GradeTooHighException::what() const throw()
+{
+    return "Grade too high";
+}
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Form::GradeTooLowException::what() const throw()
+{
+    return "Grade too low";
+}
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Form::FormNotSignedException::what() const throw()
+{
+    return ("form is not signed");
+}
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Form::FormAlreadySignedException::what() const throw()
+{
+    return ("form Already signed");
+}
+
+/**
  * @brief Overloading the << operator to print out
  *
  * @param o The out std obj
