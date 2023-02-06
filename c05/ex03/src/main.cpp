@@ -18,64 +18,81 @@ int main()
 	std::cout << jim << std::endl;
 	std::cout << jane << std::endl;
 
-// Test the Intern class
-	Intern intern;
+	Form *formA;
+	Form *formB;
+	Form *formC;
+	// Form *formD;
 
-	Form* formA;
-	Form* formB;
-	Form* formC;
-	Form* formD;
+	std::cout << "-------------------------- Test the Intern class -----------------------------" << std::endl;
+	Intern intern;
 
 	try
 	{
-		formA = intern.makeForm("shrubbery creation", "home");
 		formB = intern.makeForm("robotomy request", "Bender");
 		formC = intern.makeForm("presidential pardon", "Stephen Bannon");
-		formD = intern.makeForm("test", "test");
+		formA = intern.makeForm("shrubbery creation", "home");
+		// formD = intern.makeForm("test", "test"); // Should throw an error!
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
-	
+
+	std::cout << "-------------------------- Testing Intern class Done √-----------------------------" << std::endl;
 	std::cout << std::endl;
+	std::cout << "-----------------------------AAA--------------------------" << std::endl;
 	john.executeForm(*formA);
 	jim.executeForm(*formA);
 	jane.executeForm(*formA);
+
 	std::cout << std::endl;
 	john.signForm(*formA);
 	jim.signForm(*formA);
 	jane.signForm(*formA);
+
 	std::cout << std::endl;
 	john.executeForm(*formA);
 	jim.executeForm(*formA);
 	jane.executeForm(*formA);
 	std::cout << std::endl;
-	std::cout << "-------------------------------------------------------" << std::endl;
+
+	std::cout << "---------------------------BBB----------------------------" << std::endl;
 	std::cout << std::endl;
 	john.executeForm(*formB);
 	jim.executeForm(*formB);
 	jane.executeForm(*formB);
 	std::cout << std::endl;
+
 	john.signForm(*formB);
 	jim.signForm(*formB);
 	jane.signForm(*formB);
 	std::cout << std::endl;
+
 	john.executeForm(*formB);
 	jim.executeForm(*formB);
 	jane.executeForm(*formB);
 	std::cout << std::endl;
-	std::cout << "-------------------------------------------------------" << std::endl;
+
+	std::cout << "---------------------------CCC----------------------------" << std::endl;
 	std::cout << std::endl;
 	john.executeForm(*formC);
 	jim.executeForm(*formC);
 	jane.executeForm(*formC);
 	std::cout << std::endl;
+
 	john.signForm(*formC);
 	jim.signForm(*formC);
 	jane.signForm(*formC);
 	std::cout << std::endl;
+
 	john.executeForm(*formC);
 	jim.executeForm(*formC);
 	jane.executeForm(*formC);
+
+	std::cout << "----------------------- DELETE ----------------------" << std::endl;
+	delete formA;
+	delete formB;
+	delete formC;
+
+	// delete formD;
 }

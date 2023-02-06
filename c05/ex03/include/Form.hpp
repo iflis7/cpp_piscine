@@ -6,7 +6,7 @@ class Bureaucrat;
 
 /**
  * @brief The Form class
- * 
+ *
  */
 class Form
 {
@@ -29,7 +29,7 @@ public:
     Form &operator=(const Form &rhs);
 
     // Destructor
-    ~Form();
+    virtual ~Form();
 
     // Getters
     unsigned int getGradeSign() const;

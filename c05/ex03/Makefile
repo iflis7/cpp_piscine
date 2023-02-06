@@ -3,7 +3,6 @@
 ################################################################################
 
 NAME	= bureaucrat
-# CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
@@ -16,7 +15,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Bureaucrat.cpp src/Form.cpp src/ShrubberyCreationForm.cpp \
+src = src/main.cpp src/Bureaucrat.cpp src/Form.cpp src/Intern.cpp src/ShrubberyCreationForm.cpp \
 	src/RobotomyRequestForm.cpp  src/PresidentialPardonForm.cpp
 
 obj = $(src:.cpp=.o)

@@ -142,6 +142,24 @@ void Bureaucrat::executeForm(Form &form) const
 }
 
 /**
+ * @brief Throw an Exception
+ *
+ */
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade too high";
+}
+
+/**
+ * @brief Throw an Exception
+ *
+ */
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade too low";
+}
+
+/**
  * @brief
  *
  * @param out
