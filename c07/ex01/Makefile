@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= scalar
+NAME	= realType
 # CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Scalar.cpp
+src = src/main.cpp src/Base.cpp
 
 obj = $(src:.cpp=.o)
 
@@ -25,7 +25,7 @@ obj = $(src:.cpp=.o)
 ################################################################################
 
 all: header $(NAME)
-# @echo "BOOM 💥💥💥💥💥 $(NAME) Compiled! 💯 $(DEFAULT)"
+	@echo "BOOM 💥💥💥💥💥 $(NAME) Compiled! 💯 $(DEFAULT)"
 
 $(NAME): $(obj)
 	-@$(CC) $(CFLAGS) -o $(NAME) $(obj)
