@@ -33,7 +33,6 @@ int test_john()
 	Form b("b", 3, 3);
 	std::cout << b << std::endl;
 	john.signForm(b);
-	john.execute(b);
 	john.signForm(b); // Sould throw an error 
 
 	try
