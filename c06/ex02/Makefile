@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= data
+NAME	= realType
 # CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp 
+src = src/main.cpp src/Base.cpp
 
 obj = $(src:.cpp=.o)
 
