@@ -1,4 +1,3 @@
-
 // Protect the header
 #pragma once
 
@@ -7,7 +6,7 @@
 class Bureaucrat
 {
 private:
-    std::string _name;
+    std::string const _name;
     int _grade;
 
 public:
@@ -18,24 +17,6 @@ public:
     Bureaucrat &operator=(const Bureaucrat &rhs);
     ~Bureaucrat();
 
-    class GradeTooHighException : public std::exception
-	{
-	public:
-		const char* what() const throw()
-		{
-			return ("Grade too high");
-		}
-	};
-
-	class GradeTooLowException : public std::exception
-	{
-	public:
-		const char* what() const throw()
-		{
-			return ("Grade too low");
-		}
-	};
-
     void setName(const std::string name);
     const std::string getName() const;
 
@@ -44,6 +25,24 @@ public:
 
     void incrementGrade();
     void decrementGrade();
+
+    class GradeTooHighException : public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
+
+    class GradeTooLowException : public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs);
+
+class GradeTooHighException : public std::exception
+{
+public:
+    const char *what() const throw();
+};

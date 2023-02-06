@@ -29,12 +29,15 @@ int test2()
 {
     try
     {
-        Bureaucrat b("John Smith", 150);
+        Bureaucrat b("John Smith", 3);
+        // Bureaucrat b("John Smith", 149);
         std::cout << b << std::endl;
         b.incrementGrade();
-        std::cout << b << std::endl;
-        b.decrementGrade();
-        b.decrementGrade();
+        b.incrementGrade();
+        // b.incrementGrade();
+        // std::cout << b << std::endl;
+        // b.decrementGrade();
+        // b.decrementGrade();
         std::cout << b << std::endl;
     }
     catch (Bureaucrat::GradeTooHighException &e)
