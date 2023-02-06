@@ -32,6 +32,16 @@ Data::Data(std::string value) : _value(value)
 /**
  * @brief Construct a new Data:: Data object
  *
+ * @param value The value to set
+ */
+Data::Data(int integ) : _integ(integ)
+{
+    putStr("Initialize <Int> The Constructor!");
+}
+
+/**
+ * @brief Construct a new Data:: Data object
+ *
  * @param other the rhs obj
  */
 Data::Data(Data const &other)
@@ -81,3 +91,30 @@ void Data::setValue(std::string value)
 {
     this->_value = value;
 }
+
+/**
+ * @brief Serialize the given ptr
+ *
+ * @param ptr The ptr to Serialize
+ * @return uintptr_t The number returned
+ */
+uintptr_t serialize(Data *ptr)
+{
+    uintptr_t r;
+
+    r = reinterpret_cast<uintptr_t>(ptr);
+    return (r);
+};
+
+/**
+ * @brief Deserialize the given number
+ *
+ * @return uintptr_t The number to convert into ptr
+ * @param ptr The ptr to return
+ */
+Data *deserialize(uintptr_t raw)
+{
+    Data *ptr;
+    ptr = reinterpret_cast<Data *>(raw);
+    return (ptr);
+};

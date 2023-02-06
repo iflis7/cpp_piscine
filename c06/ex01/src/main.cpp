@@ -1,36 +1,65 @@
 #include "../include/Data.hpp"
 
-uintptr_t serialize(Data *ptr)
+int test1(void)
 {
-    uintptr_t r;
+    std::cout << std::setw(30) << "==== ======1====== ====" << std::endl;
+    uintptr_t tmp;
+    Data data("Azul");
+    Data *tmpPtr = &data;
 
-    r = reinterpret_cast<uintptr_t>(ptr);
-    return (r);
-}
+    std::cout << std::endl
+              << std::setw(30) << "==== ====Test==== ====" << std::endl;
+    std::cout << "addr data         = " << &data << std::endl;
 
-Data *deserialize(uintptr_t raw)
-{
-    Data *ptr;
+    tmp = serialize(&data);
+    std::cout << "Value tmp         = " << tmp << std::endl;
 
-    ptr = reinterpret_cast<Data *>(raw);
-    return (ptr);
-}
+    Data *deser_ptr = deserialize(tmp);
+    std::cout << "addr deser_ptr    = " << deser_ptr << std::endl
+              << std::endl;
 
-int main(void)
-{
+    if (deser_ptr == tmpPtr)
+        std::cout << "Serialization and deserialization successful!" << std::endl;
+    else
+        std::cout << "Serialization and deserialization failed." << std::endl;
+
     std::cout << std::setw(30) << "==== ============ ====" << std::endl;
+    return (0);
+}
 
-    uintptr_t r;
-    Data d("Azul");
-    Data *ptr;
+int test2(void)
+{
+    std::cout << std::setw(30) << "==== ======2====== ====" << std::endl;
+    uintptr_t tmp;
+    Data data(23);
+    Data *tmpPtr = &data;
 
-    std::cout << std::setw(30) << "==== ====Test==== ====" << std::endl;
+    std::cout << std::endl
+              << std::setw(30) << "==== ====Test==== ====" << std::endl;
+    std::cout << "addr data   = " << &data << std::endl;
 
-    std::cout << "addr d   = " << &d << std::endl;
-    r = serialize(&d);
-    std::cout << "Value r = " << r << std::endl;
-    ptr = deserialize(r);
-    std::cout << "addr ptr = " << ptr << std::endl;
+    tmp = serialize(&data);
+    std::cout << "Value tmp   = " << tmp << std::endl;
 
-    std::cout << "\n\t ============================== " << std::endl;
+    Data *deser_ptr = deserialize(tmp);
+    std::cout << "addr deser_ptr    = " << deser_ptr << std::endl
+              << std::endl;
+
+    if (deser_ptr == tmpPtr)
+        std::cout << "Serialization and deserialization successful!" << std::endl;
+    else
+        std::cout << "Serialization and deserialization failed." << std::endl;
+
+    std::cout << std::setw(30) << "==== ============ ====" << std::endl;
+    // test1();
+    return (0);
+}
+
+int main()
+{
+    test1();
+    std::cout << std::endl
+              << std::endl;
+    test2();
+    return (0);
 }
