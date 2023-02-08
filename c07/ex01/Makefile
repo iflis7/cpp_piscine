@@ -3,7 +3,6 @@
 ################################################################################
 
 NAME	= iter
-# CC 	= clang++
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
@@ -37,7 +36,8 @@ clean: header
 	-@$(RM) $(obj)
 	@echo "🧹🧹🧹🧹🧹🧹 $(NAME) Cleaned! 🧹🧹🧹🧹🧹🧹"
 
-fclean: clean kabylia
+# fclean: clean kabylia
+fclean: clean
 	-@$(RM) $(NAME)
 	
 
