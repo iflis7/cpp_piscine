@@ -5,6 +5,25 @@
 #include <vector>
 #include <algorithm>
 
+template <typename T>
+typename T::iterator easyfind(T &container, int target)
+{
+    typename T::iterator it;
+    for (it = container.begin(); it != container.end(); ++it)
+    {
+        if (*it == target)
+        {
+            break;
+        }
+    }
+    if (it == container.end())
+    {
+        throw std::runtime_error("Value not found");
+    }
+
+    return it;
+}
+
 // template <typename T>
 // typename T::iterator easyfind(T &container, int target)
 // {
@@ -15,40 +34,3 @@
 //     }
 //     return it;
 // }
-
-// template <typename T>
-// typename T::iterator easyfind_(T &container, int target)
-// {
-//     typename T::iterator it;
-//     for (it = container.begin(); it != container.end(); ++it)
-//     {
-//         if (*it == target)
-//         {
-//             break;
-//         }
-//     }
-//     if (it == container.end())
-//     {
-//         throw std::runtime_error("Value not found");
-//     }
-//     return it;
-// }
-
-template <typename T>
-typename T::iterator easyfind(T &container, int target)
-{
-    typename T::iterator it;
-    for(it = container.begin(); it != container.end(); ++it)
-    {
-        if(*it == target)
-        {
-            break;
-        }
-    }
-    if(it == container.end())
-    {
-        throw std::runtime_error("Value not found");
-    }   
-
-    return it;
-}

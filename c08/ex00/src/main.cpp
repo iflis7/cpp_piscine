@@ -14,7 +14,7 @@ TEST_CASE("Test Int Args")
     {
         for (int i = 0; i < count; i++)
         {
-            typename std::vector<int>::iterator it = easyfind(v, i);
+            std::vector<int>::iterator it = easyfind(v, i);
             CHECK(*it == i);
         }
     }
@@ -37,7 +37,7 @@ TEST_CASE("Test Int Args")
     {
         for (int i = 0; i < count; i++)
         {
-            typename std::vector<int>::iterator it = easyfind(v, i);
+            std::vector<int>::iterator it = easyfind(v, i);
             CHECK(*it == i);
         }
     }
@@ -57,7 +57,7 @@ int test()
 
     try
     {
-        typename std::vector<int>::iterator it = easyfind(v, 4);
+        std::vector<int>::iterator it = easyfind(v, 4);
         std::cout << *it << std::endl;
     }
     catch (const std::runtime_error &e)
