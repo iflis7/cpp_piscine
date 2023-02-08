@@ -2,8 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= realType
-# CC 	= clang++
+NAME	= array
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
@@ -16,7 +15,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/Base.cpp
+src = src/main.cpp 
 
 obj = $(src:.cpp=.o)
 
@@ -37,7 +36,8 @@ clean: header
 	-@$(RM) $(obj)
 	@echo "🧹🧹🧹🧹🧹🧹 $(NAME) Cleaned! 🧹🧹🧹🧹🧹🧹"
 
-fclean: clean kabylia
+# fclean: clean kabylia
+fclean: clean
 	-@$(RM) $(NAME)
 	
 
