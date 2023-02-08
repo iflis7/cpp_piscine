@@ -5,7 +5,7 @@
 
 Base *generate()
 {
-    std::cout << "generate: ";
+    std::cout << "Generate: ";
     int i = rand() % 3;
     if (!i)
     {

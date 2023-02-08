@@ -36,10 +36,10 @@ int test2(void)
 
     std::cout << std::endl
               << std::setw(30) << "==== ====Test==== ====" << std::endl;
-    std::cout << "addr data   = " << &data << std::endl;
+     std::cout << "addr data         = " << &data << std::endl;
 
     tmp = serialize(&data);
-    std::cout << "Value tmp   = " << tmp << std::endl;
+    std::cout << "Value tmp         = " << tmp << std::endl;
 
     Data *deser_ptr = deserialize(tmp);
     std::cout << "addr deser_ptr    = " << deser_ptr << std::endl

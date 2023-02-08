@@ -45,7 +45,6 @@ TEST_CASE("Scalar Test Int Arg")
 	CHECK(i3.getInt() == -420);
 	CHECK(i3.getFloat() == -420.0f);
 	CHECK(i3.getDouble() == -420.0);
-
 }
 
 TEST_CASE("Scalar Test Float Arg")
@@ -94,6 +93,21 @@ TEST_CASE("Scalar Test Double Arg")
 	CHECK(i3.getDouble() == -420.0);
 }
 
+int printableTest(char **argv)
+{
+	try
+	{
+		Scalar scalar(argv[1]);
+		std::cout << scalar;
+		std::cout << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	return 0;
+}
+
 int main(int argc, char **argv)
 {
 	// Including
@@ -108,18 +122,10 @@ int main(int argc, char **argv)
 			  << std::endl;
 	if (argc == 2)
 	{
-		try
-		{
-			Scalar scalar(argv[1]);
-			std::cout << scalar;
-			std::cout << std::endl;
-		}
-		catch (const std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		printableTest(argv);
 	}
 	else
 		std::cerr << "Usage: ./convert <value>" << std::endl;
+
 	return res; // + your_program_res
 }

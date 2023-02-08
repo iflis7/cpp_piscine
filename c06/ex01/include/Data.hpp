@@ -23,7 +23,7 @@ public:
 	~Data(void);
 
 	/* 		Setters and Getters		*/
-	std::string getValue(void);
+	const std::string getValue(void) const;
 	void setValue(std::string v);
 };
 

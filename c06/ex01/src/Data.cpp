@@ -34,8 +34,9 @@ Data::Data(std::string value) : _value(value)
  *
  * @param value The value to set
  */
-Data::Data(int integ) : _integ(integ)
+Data::Data(int integ)
 {
+    this->_integ = integ;
     putStr("Initialize <Int> The Constructor!");
 }
 
@@ -77,7 +78,7 @@ Data::~Data()
  *
  * @return std::string
  */
-std::string Data::getValue(void)
+const std::string Data::getValue(void) const
 {
     return (this->_value);
 }
