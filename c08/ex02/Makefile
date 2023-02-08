@@ -15,7 +15,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/MutantStack
+src = src/main.cpp src/MutantStack.cpp
 
 obj = $(src:.cpp=.o)
 
