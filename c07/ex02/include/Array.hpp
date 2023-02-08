@@ -15,7 +15,6 @@ private:
 public:
     Array() : _size(0), _array(new T[0]){};
     Array(unsigned int size) : _size(size), _array(new T[size]){};
-    // Array(const Array &other) : _size(other._size), _array(new T[other._size]){};
     Array(const Array& other)
 	{
 		this->_size = other._size;
