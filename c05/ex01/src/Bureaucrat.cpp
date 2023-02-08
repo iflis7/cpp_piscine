@@ -93,9 +93,16 @@ const std::string Bureaucrat::getName() const
  *
  * @param grade
  */
+/**
+ * @brief Set the Grade attribute
+ *
+ * @param grade
+ */
 void Bureaucrat::setGrade(const int grade)
 {
-	this->_grade = grade;
+    if(grade < this->_grade || grade > this->_grade)
+        throw std::invalid_argument("Grade is not valid");
+    this->_grade = grade;
 }
 
 /**
