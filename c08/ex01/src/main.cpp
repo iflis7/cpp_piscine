@@ -1,45 +1,66 @@
 #define DOCTEST_CONFIG_IMPLEMENT
-#include "../include/Iter.hpp"
+#include "../include/Span.hpp"
 
-TEST_CASE("Test Int Array")
+TEST_CASE("Test Int Span")
 {
     std::cout << std::setw(30) << " ============ Test Case 1 ============ " << std::endl;
-    int intArr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-    int copyArr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-    int value = 7;
-    for (int i = 0; i < 13; i++)
+    unsigned int count = 100000;
+
+    Span s(count);
+    for (int i = 0; i < (int)count; i++)
+        s.addNumber(i);
+
+    try
     {
-        std::cout << intArr[i] << " ";
-        CHECK(intArr[i] == copyArr[i] + 7); // check that every value equals the old + 7
+        CHECK(s.shortestSpan() == 1);
     }
-    std::cout << std::endl;
+    catch (const std::runtime_error &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+
+        CHECK(s.longestSpan() == 99999);
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 int test()
 {
     std::cout << std::setw(30) << " ============ Test ============ " << std::endl;
-    // MutantStack<int> mstack;
-    // mstack.push(5);
-    // mstack.push(17);
-    // std::cout << mstack.top() << std::endl;
-    // mstack.pop();
-    // std::cout << mstack.size() << std::endl;
-    // mstack.push(3);
-    // mstack.push(5);
-    // mstack.push(737);
-    // //[...]
-    // mstack.push(0);
-    // MutantStack<int>::iterator it = mstack.begin();
-    // MutantStack<int>::iterator ite = mstack.end();
-    // ++it;
-    // --it;
-    // while (it != ite)
-    // {
-    //     std::cout << *it << std::endl;
-    //     ++it;
-    // }
-    // std::stack<int> s(mstack);
-    return 0;
+    int shortest;
+    int longest;
+
+    Span s(5);
+    s.addNumber(5);
+    s.addNumber(3);
+    s.addNumber(17);
+    s.addNumber(9);
+    s.addNumber(11);
+    try
+    {
+        shortest = s.shortestSpan();
+        std::cout << "Shortest span: " << shortest << std::endl;
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        longest = s.longestSpan();
+        std::cout << "Longest span: " << longest << std::endl;
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    return (0);
+    ;
 }
 
 int main(int argc, char **argv)
