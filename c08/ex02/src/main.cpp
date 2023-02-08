@@ -31,7 +31,6 @@ int stackTest()
 
 int listTest()
 {
-
     std::cout << std::setw(30) << " ============ List Test ============ " << std::endl;
     std::list<int> mlist;
     mlist.push_back(5);
