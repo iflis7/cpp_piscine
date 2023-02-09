@@ -11,7 +11,8 @@ int printableTests()
         a[i] = rand() % 100 + 1;
     a.printArr();
 
-    std::cout << std::endl << std::setw(30) << " ============ Test Out Of Range ============ " << std::endl;
+    std::cout << std::endl
+              << std::setw(30) << " ============ Test Out Of Range ============ " << std::endl;
     Array<int> e;
 
     try
