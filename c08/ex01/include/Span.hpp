@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../doctest.hpp"
+#include "../../doctest.hpp"
 #include <algorithm>
 #include <cmath>
 #include <iostream>
