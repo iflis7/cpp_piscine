@@ -1,10 +1,10 @@
 #pragma once
 
 #include "../../doctest.hpp"
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <list>
-#include <algorithm>
 
 /**
  * @brief Finds the target in the container and returns it
