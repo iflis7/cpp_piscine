@@ -16,7 +16,7 @@ TEST_CASE("Test Int Span")
     }
     catch (const std::runtime_error &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
     try
     {
@@ -25,8 +25,36 @@ TEST_CASE("Test Int Span")
     }
     catch (const std::runtime_error &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
+}
+
+TEST_CASE("Test Empty ")
+{
+    Span s(0);
+    int thrown = false;
+    try
+    {
+        std::cout << "Span:: " << &s << std::endl;
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::cerr << e.what() << std::endl;
+        thrown = true;
+    }
+    CHECK(thrown == false);
+
+    try
+    {
+        s.shortestSpan();
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::cout << e.what() << std::endl;
+        thrown = true;
+    }
+    CHECK(thrown == false);
+
 }
 
 int test()
@@ -50,6 +78,7 @@ int test()
     {
         std::cout << e.what() << std::endl;
     }
+
     try
     {
         longest = s.longestSpan();
@@ -60,7 +89,6 @@ int test()
         std::cout << e.what() << std::endl;
     }
     return (0);
-    ;
 }
 
 int main(int argc, char **argv)
