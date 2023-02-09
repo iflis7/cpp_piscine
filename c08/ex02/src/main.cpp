@@ -2,30 +2,34 @@
 #include "../include/MutantStack.hpp"
 #include "../include/MutantStack.hpp"
 
-int stackTest()
+int listTest()
 {
-    // const int count = 5;
-
-    std::cout << std::setw(30) << " ============ Test 1 ============ " << std::endl;
-    MutantStack<int> a;
-    // a.printArr();
-
-    // std::cout << std::endl << std::setw(30) << " ============ Test Out Of Range ============ " << std::endl;
-    // Array<int> e;
-
-    // try
-    // {
-    //     std::cout << e[0] << std::endl;
-    // }
-    // catch (const std::exception &e)
-    // {
-    //     std::cerr << e.what() << std::endl;
-    // }
-    return (0);
+    std::cout << std::setw(30) << " ============ listTest ============ " << std::endl;
+    std::list<int> list;
+    list.push_front(5);
+    list.push_front(17);
+    std::cout << list.front() << std::endl;
+    list.front();
+    std::cout << list.size() << std::endl;
+    list.push_front(3);
+    list.push_front(5);
+    list.push_front(737);
+    list.push_front(0);
+    std::list<int>::iterator it = list.begin();
+    std::list<int>::iterator ite = list.end();
+    ++it;
+    --it;
+    while (it != ite)
+    {
+        std::cout << "*It:: " << *it << std::endl;
+        ++it;
+    }
+    return 0;
 }
 
-int test1()
+int mainTest()
 {
+    std::cout << std::setw(30) << " ============ mainTest ============ " << std::endl;
     MutantStack<int> mstack;
     mstack.push(5);
     mstack.push(17);
@@ -35,57 +39,42 @@ int test1()
     mstack.push(3);
     mstack.push(5);
     mstack.push(737);
-    //[...]
     mstack.push(0);
-    MutantStack<int>::iterator it = mstack.begin();
-    std::cout << "mstack.begin():: " << *it << std::endl;
-    MutantStack<int>::iterator ite = mstack.end();
-    std::cout << "mstack.end()  :: " << *ite << std::endl;
-    // ++it;
-    // --it;
-    // while (it != ite)
-    // {
-    //     std::cout << *it << std::endl;
-    //     ++it;
-    //     std::cout << *it << std::endl;
-    //     ++it;
-    // }
-    // std::stack<int> s(mstack);
+    MutantStack<int>::iterator it = mstack.begin(); // Creating the begin iterator
+    MutantStack<int>::iterator ite = mstack.end();  // Creating the end iterator
+    ++it;
+    --it;
+    while (it != ite)
+    {
+        std::cout << "*It:: " << *it << std::endl;
+        ++it;
+    }
     return 0;
 }
 
-TEST_CASE("Array INT")
+TEST_CASE("INT STACK Tests")
 {
-    // for (unsigned int i = 0; i < a.getSize(); i++)
-    //     a[i] = a[i] * 2;
-    // CHECK(a[0] == 0);
-    // CHECK(a[2] == 4);
-    // CHECK(a[4] == 8);
-}
+    MutantStack<int> a;
+    // PUSH
+    a.push(5);
+    CHECK(a.top() == 5);
 
-TEST_CASE("STRING Array Tests")
-{
-    // const int count = 5;
-    // Array<std::string> c(count);
-    // c[0] = "Velkacem";
-    // c[1] = "Yuva";
-    // c[2] = "Vel3id";
-    // c[3] = "Qsam";
-    // c[4] = "Arezqi";
-    // CHECK(c.getSize() == 5);
-    // CHECK(c[0] == "Velkacem");
-    // CHECK(c[2] == "Vel3id");
-    // CHECK(c[4] == "Arezqi");
-    // for (unsigned int i = 0; i < c.getSize(); i++)
-    //     c[i] = c[i].append(" n at winat").data();
-    // CHECK(c[0] == "Velkacem n at winat");
-    // CHECK(c[2] == "Vel3id n at winat");
-    // CHECK(c[4] == "Arezqi n at winat");
+    a.push(17);
+    CHECK(a.top() == 17);
+
+    a.push(1000);
+    CHECK(a.top() == 1000);
+
+    // POP
+    a.pop();
+    CHECK(a.top() == 17);
+
+    a.pop();
+    CHECK(a.top() == 5);
 }
 
 int main(int argc, char **argv)
 {
-    // Including
     doctest::Context ctx;
     ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
     ctx.applyCommandLine(argc, argv); // apply command line - argc / argv
@@ -96,8 +85,9 @@ int main(int argc, char **argv)
     std::cout << std::endl;
     (void)argc;
     (void)argv;
-    // printableTests();
-    test1();
+    mainTest();
+    std::cout << std::endl;
+    listTest();
 
     return res; // + your_program_res
 }

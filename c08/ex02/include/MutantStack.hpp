@@ -3,6 +3,7 @@
 #include "../../doctest.hpp"
 #include <iostream>
 #include <vector>
+#include <list>
 #include <stack>
 #include <algorithm>
 
@@ -49,6 +50,4 @@ public:
     {
         return std::stack<T>::c.end();
     }
-
-    
 };
