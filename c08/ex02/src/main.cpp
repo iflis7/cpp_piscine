@@ -40,17 +40,17 @@ int test1()
     MutantStack<int>::iterator it = mstack.begin();
     std::cout << "mstack.begin():: " << *it << std::endl;
     MutantStack<int>::iterator ite = mstack.end();
-    std::cout << "mstack.end()  :: " << *it << std::endl;
-    ++it;
-    --it;
-    while (it != ite)
-    {
-        std::cout << *it << std::endl;
-        ++it;
-        std::cout << *it << std::endl;
-        ++it;
-    }
-    std::stack<int> s(mstack);
+    std::cout << "mstack.end()  :: " << *ite << std::endl;
+    // ++it;
+    // --it;
+    // while (it != ite)
+    // {
+    //     std::cout << *it << std::endl;
+    //     ++it;
+    //     std::cout << *it << std::endl;
+    //     ++it;
+    // }
+    // std::stack<int> s(mstack);
     return 0;
 }
 
