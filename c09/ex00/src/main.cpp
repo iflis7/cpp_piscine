@@ -6,12 +6,10 @@
 
 // }
 
-
-
 int main(int argc, char **argv)
 {
-    (void)argc;
-    (void)argv;
+    // (void)argc;
+    // (void)argv;
     // doctest::Context ctx;
     // ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
     // ctx.applyCommandLine(argc, argv); // apply command line - argc / argv
@@ -21,9 +19,13 @@ int main(int argc, char **argv)
     //     return res;                   // propagate the result of the tests
     // std::cout << std::endl;
 
-    BitcoinExchange btc("src/data.txt", "src/input.txt");
-    // BitcoinExchange btc("src/data.csv");
-    // BitcoinExchange btc("BitcoinExchange.cpp");
-
+    if (argc == 2)
+    {
+        BitcoinExchange btc("src/data.csv", argv[1]);
+        btc.run();
+    }
+    else
+        std::cout << "Usage: ./ex00 [file]" << std::endl;
+    return (0);
     // return res; // + your_program_res
 }

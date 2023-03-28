@@ -8,21 +8,15 @@
 #include <vector>
 #include <sstream>
 #include <ctime>
-
 #include <stdlib.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include <fcntl.h>  
-#include <cctype>
-
-
 
 class BitcoinExchange
 {
 
 private:
-    std::vector<int> m_prices;
-    // std::list<int> m_pricesList;
+    std::vector<std::pair<std::string, float> > csvInfo;
+    std::vector<std::pair<std::string, float> > inputInfo;
+
 
 public:
     BitcoinExchange(std::string file, std::string input);
@@ -30,12 +24,14 @@ public:
     ~BitcoinExchange();
     BitcoinExchange &operator=(const BitcoinExchange &rhs);
     std::vector<std::pair<std::string, float> > getCsvInfo(std::string file);
+    std::vector<std::pair<std::string, float> > getInputInfo(std::string file);
     bool validDateFormat(std::string date);
     bool validPrice(float value);
     int getCurrentYear();
-    std::vector<std::pair<std::string, float> > getInputInfo(std::string file);
-    bool validValueFormat(int value);
+    bool validValueFormat(float value, std::string date);
     std::string trim(const std::string& str);
+    void printPairInfo(std::vector<std::pair<std::string, float> > pair);
+    void run();
 };
 
-#endif // BITCOINEXCHANGE_HPP
+#endif

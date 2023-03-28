@@ -2,22 +2,10 @@
 
 BitcoinExchange::BitcoinExchange(std::string file, std::string input)
 {
-    // std::cout << "BitcoinExchange::BitcoinExchange()" << std::endl;
-    std::cout << "file: " << file << std::endl;
-    std::vector<std::pair<std::string, float> > csvInfo = getCsvInfo(file);
-
-    std::cout << "file1: " << file << std::endl;
-    for (std::vector<std::pair<std::string, float> >::iterator it = csvInfo.begin(); it != csvInfo.end(); ++it)
-    {
-        std::cout << it->first << ": " << it->second << std::endl;
-    }
-    // std::cout << "BitcoinExchange::BitcoinExchange()" << std::endl;
-    std::vector<std::pair<std::string, float> > inputInfo = getInputInfo(input);
-
-    for (std::vector<std::pair<std::string, float> >::iterator it = inputInfo.begin(); it != inputInfo.end(); ++it)
-    {
-        std::cout << it->first << ": " << it->second << std::endl;
-    }
+    this->csvInfo = getCsvInfo(file);
+    this->inputInfo = getInputInfo(input);
+    // printPairInfo(this->csvInfo);
+    // printPairInfo(this->inputInfo);
 }
 
 BitcoinExchange::~BitcoinExchange()
@@ -27,69 +15,18 @@ BitcoinExchange::~BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &rhs)
 {
-    // std::cout << "BitcoinExchange::BitcoinExchange(const BitcoinExchange &rhs)" << std::endl;
     *this = rhs;
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
-    // std::cout << "BitcoinExchange::operator=(const BitcoinExchange &rhs)" << std::endl;
     if (this != &rhs)
     {
-        m_prices = rhs.m_prices;
-        // m_pricesList = rhs.m_pricesList;
+        csvInfo = rhs.csvInfo;
+        inputInfo = rhs.inputInfo;
     }
     return *this;
 }
-
-// int BitcoinExchange::maxProfit()
-// {
-//     int maxProfit = 0;
-//     int minPrice = m_prices[0];
-//     int maxPrice = m_prices[0];
-//     for (int i = 0; i < (int)m_prices.size(); i++)
-//     {
-//         if (m_prices[i] < minPrice)
-//         {
-//             minPrice = m_prices[i];
-//             maxPrice = m_prices[i];
-//         }
-//         if (m_prices[i] > maxPrice)
-//         {
-//             maxPrice = m_prices[i];
-//         }
-//         if (maxPrice - minPrice > maxProfit)
-//         {
-//             maxProfit = maxPrice - minPrice;
-//         }
-//     }
-//     return maxProfit;
-// }
-
-// int BitcoinExchange::maxProfitList()
-// {
-//     int maxProfit = 0;
-//     int minPrice = m_pricesList.front();
-//     int maxPrice = m_pricesList.front();
-//     for (int i = 0; i < m_pricesList.size(); i++)
-//     {
-//         if (m_pricesList.front() < minPrice)
-//         {
-//             minPrice = m_pricesList.front();
-//             maxPrice = m_pricesList.front();
-//         }
-//         if (m_pricesList.front() > maxPrice)
-//         {
-//             maxPrice = m_pricesList.front();
-//         }
-//         if (maxPrice - minPrice > maxProfit)
-//         {
-//             maxProfit = maxPrice - minPrice;
-//         }
-//         m_pricesList.pop_front();
-//     }
-//     return maxProfit;
-// }
 
 int BitcoinExchange::getCurrentYear() {
         time_t now = time(0);
@@ -119,29 +56,53 @@ bool BitcoinExchange::validDateFormat(std::string date)
 
 bool BitcoinExchange::validPrice(float value)
 {
-    // int val = std::stoi(value);
     if (value < 0)
         return false;
     return true;
 }
 
-bool BitcoinExchange::validValueFormat(int value)
+bool BitcoinExchange::validValueFormat(float value, std::string date)
 {
-    // int val = std::stoi(value);
-    if (value < 0 || value > 100)
-        return false;
-    return true;
+    if(value == std::string::npos)
+    {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return(false);
+    }
+    else if(value < 0)
+    {
+        std::cout << "Error: not a positive number." << std::endl;
+        return(false);
+    }
+    else if(value > 1000)
+    {
+        std::cout << "Error: too large a number." << std::endl;
+        return(false);
+    }
+    return(true);
 }
 
-// bool BitcoinExchange::validInput()
-// {
-//     return true;
-// }
+void BitcoinExchange::printPairInfo(std::vector<std::pair<std::string, float> > pair)
+{
+    for (std::vector<std::pair<std::string, float> >::iterator it = pair.begin(); it != pair.end(); ++it)
+    {
+        std::cout << it->first << ": " << it->second << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+std::string BitcoinExchange::trim(const std::string& str)
+{
+    std::string::size_type first = str.find_first_not_of(" \t\n\r");
+    if (first == std::string::npos)
+        return "";
+
+    std::string::size_type last = str.find_last_not_of(" \t\n\r");
+    return str.substr(first, last - first + 1);
+}
 
 std::vector<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::string file)
 {
     std::vector<std::pair<std::string, float> > csvInfo;
-    // std::ifstream csvFile(file.c_str()); c09/ex00/src/data.csv
     std::ifstream csvFile(file.c_str());
     if (!csvFile.good())
         std::cout << "File is not good" << std::endl;
@@ -175,7 +136,6 @@ std::vector<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::s
     std::ifstream csvFile(file.c_str());
     if (!csvFile.good())
         throw std::invalid_argument("Invalid file path or file is not good");
-
     std::string line;
     while (std::getline(csvFile, line))
     {
@@ -184,32 +144,34 @@ std::vector<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::s
         float value;
         if (std::getline(ss, dateStr, '|'))
         {
+            // std::cout << "dateStr: " << dateStr << std::endl;
             std::string date = trim(dateStr); // trim removes whitespace from the string
-            if (!validDateFormat(date))
-                throw std::invalid_argument("Invalid date format. The input string must be in the format YYYY-MM-DD.");
-            
-            if (ss >> value)
-            {
-                if (!validValueFormat(value))
-                    throw std::invalid_argument("Invalid value format. The input value must be in the format 0.0 - 100.0.");
-                
+            if (ss >> value && date != "date")
                 csvInfo.push_back(std::make_pair(date, value));
-            }
-            else
-                throw std::invalid_argument("Invalid input format. Expected <date> | <value>.");
+            else if(date != "date")
+                csvInfo.push_back(std::make_pair(date, std::string::npos));;
         }
         else
-            throw std::invalid_argument("Invalid input format. Expected <date> | <value>.");
+            throw std::invalid_argument("Invalid value format. Should be like: <date | value>");
     }
     return csvInfo;
 }
 
-std::string BitcoinExchange::trim(const std::string& str)
+void BitcoinExchange::run()
 {
-    std::string::size_type first = str.find_first_not_of(" \t\n\r");
-    if (first == std::string::npos)
-        return "";
-
-    std::string::size_type last = str.find_last_not_of(" \t\n\r");
-    return str.substr(first, last - first + 1);
+   for (std::vector<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
+        it != this->inputInfo.end(); ++it)
+    {
+        for (std::vector<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin(); 
+                itr != this->csvInfo.end(); ++itr)
+        {
+            if(!validValueFormat(it->second, it->first))
+                break;
+            if (it->first == itr->first) //
+            {
+                float val = it->second * itr->second;
+                std::cout << it->first << "=> " << it->second << " = " << val << std::endl;
+            }
+        }
+    } 
 }
