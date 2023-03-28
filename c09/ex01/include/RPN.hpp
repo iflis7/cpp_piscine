@@ -1,27 +1,33 @@
 #pragma once
 
 #include "../../doctest.hpp"
-#include <algorithm>
-#include <cmath>
 #include <iostream>
-#include <stdexcept>
-#include <vector>
+#include <stack>
+#include <sstream>
+#include <cstdlib>
+
+#define RESET "\033[0m"
+#define GREEN "\033[32m"
+#define BOLD_GREEN "\033[1m\033[32m"
+#define BOLD_YELLOW "\033[1m\033[33m"
 
 /**
- * @brief The span Class
- * 
+ * @brief The RPN Class
+ *
  */
-class Span
+class RPN
 {
 private:
-    unsigned int _N;
-    std::vector<int> _v;
+    int _result;
 
 public:
-    Span(unsigned int N);
-    ~Span();
+    RPN();
+    RPN(const std::string rpn);
+    RPN &operator=(const RPN &rhs);
+    ~RPN();
 
-    void addNumber(int x);
-    int shortestSpan();
-    int longestSpan();
+    int perform_operation(char op, int num1, int num2);
+    int evaluate_rpn(std::string rpn);
+    void setResult(int value);
+    void getResult();
 };
