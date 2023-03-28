@@ -28,11 +28,12 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs)
     return *this;
 }
 
-int BitcoinExchange::getCurrentYear() {
-        time_t now = time(0);
-        tm* localTime = localtime(&now);
-        return localTime->tm_year + 1900;
-    }
+int BitcoinExchange::getCurrentYear()
+{
+    time_t now = time(0);
+    tm *localTime = localtime(&now);
+    return localTime->tm_year + 1900;
+}
 
 bool BitcoinExchange::validDateFormat(std::string date)
 {
@@ -63,34 +64,34 @@ bool BitcoinExchange::validPrice(float value)
 
 bool BitcoinExchange::validValueFormat(float value, std::string date)
 {
-    if(value == std::string::npos)
+    if (value == std::string::npos)
     {
         std::cout << "Error: bad input => " << date << std::endl;
-        return(false);
+        return (false);
     }
-    else if(value < 0)
+    else if (value < 0)
     {
         std::cout << "Error: not a positive number." << std::endl;
-        return(false);
+        return (false);
     }
-    else if(value > 1000)
+    else if (value > 1000)
     {
         std::cout << "Error: too large a number." << std::endl;
-        return(false);
+        return (false);
     }
-    return(true);
+    return (true);
 }
 
-void BitcoinExchange::printPairInfo(std::list<std::pair<std::string, float> > pair)
+void BitcoinExchange::printPairInfo(std::deque<std::pair<std::string, float> > pair)
 {
-    for (std::list<std::pair<std::string, float> >::iterator it = pair.begin(); it != pair.end(); ++it)
+    for (std::deque<std::pair<std::string, float> >::iterator it = pair.begin(); it != pair.end(); ++it)
     {
         std::cout << it->first << ": " << it->second << std::endl;
     }
     std::cout << std::endl;
 }
 
-std::string BitcoinExchange::trim(const std::string& str)
+std::string BitcoinExchange::trim(const std::string &str)
 {
     std::string::size_type first = str.find_first_not_of(" \t\n\r");
     if (first == std::string::npos)
@@ -130,16 +131,46 @@ std::string BitcoinExchange::trim(const std::string& str)
 //     return csvInfo;
 // }
 
-std::list<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::string file)
+// std::deque<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::string file)
+// {
+//     std::deque<std::pair<std::string, float> > csvInfo;
+//     std::ifstream csvFile(file.c_str());
+//     if (!csvFile.good())
+//         std::cout << "File is not good" << std::endl;
+//     std::string line;
+//     std::string date;
+//     std::getline(csvFile, line); // skip the first line (date,exchange_rate)
+//     float value;
+//     while (std::getline(csvFile, line))
+//     {
+//         std::stringstream ss(line);
+//         std::getline(ss, date, ',');
+//         if (!validDateFormat(date))
+//         {
+//             throw std::invalid_argument("Invalid date format. The input string must be in the format YYYY-MM-DD.");
+//             exit(1);
+//         }
+//         if (!validPrice(value))
+//         {
+//                 throw std::invalid_argument("Invalid value format. The input string must be in the format 0.0 - 100.0.");
+//                 exit(1);
+//         }
+//         ss >> value;
+//         csvInfo.push_back(std::make_pair(date, value));
+//     }
+//     return csvInfo;
+// }
+
+std::deque<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::string file)
 {
-    std::list<std::pair<std::string, float> > csvInfo;
+    std::deque<std::pair<std::string, float> > csvInfo;
     std::ifstream csvFile(file.c_str());
     if (!csvFile.good())
         std::cout << "File is not good" << std::endl;
     std::string line;
     std::string date;
-    std::getline(csvFile, line); // skip the first line (date,exchange_rate)
     float value;
+    std::getline(csvFile, line); // skip the first line (date,exchange_rate)
     while (std::getline(csvFile, line))
     {
         std::stringstream ss(line);
@@ -147,19 +178,16 @@ std::list<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::strin
         if (!validDateFormat(date))
         {
             throw std::invalid_argument("Invalid date format. The input string must be in the format YYYY-MM-DD.");
-            exit(1);
-        }
-        if (!validPrice(value))
-        {
-                throw std::invalid_argument("Invalid value format. The input string must be in the format 0.0 - 100.0.");
-                exit(1);
         }
         ss >> value;
+        if (!validPrice(value))
+        {
+            throw std::invalid_argument("Invalid value format. The input string must be in the format 0.0 - 100.0.");
+        }
         csvInfo.push_back(std::make_pair(date, value));
     }
     return csvInfo;
 }
-
 
 // std::vector<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file)
 // {
@@ -188,10 +216,9 @@ std::list<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::strin
 //     return csvInfo;
 // }
 
-
-std::list<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file)
+std::deque<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file)
 {
-    std::list<std::pair<std::string, float> > csvInfo;
+    std::deque<std::pair<std::string, float> > csvInfo;
     std::ifstream csvFile(file.c_str());
     if (!csvFile.good())
         throw std::invalid_argument("Invalid file path or file is not good");
@@ -216,14 +243,38 @@ std::list<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::str
     return csvInfo;
 }
 
-
+std::deque<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file)
+{
+    std::deque<std::pair<std::string, float> > csvInfo;
+    std::ifstream csvFile(file.c_str());
+    if (!csvFile.good())
+        throw std::invalid_argument("Invalid file path or file is not good");
+    std::string line;
+    while (std::getline(csvFile, line))
+    {
+        std::stringstream ss(line);
+        std::string dateStr;
+        float value;
+        if (std::getline(ss, dateStr, '|'))
+        {
+            std::string date = trim(dateStr);
+            if (ss >> value && date != "date")
+                csvInfo.push_back(std::make_pair(date, value));
+            else if (date != "date")
+                csvInfo.push_back(std::make_pair(date, std::numeric_limits<float>::quiet_NaN()));
+        }
+        else
+            throw std::invalid_argument("Invalid value format. Should be like: <date | value>");
+    }
+    return csvInfo;
+}
 
 // void BitcoinExchange::run()
 // {
 //    for (std::vector<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
 //         it != this->inputInfo.end(); ++it)
 //     {
-//         for (std::vector<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin(); 
+//         for (std::vector<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin();
 //                 itr != this->csvInfo.end(); ++itr)
 //         {
 //             if(!validValueFormat(it->second, it->first))
@@ -234,19 +285,18 @@ std::list<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::str
 //                 std::cout << it->first << "=> " << it->second << " = " << val << std::endl;
 //             }
 //         }
-//     } 
+//     }
 // }
-
 
 void BitcoinExchange::run()
 {
-    for (std::list<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
+    for (std::deque<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
          it != this->inputInfo.end(); ++it)
     {
-        for (std::list<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin(); 
+        for (std::deque<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin();
              itr != this->csvInfo.end(); ++itr)
         {
-            if(!validValueFormat(it->second, it->first))
+            if (!validValueFormat(it->second, it->first))
                 break;
             if (it->first == itr->first) //
             {
@@ -254,5 +304,5 @@ void BitcoinExchange::run()
                 std::cout << it->first << "=> " << it->second << " = " << val << std::endl;
             }
         }
-    } 
+    }
 }

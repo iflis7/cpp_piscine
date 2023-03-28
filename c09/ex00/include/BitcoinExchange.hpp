@@ -15,8 +15,8 @@ class BitcoinExchange
 {
 
 private:
-    std::list<std::pair<std::string, float> > csvInfo;
-    std::list<std::pair<std::string, float> > inputInfo;
+    std::deque<std::pair<std::string, float> > csvInfo;
+    std::deque<std::pair<std::string, float> > inputInfo;
     // std::vector<std::pair<std::string, float> > csvInfo;
     // std::vector<std::pair<std::string, float> > inputInfo;
 
@@ -27,16 +27,18 @@ public:
     ~BitcoinExchange();
     BitcoinExchange &operator=(const BitcoinExchange &rhs);
     // std::vector<std::pair<std::string, float> > getCsvInfo(std::string file);
-    std::list<std::pair<std::string, float> > getCsvInfo(std::string file);
+    // std::list<std::pair<std::string, float> > getCsvInfo(std::string file);
+    std::deque<std::pair<std::string, float> > getCsvInfo(std::string file);
 
     // std::vector<std::pair<std::string, float> > getInputInfo(std::string file);
-    std::list<std::pair<std::string, float> > getInputInfo(std::string file);
+    // std::list<std::pair<std::string, float> > getInputInfo(std::string file);
+    std::deque<std::pair<std::string, float> > getInputInfo(std::string file);
     bool validDateFormat(std::string date);
     bool validPrice(float value);
     int getCurrentYear();
     bool validValueFormat(float value, std::string date);
     std::string trim(const std::string& str);
-    void printPairInfo(std::list<std::pair<std::string, float> > pair);
+    void printPairInfo(std::deque<std::pair<std::string, float> > pair);
     void run();
 };
 

@@ -2,24 +2,33 @@
 #include "../include/PmergeMe.hpp"
 
 
-TEST_CASE("PmergeMe Tests")
-{
+// TEST_CASE("PmergeMe Tests")
+// {
 
-}
+// }
 
 int main(int argc, char **argv)
 {
-    doctest::Context ctx;
-    ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
-    ctx.applyCommandLine(argc, argv); // apply command line - argc / argv
-    ctx.setOption("no-breaks", true); // override - don't break in the debugger
-    int res = ctx.run();              // run test cases unless with --no-run
-    if (ctx.shouldExit())             // query flags (and --exit) rely on this
-        return res;                   // propagate the result of the tests
-    std::cout << std::endl;
-    (void)argc;
-    (void)argv;
-    // printableTests();
+    // doctest::Context ctx;
+    // ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
+    // ctx.applyCommandLine(argc, argv); // apply command line - argc / argv
+    // ctx.setOption("no-breaks", true); // override - don't break in the debugger
+    // int res = ctx.run();              // run test cases unless with --no-run
+    // if (ctx.shouldExit())             // query flags (and --exit) rely on this
+    //     return res;                   // propagate the result of the tests
+    // std::cout << std::endl;
+    // (void)argc;
 
-    return res; // + your_program_res
+    if(argc < 3)
+    {
+        std::cout << "Usage: ./PmergeMe <int int int> " << std::endl;
+        return 1;
+    }
+    PergeMe pergeMe;
+    pergeMe.setSequence(argc, argv);
+    std::vector<int> seq = pergeMe.getSortedSequence();
+    pergeMe.sort(seq);
+    std::cout << pergeMe << std::endl;
+
+    // return res; // + your_program_res
 }

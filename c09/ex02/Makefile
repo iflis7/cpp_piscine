@@ -2,7 +2,7 @@
 #                                     CONFIG                                   #
 ################################################################################
 
-NAME	= pmerge
+NAME	= PmergeMe
 CC 		= c++
 CFLAGS	= -Wall -Werror -Wextra -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
@@ -15,7 +15,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/PmergeMe.cpp
+src = src/main.cpp src/PmergeMe.cpp 
 
 obj = $(src:.cpp=.o)
 
