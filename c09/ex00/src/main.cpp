@@ -25,7 +25,7 @@ int main(int argc, char **argv)
         btc.run();
     }
     else
-        std::cout << "Usage: ./ex00 [file]" << std::endl;
+        std::cout << "Usage: ./btc [file]" << std::endl;
     return (0);
     // return res; // + your_program_res
 }

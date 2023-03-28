@@ -81,9 +81,9 @@ bool BitcoinExchange::validValueFormat(float value, std::string date)
     return(true);
 }
 
-void BitcoinExchange::printPairInfo(std::vector<std::pair<std::string, float> > pair)
+void BitcoinExchange::printPairInfo(std::list<std::pair<std::string, float> > pair)
 {
-    for (std::vector<std::pair<std::string, float> >::iterator it = pair.begin(); it != pair.end(); ++it)
+    for (std::list<std::pair<std::string, float> >::iterator it = pair.begin(); it != pair.end(); ++it)
     {
         std::cout << it->first << ": " << it->second << std::endl;
     }
@@ -100,9 +100,39 @@ std::string BitcoinExchange::trim(const std::string& str)
     return str.substr(first, last - first + 1);
 }
 
-std::vector<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::string file)
+// std::vector<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::string file)
+// {
+//     std::vector<std::pair<std::string, float> > csvInfo;
+//     std::ifstream csvFile(file.c_str());
+//     if (!csvFile.good())
+//         std::cout << "File is not good" << std::endl;
+//     std::string line;
+//     std::string date;
+//     std::getline(csvFile, line); // skip the first line (date,exchange_rate)
+//     float value;
+//     while (std::getline(csvFile, line))
+//     {
+//         std::stringstream ss(line);
+//         std::getline(ss, date, ',');
+//         if (!validDateFormat(date))
+//         {
+//             throw std::invalid_argument("Invalid date format. The input string must be in the format YYYY-MM-DD.");
+//             exit(1);
+//         }
+//         if (!validPrice(value))
+//         {
+//                 throw std::invalid_argument("Invalid value format. The input string must be in the format 0.0 - 100.0.");
+//                 exit(1);
+//         }
+//         ss >> value;
+//         csvInfo.push_back(std::make_pair(date, value));
+//     }
+//     return csvInfo;
+// }
+
+std::list<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::string file)
 {
-    std::vector<std::pair<std::string, float> > csvInfo;
+    std::list<std::pair<std::string, float> > csvInfo;
     std::ifstream csvFile(file.c_str());
     if (!csvFile.good())
         std::cout << "File is not good" << std::endl;
@@ -130,9 +160,38 @@ std::vector<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::str
     return csvInfo;
 }
 
-std::vector<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file)
+
+// std::vector<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file)
+// {
+//     std::vector<std::pair<std::string, float> > csvInfo;
+//     std::ifstream csvFile(file.c_str());
+//     if (!csvFile.good())
+//         throw std::invalid_argument("Invalid file path or file is not good");
+//     std::string line;
+//     while (std::getline(csvFile, line))
+//     {
+//         std::stringstream ss(line);
+//         std::string dateStr;
+//         float value;
+//         if (std::getline(ss, dateStr, '|'))
+//         {
+//             // std::cout << "dateStr: " << dateStr << std::endl;
+//             std::string date = trim(dateStr); // trim removes whitespace from the string
+//             if (ss >> value && date != "date")
+//                 csvInfo.push_back(std::make_pair(date, value));
+//             else if(date != "date")
+//                 csvInfo.push_back(std::make_pair(date, std::string::npos));;
+//         }
+//         else
+//             throw std::invalid_argument("Invalid value format. Should be like: <date | value>");
+//     }
+//     return csvInfo;
+// }
+
+
+std::list<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file)
 {
-    std::vector<std::pair<std::string, float> > csvInfo;
+    std::list<std::pair<std::string, float> > csvInfo;
     std::ifstream csvFile(file.c_str());
     if (!csvFile.good())
         throw std::invalid_argument("Invalid file path or file is not good");
@@ -149,7 +208,7 @@ std::vector<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::s
             if (ss >> value && date != "date")
                 csvInfo.push_back(std::make_pair(date, value));
             else if(date != "date")
-                csvInfo.push_back(std::make_pair(date, std::string::npos));;
+                csvInfo.push_back(std::make_pair(date, std::string::npos));
         }
         else
             throw std::invalid_argument("Invalid value format. Should be like: <date | value>");
@@ -157,13 +216,35 @@ std::vector<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::s
     return csvInfo;
 }
 
+
+
+// void BitcoinExchange::run()
+// {
+//    for (std::vector<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
+//         it != this->inputInfo.end(); ++it)
+//     {
+//         for (std::vector<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin(); 
+//                 itr != this->csvInfo.end(); ++itr)
+//         {
+//             if(!validValueFormat(it->second, it->first))
+//                 break;
+//             if (it->first == itr->first) //
+//             {
+//                 float val = it->second * itr->second;
+//                 std::cout << it->first << "=> " << it->second << " = " << val << std::endl;
+//             }
+//         }
+//     } 
+// }
+
+
 void BitcoinExchange::run()
 {
-   for (std::vector<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
-        it != this->inputInfo.end(); ++it)
+    for (std::list<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
+         it != this->inputInfo.end(); ++it)
     {
-        for (std::vector<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin(); 
-                itr != this->csvInfo.end(); ++itr)
+        for (std::list<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin(); 
+             itr != this->csvInfo.end(); ++itr)
         {
             if(!validValueFormat(it->second, it->first))
                 break;
