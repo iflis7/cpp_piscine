@@ -26,9 +26,21 @@ int main(int argc, char **argv)
     }
     PergeMe pergeMe;
     pergeMe.setSequence(argc, argv);
-    std::vector<int> seq = pergeMe.getSortedSequence();
-    pergeMe.sort(seq);
-    std::cout << pergeMe << std::endl;
+    std::vector<int> seq = pergeMe.getInitialVecSequence();
+    // clock_t start_time = clock();
+    pergeMe.sortVector(seq);
+    // clock_t end_time = clock();
+    // double elapsedVectime = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+
+    // std::list<int> seqList = pergeMe.getInitialListSequence();
+    // start_time = clock();
+    // pergeMe.sortList(seqList);
+    // end_time = clock();
+    // double elapsedListtime = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+
+    // pergeMe.setProTime(elapsedVectime, elapsedListtime);
+
+    // std::cout << pergeMe << std::endl;
 
     // return res; // + your_program_res
 }
