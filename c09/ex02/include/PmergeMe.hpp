@@ -3,6 +3,7 @@
 #include "../../doctest.hpp"
 #include <algorithm>
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <list>
 #include <ctime>
@@ -21,8 +22,8 @@ class PergeMe
     std::vector<int> initialSeq;
     std::list<int> seqList;
     std::list<int> initialSeqList;
-    float vecProTime;
-    float listProTime;
+    double vecProTime;
+    double listProTime;
 
     public:
         PergeMe();
@@ -32,18 +33,31 @@ class PergeMe
         PergeMe &operator=(const PergeMe &rhs);
 
         void setSequence(int argc, char **argv);
+        bool hasDuplicates(std::vector<int>& seq);
+        
         const std::vector<int> getInitialVecSequence() const;
         const std::vector<int> getSortedVecSequence() const;
+        void setSortedVecSequence(std::vector<int> seq);
+        
         const std::list<int> getInitialListSequence() const;
         const std::list<int> getSortedListSequence() const;
+        void setSortedListSequence(std::list<int> seq);
+        
         void sortVector(std::vector<int> &seq);
         void insertionSortVector(std::vector<int> &seq);
         void mergeVector(std::vector<int>& left, std::vector<int>& right, std::vector<int>& seq);
+       
         void sortList(std::list<int> &seq);
         void insertionSortList(std::list<int> &seq);
         void mergeList(std::list<int>& left, std::list<int>& right, std::list<int>& seq);
-        void print(std::vector<int> seq);
+       
         void setProTime(double elapsedVectime, double elapsedListtime);
+        double getVecProTime() const;
+        double getListProTime() const;
+
+        // void printSeq(std::vector<int> &seq);
+        // void printSeqMid(std::vector<int> &seq);
+        // void printSeqAft(std::vector<int> &seq);
 };
 
 std::ostream &operator<<(std::ostream &out, const PergeMe &rhs);
