@@ -16,7 +16,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/BitcoinExchange.cpp
+src = src/main.cpp src/BitcoinExchange.cpp src/testBtc.cpp
 
 obj = $(src:.cpp=.o)
 

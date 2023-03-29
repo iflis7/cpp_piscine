@@ -8,16 +8,14 @@
 
 int main(int argc, char **argv)
 {
-    // (void)argc;
-    // (void)argv;
-    // doctest::Context ctx;
-    // ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
-    // ctx.applyCommandLine(argc, argv); // apply command line - argc / argv
-    // ctx.setOption("no-breaks", true); // override - don't break in the debugger
-    // int res = ctx.run();              // run test cases unless with --no-run
-    // if (ctx.shouldExit())             // query flags (and --exit) rely on this
-    //     return res;                   // propagate the result of the tests
-    // std::cout << std::endl;
+    doctest::Context ctx;
+    ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
+    ctx.applyCommandLine(argc, argv); // apply command line - argc / argv
+    ctx.setOption("no-breaks", true); // override - don't break in the debugger
+    int res = ctx.run();              // run test cases unless with --no-run
+    if (ctx.shouldExit())             // query flags (and --exit) rely on this
+        return res;                   // propagate the result of the tests
+    std::cout << std::endl << BOLD_CYAN <<  "********** Program output **********" << RESET << std::endl;
 
     if (argc == 2)
     {
@@ -26,6 +24,5 @@ int main(int argc, char **argv)
     }
     else
         std::cout << "Usage: ./btc [file]" << std::endl;
-    return (0);
-    // return res; // + your_program_res
+    return res; // + your_program_res
 }
