@@ -90,86 +90,7 @@ void PergeMe::mergeVector(std::vector<int> &left, std::vector<int> &right, std::
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* Sorting List Container */
-// void PergeMe::sortList(std::list<int>& seq) {
-//     const int threshold = 16;
-//     if (seq.size() < 2) {
-//         return;
-//     }
-//     else if (seq.size() < threshold) {
-//         insertionSortList(seq);
-//     }
-//     else {
-//         std::list<int> left, right;
-//         std::list<int>::iterator it = seq.begin();
-//         for (int i = 0; i < static_cast<int>(seq.size()) / 2; i++, it++) {
-//             left.push_back(*it);
-//         }
-//         for (; it != seq.end(); it++) {
-//             right.push_back(*it);
-//         }
-//         sortList(left);
-//         sortList(right);
-//         mergeList(left, right, seq);
-//     }
-//     setSortedListSequence(seq);
-// }
-
-// void PergeMe::insertionSortList(std::list<int>& seq) {
-//     for (std::list<int>::iterator it = ++seq.begin(); it != seq.end(); ++it) {
-//         int key = *it;
-//         std::list<int>::iterator j = it;
-//         --j;
-//         while (j != seq.begin() && *j > key) {
-//             std::list<int>::iterator prev_j = j;
-//             --prev_j;
-//             *j = *prev_j;
-//             j = prev_j;
-//         }
-//         if (*j > key) {
-//             seq.insert(j, key);
-//         }
-//         else {
-//             *j = key;
-//         }
-//     }
-// }
-
-// void PergeMe::mergeList(std::list<int>& left, std::list<int>& right, std::list<int>& seq) {
-//     std::list<int>::iterator it_left = left.begin();
-//     std::list<int>::iterator it_right = right.begin();
-//     std::list<int>::iterator it_seq = seq.begin();
-//     while (it_left != left.end() && it_right != right.end()) {
-//         if (*it_left < *it_right) {
-//             *it_seq = *it_left;
-//             ++it_left;
-//         }
-//         else {
-//             *it_seq = *it_right;
-//             ++it_right;
-//         }
-//         ++it_seq;
-//     }
-//     if (it_left == left.end()) {
-//         std::copy(it_right, right.end(), it_seq);
-//     }
-//     else if (it_right == right.end()) {
-//         std::copy(it_left, left.end(), it_seq);
-//     }
-// }
-
 void PergeMe::mergeList(std::list<int> &left, std::list<int> &right, std::list<int> &seq)
 {
     std::list<int>::iterator i = left.begin(), j = right.begin();
@@ -220,45 +141,6 @@ void PergeMe::insertionSortList(std::list<int> &seq)
         seq.insert(jNext, key);
     }
 }
-
-// void PergeMe::insertionSortList(std::list<int> &seq)
-// {
-//     for (std::list<int>::iterator i = seq.begin(); i != seq.end(); i++)
-//     {
-//         int key = *i;
-//         std::list<int>::iterator j = i;
-//         while (j != seq.begin() && *(j - 1) > key)
-//         {
-//             // *j = *(j - 1);
-//             std::advance(*j, -1);
-//             --j;
-//         }
-//         *j = key;
-//     }
-// }
-
-
-// void PergeMe::insertionSortList(std::list<int> &seq)
-// {
-//     for (std::list<int>::iterator i = seq.begin(); i != seq.end(); i++)
-//     {
-//         int key = *i;
-//         std::list<int>::iterator j = i -1;
-
-//         while (j != seq.begin() && *j > key)
-//         {
-//             *(j+1) = *(j);
-//             j--;
-//         }
-//         *(j+1) = key;
-
-//         // if (*j > key)
-//         // {
-//         //     seq.insert(j, key);
-//         //     seq.erase(i);
-//         // }
-//     }
-// }
 
 void PergeMe::sortList(std::list<int> &seq)
 {
