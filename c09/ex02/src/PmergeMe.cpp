@@ -86,67 +86,89 @@ void PergeMe::mergeVector(std::vector<int> &left, std::vector<int> &right, std::
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Sorting List Container */
-void PergeMe::sortList(std::list<int> &seq)
-{
-    const int threshold = 16;
-    int j = 0;
+// void PergeMe::sortList(std::list<int>& seq) {
+//     const int threshold = 16;
+//     if (seq.size() < 2) {
+//         return;
+//     }
+//     else if (seq.size() < threshold) {
+//         insertionSortList(seq);
+//     }
+//     else {
+//         std::list<int> left, right;
+//         std::list<int>::iterator it = seq.begin();
+//         for (int i = 0; i < static_cast<int>(seq.size()) / 2; i++, it++) {
+//             left.push_back(*it);
+//         }
+//         for (; it != seq.end(); it++) {
+//             right.push_back(*it);
+//         }
+//         sortList(left);
+//         sortList(right);
+//         mergeList(left, right, seq);
+//     }
+//     setSortedListSequence(seq);
+// }
 
-    if (seq.size() < 2)
-        return;
-    else if (seq.size() < threshold)
-        insertionSortList(seq);
-    else
-    {
-        std::list<int> left, right;
-        std::list<int>::iterator it = seq.begin();
-        for (int i = 0; i < static_cast<int>(seq.size()) / 2; i++)
-        {
-            // std::cout << "i--: " << i << std::endl;
-            // std::cout << "seq.size()--: " << seq.size() << std::endl;
-            left.push_back(*it);
-            it++;
-            // std::cout << "loop: " << std::endl;
-            j = i;
-        }
-        std::cout << "it: " << *it << std::endl;
-        std::cout << "J: " << j << std::endl;
-        // for (int i = (static_cast<int>(seq.size()) / 2); i < static_cast<int>(seq.size()); i++)
-        // {
-        //     // std::cout << "i: " << i << std::endl;
-        //     // std::cout << "seq.size(): " << seq.size() << std::endl;
-        //     right.push_back(*it);
-        //     it++;
-        //     // std::cout << "loop: " << std::endl;
-        //     // std::cout << "It: " << *it << std::endl;
-        // }
-        while (it != seq.end())
-        {
-            right.push_back(*it);
-            it++;
-            // std::cout << "loop1: " << std::endl;
-            // std::cout << "It: " << *it << std::endl;
-            // std::cout << "seq.size(): " << seq.size() << std::endl;
-        }
+// void PergeMe::insertionSortList(std::list<int>& seq) {
+//     for (std::list<int>::iterator it = ++seq.begin(); it != seq.end(); ++it) {
+//         int key = *it;
+//         std::list<int>::iterator j = it;
+//         --j;
+//         while (j != seq.begin() && *j > key) {
+//             std::list<int>::iterator prev_j = j;
+//             --prev_j;
+//             *j = *prev_j;
+//             j = prev_j;
+//         }
+//         if (*j > key) {
+//             seq.insert(j, key);
+//         }
+//         else {
+//             *j = key;
+//         }
+//     }
+// }
 
-        sortList(left);
-        sortList(right);
-
-        mergeList(left, right, seq);
-    }
-    setSortedListSequence(seq);
-}
-
-void PergeMe::insertionSortList(std::list<int> &seq)
-{
-    for (std::list<int>::iterator i = seq.begin(); i != seq.end(); i++)
-    {
-        std::list<int>::iterator j = i;
-        while (j != seq.begin() && *(j--) > *i);
-        seq.insert(++j, *i);
-        i = seq.erase(i); // Update i to point to the next element
-    }
-}
+// void PergeMe::mergeList(std::list<int>& left, std::list<int>& right, std::list<int>& seq) {
+//     std::list<int>::iterator it_left = left.begin();
+//     std::list<int>::iterator it_right = right.begin();
+//     std::list<int>::iterator it_seq = seq.begin();
+//     while (it_left != left.end() && it_right != right.end()) {
+//         if (*it_left < *it_right) {
+//             *it_seq = *it_left;
+//             ++it_left;
+//         }
+//         else {
+//             *it_seq = *it_right;
+//             ++it_right;
+//         }
+//         ++it_seq;
+//     }
+//     if (it_left == left.end()) {
+//         std::copy(it_right, right.end(), it_seq);
+//     }
+//     else if (it_right == right.end()) {
+//         std::copy(it_left, left.end(), it_seq);
+//     }
+// }
 
 void PergeMe::mergeList(std::list<int> &left, std::list<int> &right, std::list<int> &seq)
 {
@@ -165,17 +187,115 @@ void PergeMe::mergeList(std::list<int> &left, std::list<int> &right, std::list<i
             j++;
         }
     }
+
     while (i != left.end())
     {
         seq.push_back(*i);
         i++;
     }
+
     while (j != right.end())
     {
         seq.push_back(*j);
         j++;
     }
 }
+
+void PergeMe::insertionSortList(std::list<int> &seq)
+{
+    for (std::list<int>::iterator i = seq.begin(); i != seq.end(); i++)
+    {
+        int key = *i;
+        std::list<int>::iterator j = i;
+        j--;
+        while (j != seq.begin() && *j > key)
+        {
+            std::list<int>::iterator jNext = j;
+            jNext++;
+            *jNext = *j;
+            j--;
+        }
+        std::list<int>::iterator jNext = j;
+        jNext++;
+        seq.insert(jNext, key);
+    }
+}
+
+// void PergeMe::insertionSortList(std::list<int> &seq)
+// {
+//     for (std::list<int>::iterator i = seq.begin(); i != seq.end(); i++)
+//     {
+//         int key = *i;
+//         std::list<int>::iterator j = i;
+//         while (j != seq.begin() && *(j - 1) > key)
+//         {
+//             // *j = *(j - 1);
+//             std::advance(*j, -1);
+//             --j;
+//         }
+//         *j = key;
+//     }
+// }
+
+
+// void PergeMe::insertionSortList(std::list<int> &seq)
+// {
+//     for (std::list<int>::iterator i = seq.begin(); i != seq.end(); i++)
+//     {
+//         int key = *i;
+//         std::list<int>::iterator j = i -1;
+
+//         while (j != seq.begin() && *j > key)
+//         {
+//             *(j+1) = *(j);
+//             j--;
+//         }
+//         *(j+1) = key;
+
+//         // if (*j > key)
+//         // {
+//         //     seq.insert(j, key);
+//         //     seq.erase(i);
+//         // }
+//     }
+// }
+
+void PergeMe::sortList(std::list<int> &seq)
+{
+    const int threshold = 16;
+
+    if (seq.size() < 2)
+        return;
+    else if (seq.size() < threshold)
+        insertionSortList(seq);
+    else
+    {
+        std::list<int> left, right;
+        std::list<int>::iterator middle = seq.begin();
+        std::advance(middle, seq.size() / 2);
+
+        std::copy(seq.begin(), middle, std::back_inserter(left));
+        std::copy(middle, seq.end(), std::back_inserter(right));
+
+        sortList(left);
+        sortList(right);
+
+        mergeList(left, right, seq);
+    }
+
+    setSortedListSequence(seq);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 void PergeMe::setSequence(int argc, char **argv)
@@ -261,6 +381,26 @@ double PergeMe::getListProTime() const
     return (this->listProTime);
 }
 
+
+void PergeMe::printSeq(std::vector<int> &seq) const
+{
+    for (std::vector<int>::iterator it = seq.begin(); it != seq.end(); it++)
+    {
+        std::cout << *it << " " << RESET;
+    }
+    std::cout << std::endl;
+}
+
+void PergeMe::printListSeq(std::list<int> &listSeq) const
+{
+    for (std::list<int>::iterator it = listSeq.begin(); it != listSeq.end(); it++)
+    {
+        std::cout << BOLD_BLUE << *it << " " << RESET;
+    }
+    std::cout << std::endl;
+}
+
+
 std::ostream &operator<<(std::ostream &out, const PergeMe &rhs)
 {
     std::vector<int> seq = rhs.getSortedVecSequence();
@@ -269,19 +409,16 @@ std::ostream &operator<<(std::ostream &out, const PergeMe &rhs)
     std::list<int> initListSeq = rhs.getInitialListSequence();
 
     out << BOLD_YELLOW << "Before: " << RESET;
-    for (unsigned long i = 0; i < initSeq.size(); i++)
-    {
-        out << initSeq[i] << " ";
-    }
-    out << std::endl;
-
+    rhs.printSeq(initSeq);
     out << BOLD_GREEN << "After: " << RESET;
-    for (unsigned long i = 0; i < seq.size(); i++)
-    {
-        out << seq[i] << " ";
-    }
+    rhs.printSeq(seq);
     out << std::endl;
-
+    out << BOLD_YELLOW << "Before: " << RESET;
+    rhs.printListSeq(initListSeq);
+    out << BOLD_GREEN << "After: " << RESET;
+    rhs.printListSeq(listSeq);
+    out << std::endl;
+    
     out << "Time to process a range of " << BOLD_CYAN << initSeq.size() << RESET << " elements with std::vector: " 
             << BOLD_CYAN << std::fixed << std::setprecision(6) << rhs.getVecProTime() << " us" << RESET << std::endl;
 
@@ -292,14 +429,8 @@ std::ostream &operator<<(std::ostream &out, const PergeMe &rhs)
 
 
 
-// void PergeMe::printSeq(std::vector<int> &seq)
-// {
-//     for (std::vector<int>::iterator it = seq.begin(); it != seq.end(); it++)
-//     {
-//         std::cout << BOLD_BLUE << *it << " " << RESET;
-//     }
-//     std::cout << std::endl;
-// }
+
+
 
 // void PergeMe::printSeqMid(std::vector<int> &seq)
 // {

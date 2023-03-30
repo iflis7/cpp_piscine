@@ -55,7 +55,8 @@ class PergeMe
         double getVecProTime() const;
         double getListProTime() const;
 
-        // void printSeq(std::vector<int> &seq);
+        void printSeq(std::vector<int> &seq) const;
+        void printListSeq(std::list<int> &seq) const;
         // void printSeqMid(std::vector<int> &seq);
         // void printSeqAft(std::vector<int> &seq);
 };
