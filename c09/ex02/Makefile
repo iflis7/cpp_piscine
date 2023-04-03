@@ -15,7 +15,7 @@ HASH	=
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-src = src/main.cpp src/PmergeMe.cpp 
+src = src/main.cpp src/PmergeMe.cpp src/testPmergeMe.cpp
 
 obj = $(src:.cpp=.o)
 

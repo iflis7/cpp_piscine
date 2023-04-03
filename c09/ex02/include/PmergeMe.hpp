@@ -5,8 +5,8 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
-#include <list>
 #include <ctime>
+#include <list>
 
 #define RESET "\033[0m"
 #define BOLD_RED "\033[1m\033[31m"
@@ -20,10 +20,12 @@ class PergeMe
 {
     std::vector<int> seq;
     std::vector<int> initialSeq;
+
     std::list<int> seqList;
     std::list<int> initialSeqList;
-    double vecProTime;
-    double listProTime;
+
+    double proVecTime;
+    double proListTime;
 
     public:
         PergeMe();
@@ -35,30 +37,30 @@ class PergeMe
         void setSequence(int argc, char **argv);
         bool hasDuplicates(std::vector<int>& seq);
         
+        // SORTING WITH VECTORS
         const std::vector<int> getInitialVecSequence() const;
         const std::vector<int> getSortedVecSequence() const;
         void setSortedVecSequence(std::vector<int> seq);
-        
-        const std::list<int> getInitialListSequence() const;
-        const std::list<int> getSortedListSequence() const;
-        void setSortedListSequence(std::list<int> seq);
-        
+        void printVecSeq(std::vector<int> &seq) const;
+                
         void sortVector(std::vector<int> &seq);
         void insertionSortVector(std::vector<int> &seq);
         void mergeVector(std::vector<int>& left, std::vector<int>& right, std::vector<int>& seq);
-       
+
+        // SORTING WITH LISTS
+        const std::list<int> getInitialListSequence() const;
+        const std::list<int> getSortedListSequence() const;
+        void setSortedListSequence(std::list<int> seq);
+        void printListSeq(std::list<int> &listSeq) const;
+
         void sortList(std::list<int> &seq);
         void insertionSortList(std::list<int> &seq);
         void mergeList(std::list<int>& left, std::list<int>& right, std::list<int>& seq);
-       
-        void setProTime(double elapsedVectime, double elapsedListtime);
+
+        // MANAGING PROCESSING TIME
+        void setProTime(double elapsedVecTime, double elapsedListTime);
         double getVecProTime() const;
         double getListProTime() const;
-
-        void printSeq(std::vector<int> &seq) const;
-        void printListSeq(std::list<int> &seq) const;
-        // void printSeqMid(std::vector<int> &seq);
-        // void printSeqAft(std::vector<int> &seq);
 };
 
 std::ostream &operator<<(std::ostream &out, const PergeMe &rhs);
