@@ -51,11 +51,5 @@
 //     CHECK(seq == std::vector<int>{1, 2, 4, 5, 8});
 // }
 
-// TEST_CASE("PergeMe sortSet") {
-//     std::set<int> seqSet {4, 2, 8, 1, 5};
-//     PergeMe pergeMe(seqSet);
-//     pergeMe.sortSet(seqSet);
-//     CHECK(seqSet == std::set<int>{1, 2, 4, 5, 8});
-// }
 
 // // You can add more test cases for other member functions as well
