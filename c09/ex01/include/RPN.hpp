@@ -10,6 +10,8 @@
 #define GREEN "\033[32m"
 #define BOLD_GREEN "\033[1m\033[32m"
 #define BOLD_YELLOW "\033[1m\033[33m"
+#define BOLD_CYAN "\033[1m\033[36m"
+#define BOLD_MAGENTA "\033[1m\033[35m"
 
 /**
  * @brief The RPN Class

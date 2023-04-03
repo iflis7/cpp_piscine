@@ -1,55 +1,50 @@
-// #include "../include/PmergeMe.hpp"
+#include "../include/PmergeMe.hpp"
 
-// TEST_CASE("PergeMe constructor with no arguments") {
-//     PergeMe pergeMe;
-//     CHECK(pergeMe.getInitialVecSequence().empty());
-//     CHECK(pergeMe.getSortedVecSequence().empty());
-//     CHECK(pergeMe.getInitialSetSequence().empty());
-//     CHECK(pergeMe.getSortedSetSequence().empty());
-// }
+TEST_CASE("PergeMe constructor with vector argument")
+{
+    std::vector<int> vect;
+    std::list<int> lst;
 
-// TEST_CASE("PergeMe constructor with vector argument") {
-//     std::vector<int> seq {4, 2, 8, 1, 5};
-//     PergeMe pergeMe(seq);
-//     CHECK(pergeMe.getInitialVecSequence() == seq);
-//     CHECK(pergeMe.getSortedVecSequence() == std::vector<int>{1, 2, 4, 5, 8});
-//     CHECK(pergeMe.getInitialSetSequence().empty());
-//     CHECK(pergeMe.getSortedSetSequence().empty());
-// }
+    for (int i = 300; i > 1; i--)
+    {
+        vect.push_back(i);
+    };
+    for (int i = 300; i > 1; i--)
+    {
+        lst.push_back(i);
+    };
 
-// TEST_CASE("PergeMe constructor with set argument") {
-//     std::set<int> seqSet {4, 2, 8, 1, 5};
-//     PergeMe pergeMe(seqSet);
-//     CHECK(pergeMe.getInitialVecSequence().empty());
-//     CHECK(pergeMe.getSortedVecSequence().empty());
-//     CHECK(pergeMe.getInitialSetSequence() == seqSet);
-//     CHECK(pergeMe.getSortedSetSequence() == std::set<int>{1, 2, 4, 5, 8});
-// }
+    PergeMe pergeMe(vect);
+    CHECK(!std::is_sorted(vect.begin(), vect.end()));
+    pergeMe.sortVector(vect);
+    CHECK(std::is_sorted(vect.begin(), vect.end()));
 
-// TEST_CASE("PergeMe setSequence with invalid arguments") {
-//     PergeMe pergeMe;
-//     int argc = 0;
-//     char *argv[] = {};
-//     CHECK_THROWS(pergeMe.setSequence(argc, argv));
-// }
+    CHECK(!std::is_sorted(lst.begin(), lst.end()));
+    pergeMe.sortList(lst);
+    CHECK(std::is_sorted(lst.begin(), lst.end()));
+}
 
-// TEST_CASE("PergeMe setSequence with valid arguments") {
-//     PergeMe pergeMe;
-//     int argc = 6;
-//     char *argv[] = {"./prog", "4", "2", "8", "1", "5"};
-//     pergeMe.setSequence(argc, argv);
-//     CHECK(pergeMe.getInitialVecSequence() == std::vector<int>{4, 2, 8, 1, 5});
-//     CHECK(pergeMe.getSortedVecSequence() == std::vector<int>{1, 2, 4, 5, 8});
-//     CHECK(pergeMe.getInitialSetSequence() == std::set<int>{4, 2, 8, 1, 5});
-//     CHECK(pergeMe.getSortedSetSequence() == std::set<int>{1, 2, 4, 5, 8});
-// }
+TEST_CASE("PergeMe constructor with list argument")
+{
+    std::vector<int> vect;
+    std::list<int> lst;
 
-// TEST_CASE("PergeMe sortVector") {
-//     std::vector<int> seq {4, 2, 8, 1, 5};
-//     PergeMe pergeMe(seq);
-//     pergeMe.sortVector(seq);
-//     CHECK(seq == std::vector<int>{1, 2, 4, 5, 8});
-// }
+    for (int i = 1000; i > 1; i--)
+    {
+        vect.push_back(i);
+    };
+    for (int i = 100; i > 1; i--)
+    {
+        lst.push_back(i);
+    };
 
+    PergeMe pergeMe(vect);
+    CHECK(!std::is_sorted(vect.begin(), vect.end()));
+    pergeMe.sortVector(vect);
+    CHECK(std::is_sorted(vect.begin(), vect.end()));
 
-// // You can add more test cases for other member functions as well
+    CHECK(!std::is_sorted(lst.begin(), lst.end()));
+    pergeMe.sortList(lst);
+    CHECK(std::is_sorted(lst.begin(), lst.end()));
+}
+

@@ -35,7 +35,7 @@ bool validInput(char **argv)
         {
             if (!isdigit(argv[i][j]))
             {
-                std::cout << BOLD_RED << "Invalid input: " << RESET << argv[i][j] << std::endl;
+                std::cout << BOLD_RED << "Invalid input: " << RESET << argv[i][j] << std::endl; // TODO fix the 0 error
                 exit(1);
             }
         }
@@ -177,23 +177,9 @@ void PergeMe::printListSeq(std::list<int> &listSeq) const
     std::cout << std::endl;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void PergeMe::insertionSortList(std::list<int> &seq)
 {
-    for (std::list<int>::iterator i = seq.begin(); i != seq.end(); i++)
+    for (std::list<int>::iterator i = seq.begin(); i != seq.end(); ++i)
     {
         int key = *i;
         std::list<int>::iterator j = i;
@@ -207,8 +193,12 @@ void PergeMe::insertionSortList(std::list<int> &seq)
         }
         std::list<int>::iterator jNext = j;
         jNext++;
-        seq.insert(jNext, key);
+        *jNext = key;
     }
+    std::list<int>::iterator i = seq.begin();
+    int key = *i;
+    seq.pop_front();
+    seq.push_back(key);
 }
 
 void PergeMe::mergeList(std::list<int> &left, std::list<int> &right, std::list<int> &seq)
@@ -220,35 +210,37 @@ void PergeMe::mergeList(std::list<int> &left, std::list<int> &right, std::list<i
         if (*i < *j)
         {
             seq.push_back(*i);
+            seq.pop_front();
             i++;
         }
         else
         {
             seq.push_back(*j);
+            seq.pop_front();
             j++;
         }
     }
-
     while (i != left.end())
     {
         seq.push_back(*i);
+        seq.pop_front();
         i++;
     }
-
     while (j != right.end())
     {
         seq.push_back(*j);
+        seq.pop_front();
         j++;
     }
 }
 
 void PergeMe::sortList(std::list<int> &seq)
 {
-    const int threshold = 16;
+    const int threshold = seq.size() / 4;
 
     if (seq.size() < 2)
         return;
-    else if (seq.size() < threshold)
+    else if (seq.size() < static_cast<unsigned long>(threshold))
         insertionSortList(seq);
     else
     {
@@ -267,19 +259,6 @@ void PergeMe::sortList(std::list<int> &seq)
 
     setSortedListSequence(seq);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -339,4 +318,3 @@ std::ostream &operator<<(std::ostream &out, const PergeMe &rhs)
         << BOLD_CYAN << std::fixed << std::setprecision(6) << rhs.getListProTime() << " us" << RESET << std::endl;
     return out;
 }
-

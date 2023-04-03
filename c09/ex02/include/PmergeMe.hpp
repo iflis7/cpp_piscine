@@ -63,4 +63,5 @@ class PergeMe
         double getListProTime() const;
 };
 
+
 std::ostream &operator<<(std::ostream &out, const PergeMe &rhs);

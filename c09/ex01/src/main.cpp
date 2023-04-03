@@ -1,17 +1,16 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "../include/RPN.hpp"
 
-
 void test()
 {
     std::cout << "Test: 8 9 * 9 - 9 - 9 - 4 - 1 +" << std::endl;
     RPN rpn("8 9 * 9 - 9 - 9 - 4 - 1 +");
     rpn.getResult();
 
-    std::cout << std::endl << "Test: 7 7 * 7 -" << std::endl ;
+    std::cout << std::endl
+              << "Test: 7 7 * 7 -" << std::endl;
     RPN rpn1("7 7 * 7 -");
     rpn1.getResult();
-
 }
 
 int main(int argc, char **argv)
@@ -28,10 +27,15 @@ int main(int argc, char **argv)
     if (argc == 2)
     {
         RPN rpn(argv[1]);
+        std::cout << BOLD_MAGENTA << "Your Input: " << RESET;
+        std::cout << std::endl
+                  << argv[1] << std::endl;
         rpn.getResult();
+
+        std::cout << std::endl
+                  << BOLD_MAGENTA << "SUBJECT TESTS: " << RESET;
         std::cout << std::endl;
         test();
-
     }
     else
     {
@@ -40,4 +44,3 @@ int main(int argc, char **argv)
     }
     return res; // + your_program_res
 }
-
