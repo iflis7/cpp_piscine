@@ -31,6 +31,7 @@ private:
 public:
     BitcoinExchange();
     BitcoinExchange(std::string file, std::string input);
+    BitcoinExchange(std::string file, std::string input1, std::string input2);
     BitcoinExchange(const BitcoinExchange &rhs);
     ~BitcoinExchange();
     BitcoinExchange &operator=(const BitcoinExchange &rhs);
@@ -42,8 +43,11 @@ public:
     bool validValueFormat(float value, std::string date);
     std::string trim(const std::string& str);
     void printPairInfo(std::deque<std::pair<std::string, float> > pair);
+    
     void run();
 };
+
+void exit_error(std::string str);
 
 #endif
 

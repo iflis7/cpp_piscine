@@ -4,6 +4,7 @@
 TEST_CASE("BitcoinExchange tests")
 {
     BitcoinExchange btc;
+
     SUBCASE("validDateFormat")
     {
         CHECK(btc.validDateFormat("2022-03-01") == true);
@@ -56,7 +57,7 @@ TEST_CASE("BitcoinExchange tests")
 
     SUBCASE("getInputInfo")
     {
-        std::string file = "src/input.txt";
+        std::string file = "src/testInput.txt";
         std::deque<std::pair<std::string, float> > inputInfo = btc.getInputInfo(file);
         CHECK(inputInfo.size() == 15);
         CHECK(inputInfo[0].first == "2010-08-20");
