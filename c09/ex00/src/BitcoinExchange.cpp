@@ -9,17 +9,11 @@ BitcoinExchange::BitcoinExchange(std::string file, std::string input)
     std::ifstream inputFile(input.c_str());
     
     if(!inputFile.good() || inputFile.peek() == std::ifstream::traits_type::eof())
-    {
-        std::cout << BOLD_RED << "Error: file not found or file empty." << RESET << std::endl;
-        exit(1);
-    }
+        exit_error("Error: file not found, doesn't have the right permissions or empty.");
 
     std::ifstream csvFile(file.c_str());
     if(!csvFile.good() || inputFile.peek() == std::ifstream::traits_type::eof())
-    {
-        std::cout << BOLD_RED << "Error: file not found or file empty." << RESET << std::endl;
-        exit(1);
-    }
+        exit_error("Error: file not found, doesn't have the right permissions or empty.");
 
     this->csvInfo = getCsvInfo(file);
     this->inputInfo = getInputInfo(input);
@@ -221,13 +215,11 @@ void BitcoinExchange::run()
      }
 }
 
-
 void exit_error(std::string str)
 {
     std::cout << BOLD_RED << str << RESET << std::endl;
     exit(1);
 }
-
 
 std::pair<std::string, float> nearestDate(const std::string& date, const std::deque<std::pair<std::string, float> >& values)
 {
