@@ -10,6 +10,7 @@
 #include <ctime>
 #include <stdlib.h>
 #include <deque>
+#include <map>
 
 
 #define RESET "\033[0m"
@@ -48,6 +49,8 @@ public:
 };
 
 void exit_error(std::string str);
+std::pair<std::string, float> nearestDate(const std::string& date, 
+    const std::deque<std::pair<std::string, float> >& values);
 
 #endif
 

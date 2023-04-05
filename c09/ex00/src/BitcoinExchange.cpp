@@ -1,6 +1,5 @@
 #include "../include/BitcoinExchange.hpp"
 
-
 BitcoinExchange::BitcoinExchange()
 {
 }
@@ -167,18 +166,7 @@ std::deque<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::stri
         std::stringstream ss(line);
         std::getline(ss, date, ',');
         ss >> value;
-        //  if (!validValueFormat(value, date))
-        //     break;
         csvInfo.push_back(std::make_pair(date, value));
-
-        // if (!validDateFormat(date))
-        // {
-        //     throw std::invalid_argument("Invalid date format. The input string must be in the format YYYY-MM-DD.");
-        // }
-        // if (!validPrice(value))
-        // {
-        //     throw std::invalid_argument("Invalid value format. The input string must be in the format 0.0 - 100.0.");
-        // }
     }
     return csvInfo;
 }
@@ -198,9 +186,6 @@ std::deque<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::st
             std::string date = trim(dateStr);
             ss >> value;
             csvInfo.push_back(std::make_pair(date, value));
-            // if (ss >> value && date != "date")
-            // else if (date != "date")
-            // csvInfo.push_back(std::make_pair(date, std::string::npos));
         }
         else
             exit_error("Invalid value format. Should be like: <date | value>");
@@ -222,29 +207,15 @@ void BitcoinExchange::run()
             {
                 float val = it->second * itr->second;
                 std::cout << it->first << "=> " << it->second << " = " << val << std::endl;
+                break;
             }
             else
-            {
-                std::string year = it->first.substr(0, 4);
-                int keepY = std::atoi(year.c_str());
-                for (std::deque<std::pair<std::string, float> >::iterator i = this->csvInfo.begin();
-                     i != this->csvInfo.end(); ++i)
-                {
-                    std::string csvYear = i->first.substr(0, 4);
-                    int csvKeepY = std::atoi(csvYear.c_str());
-                    while(keepY < csvKeepY)
-                    i++;
-                        if (keepY > csvKeepY)
-                        {
-                            std::string csvMonth = i->first.substr(5, 2);
-                            std::string csvDay = i->first.substr(8, 2);
-                            int csvKeepM = std::atoi(csvMonth.c_str());
-                            float val = it->second * i->second;
-                            std::cout << it->first << "++++=> " << it->second << " = " << val << std::endl;
-                            break;
-                        }                 
-                    break;
-                }
+            {     
+                std::pair<std::string, float> nearest = nearestDate(it->first, this->csvInfo);
+
+                float val = it->second * nearest.second;
+                std::cout << it->first << "=> " << it->second << " = " << val << std::endl;
+                break;
             }
         }
      }
@@ -257,4 +228,30 @@ void exit_error(std::string str)
     exit(1);
 }
 
+
+std::pair<std::string, float> nearestDate(const std::string& date, const std::deque<std::pair<std::string, float> >& values)
+{
+    std::pair<std::string, float> result;
+
+
+    for(std::deque<std::pair<std::string, float> >::const_iterator rit = values.begin(); rit != values.end(); ++rit) 
+    {
+        int i = std::distance(values.begin(), rit);
+        if(rit != values.end() - 1)
+            i++;
+        if(rit->first < date && values.at(i).first > date)
+        {
+            result.first = rit->first;
+            result.second = rit->second;
+            return(result);
+        }
+        else if(rit->first < date && rit == values.end() - 1)
+        {
+            result.first = rit->first;
+            result.second = rit->second;
+            return result;
+        }
+    }    
+    return result;
+}
 
