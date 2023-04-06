@@ -60,6 +60,11 @@ bool BitcoinExchange::validDateFormat(std::string date)
     int day = std::atoi(std::string(date.c_str()).substr(8, 2).c_str());
     int currentYear = getCurrentYear();
 
+    if (year < 2009)
+    {
+        std::cout << BOLD_YELLOW << "Error: Bitcoin wasn't invented yet!!! " << RESET;
+        return false;
+    }
     if (year > currentYear)
         return false;
     if (month < 1 || month > 12)
