@@ -182,9 +182,10 @@ void BitcoinExchange::run()
         while (!validValueFormat(it->second, it->first))
         {
             it++;
-            if(it == this->inputInfo.end() - 1)
-                break;
-        }         
+            if(it == this->inputInfo.end())
+                return;    
+        }
+       
         for (std::deque<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin();
              itr != this->csvInfo.end(); ++itr)
         {
