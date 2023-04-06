@@ -4,6 +4,8 @@ RPN::RPN(const std::string rpn)
 {
     if (!rpn.empty())
         this->_result = evaluate_rpn(rpn);
+    else
+        exit_error("Error: arg can't be empty! ");
 }
 
 RPN::RPN()
@@ -12,9 +14,8 @@ RPN::RPN()
 
 RPN &RPN::operator=(const RPN &rhs)
 {
-    if (this != &rhs) // TODO fix this 
-    {
-    }
+    if (this != &rhs) 
+        this->_result = rhs._result;
     return *this;
 }
 
