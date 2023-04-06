@@ -7,10 +7,20 @@ void test()
     RPN rpn("8 9 * 9 - 9 - 9 - 4 - 1 +");
     rpn.getResult();
 
+    std::cout << std::endl << "Test: 9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 -" 
+        << std::endl;
+    RPN rpn1("9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 -");
+    rpn1.getResult();
+
+    std::cout << std::endl << "Test: 1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 /" 
+        << std::endl;
+    RPN rpn2("1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 /");
+    rpn2.getResult();
+
     std::cout << std::endl
               << "Test: 7 7 * 7 -" << std::endl;
-    RPN rpn1("7 7 * 7 -");
-    rpn1.getResult();
+    RPN rpn4("7 7 * 7 -");
+    rpn4.getResult();
 }
 
 int main(int argc, char **argv)

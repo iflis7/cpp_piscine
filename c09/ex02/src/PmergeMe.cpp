@@ -47,8 +47,10 @@ void PergeMe::setSequence(int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
     {
-        if (atoi(argv[i]) > 0)
+        if (atoi(argv[i]) >= 0)
         {
+            if(atoi(argv[i]) == 0)
+                std::cout << BOLD_YELLOW << "0 ttaǧǧaɣ-t ad iɛeddi d amyili"  << std::endl  << BOLD_YELLOW << "0 is considered positive"  << std::endl;
             this->seq.push_back(atoi(argv[i]));
             this->seqList.push_back(atoi(argv[i]));
         }

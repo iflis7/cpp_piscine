@@ -171,30 +171,25 @@ void BitcoinExchange::run()
     for (std::deque<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
          it != this->inputInfo.end(); ++it)
     {
+        if (!validValueFormat(it->second, it->first))
+                ++it;
+        
         for (std::deque<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin();
              itr != this->csvInfo.end(); ++itr)
         {
-            if (!validValueFormat(it->second, it->first))
-                break;
             if (it->first == itr->first)
             {
                 float val = it->second * itr->second;
-                // std::cout << "it->first :" << itr->first << std::fixed << std::setprecision(2) << itr->second << std::endl;
                 std::cout <<  it->first << "=> " << std::fixed << std::setprecision(2) << it->second 
                     << " = " << std::fixed << std::setprecision(2) << val << std::endl;
-                // break;
             }
-            else 
-            {     
-                std::pair<std::string, float> nearest = nearestDate(it->first, this->csvInfo);
-                if (!nearest.first.empty())
-                {
-                    float val = it->second * nearest.second;
-                    std::cout << it->first << "=> " << std::fixed << std::setprecision(2) << nearest.second 
-                        << " = " << std::fixed << std::setprecision(2) << val << std::endl;
-                    break;
-                }
-            }
+        }
+        std::pair<std::string, float> nearest = nearestDate(it->first, this->csvInfo);
+        if (!nearest.first.empty())
+        {
+            float val = it->second * nearest.second;
+            std::cout << it->first << "=> " << std::fixed << std::setprecision(2) << nearest.second 
+                << " = " << std::fixed << std::setprecision(2) << val << std::endl;
         }
      }
 }
@@ -203,7 +198,7 @@ std::pair<std::string, float> nearestDate(const std::string& date, const std::de
 {
     std::pair<std::string, float> result;
 
-    for(std::deque<std::pair<std::string, float> >::const_iterator rit = values.begin(); rit != values.end(); rit++) 
+    for(std::deque<std::pair<std::string, float> >::const_iterator rit = values.begin(); rit != values.end(); rit++)
     {
         int i = std::distance(values.begin(), rit);
         if(rit != values.end() - 1)

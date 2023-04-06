@@ -12,7 +12,7 @@ RPN::RPN()
 
 RPN &RPN::operator=(const RPN &rhs)
 {
-    if (this != &rhs)
+    if (this != &rhs) // TODO fix this 
     {
     }
     return *this;
@@ -44,11 +44,15 @@ int RPN::perform_operation(char op, int num1, int num2)
             return num1 * num2;
         case '/':
             if (num2 == 0)
-                throw std::invalid_argument("Division by zero");
+                exit_error("Error: Division by zero");
             return num1 / num2;
         default:
-            throw std::invalid_argument("Error: Invalid operator");
+        {
+            exit_error("Error: Invalid operator");
+            return 0;
+        }
     }
+    
 }
 
 int RPN::evaluate_rpn(std::string rpn)
@@ -62,7 +66,7 @@ int RPN::evaluate_rpn(std::string rpn)
         if (token.length() == 1 && !isdigit(token[0]))
         {
             if (stack.size() < 2)
-                throw std::invalid_argument("Error: Insufficient operands");
+                exit_error("Error: Insufficient operands");
             int num2 = stack.top();
             stack.pop();
             int num1 = stack.top();
@@ -73,11 +77,17 @@ int RPN::evaluate_rpn(std::string rpn)
         else if (isdigit(token[0]))
             stack.push(atoi(token.c_str()));
         else
-            throw std::invalid_argument("Error: Invalid token");
+            exit_error("Error: Invalid token");
     }
 
     if (stack.size() != 1)
-        throw std::invalid_argument("Error: Invalid expression");
+            exit_error("Error: Invalid expression");
 
     return stack.top();
 };
+
+void exit_error(std::string str)
+{
+    std::cout << BOLD_RED << str << RESET << std::endl;
+    exit(1) ;
+}
