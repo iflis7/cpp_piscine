@@ -60,13 +60,17 @@ bool BitcoinExchange::validDateFormat(std::string date)
     int day = std::atoi(std::string(date.c_str()).substr(8, 2).c_str());
     int currentYear = getCurrentYear();
 
+    // std::cout << "year: " << year << " -*-*- " << "Current Year: " << currentYear << std::endl;
     if (year < 2009)
     {
         std::cout << BOLD_YELLOW << "Error: Bitcoin wasn't invented yet!!! " << RESET;
         return false;
     }
     if (year > currentYear)
+    {
+        std::cout << BOLD_YELLOW << "Error: Year Can't be after 2023!!! " << RESET;
         return false;
+    }
     if (month < 1 || month > 12)
         return false;
     if (day < 1 || day > 31)
@@ -174,11 +178,14 @@ std::deque<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::st
 void BitcoinExchange::run()
 {
     for (std::deque<std::pair<std::string, float> >::iterator it = this->inputInfo.begin();
-         it != this->inputInfo.end(); ++it)
+         it != this->inputInfo.end(); it++)
     {
-        if (!validValueFormat(it->second, it->first))
-                ++it;
-        
+        while (!validValueFormat(it->second, it->first))
+        {
+            it++;
+            if(it == this->inputInfo.end() - 1)
+                break;
+        }         
         for (std::deque<std::pair<std::string, float> >::iterator itr = this->csvInfo.begin();
              itr != this->csvInfo.end(); ++itr)
         {
@@ -220,12 +227,12 @@ std::pair<std::string, float> nearestDate(const std::string& date, const std::de
             result.second = rit->second;
             return result;
         }
-        else if(rit->first > date && rit == values.begin())
-        {
-            result.first = rit->first;
-            result.second = rit->second;
-            return(result);
-        }
+        // else if(rit->first > date && rit == values.begin())
+        // {
+        //     result.first = rit->first;
+        //     result.second = rit->second;
+        //     return(result);
+        // }
     }    
     return result;
 }
