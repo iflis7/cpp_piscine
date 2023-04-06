@@ -14,7 +14,7 @@ int main(int argc, char **argv)
         return res;                   // propagate the result of the tests
     std::cout << std::endl;
 
-    std::cout << "****** PmergeMe Prog ******" << std::endl;
+    std::cout << BOLD_MAGENTA << "****** PmergeMe Prog ******" << RESET << std::endl;
 
     if(argc < 3)
     {
