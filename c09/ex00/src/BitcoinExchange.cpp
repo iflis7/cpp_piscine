@@ -60,7 +60,6 @@ bool BitcoinExchange::validDateFormat(std::string date)
     int day = std::atoi(std::string(date.c_str()).substr(8, 2).c_str());
     int currentYear = getCurrentYear();
 
-    // std::cout << "year: " << year << " -*-*- " << "Current Year: " << currentYear << std::endl;
     if (year < 2009)
     {
         std::cout << BOLD_YELLOW << "Error: Bitcoin wasn't invented yet!!! " << RESET;
@@ -68,7 +67,7 @@ bool BitcoinExchange::validDateFormat(std::string date)
     }
     if (year > currentYear)
     {
-        std::cout << BOLD_YELLOW << "Error: Year Can't be after 2023!!! " << RESET;
+        std::cout << BOLD_YELLOW << "Error: Year Can't be after 2023   !!! " << RESET;
         return false;
     }
     if (month < 1 || month > 12)
