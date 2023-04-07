@@ -50,7 +50,7 @@ int BitcoinExchange::getCurrentYear()
 
 bool BitcoinExchange::validDateFormat(std::string date)
 {
-    // if (date.length() < 9 && date.length() > 10)
+    // TODO check month date 31 fevrier 
     if (date.length() != 10)
         return false;
     if (date[4] != '-' || date[7] != '-')
@@ -74,8 +74,33 @@ bool BitcoinExchange::validDateFormat(std::string date)
         return false;
     if (day < 1 || day > 31)
         return false;
+    if((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day > 31)
+    {
+        std::cout << BOLD_YELLOW << "Error: month of : " << month << " has only 31 days!" << RESET;
+        return false;
+    }
+    if((month == 4 || month == 6 || month == 8 || month == 9 || month == 11) && day > 30)
+    {
+        std::cout << BOLD_YELLOW << "Error: month of : " << month << " has only 31 days!" << RESET;
+        return false;
+    }
+    if (month == 2)
+    {
+        bool leapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+        if (leapYear && day > 29)
+        {
+            std::cout << BOLD_YELLOW << "Error: month of : " << month << " has only 29 days!" << RESET;
+            return false;
+        }
+        if (!leapYear && day > 28)
+        {
+            std::cout << BOLD_YELLOW << "Error: month of : " << month << " has only 28 days!" << RESET;
+            return false;
+        }
+    }
     return true;
 }
+
 
 bool BitcoinExchange::validValueFormat(float value, std::string date)
 {
@@ -136,7 +161,7 @@ std::deque<std::pair<std::string, float> > BitcoinExchange::getCsvInfo(std::stri
     return csvInfo;
 }
 
-std::deque<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file)
+std::deque<std::pair<std::string, float> > BitcoinExchange::getInputInfo(std::string file) // TODO change to map 
 {
     std::deque<std::pair<std::string, float> > csvInfo;
     std::ifstream csvFile(file.c_str());
