@@ -1,5 +1,7 @@
 #include "../include/ClapTrap.hpp"
 
+#include <vector>
+
 /*
 It will be called ClapTrap and will have the following private attributes initialized
 to the values specified in brackets:
@@ -39,4 +41,15 @@ int main(void)
     clap.takeDamage(5);
     clap.beRepaired(3);
     return (0);
+
+    std::vector<int> vecInt;
+    std::vector<std::string> vecStr;
+    std::vector<ClapTrap> vecClap;
+
+    vecInt.push_back(1);
+    // vecClap.push_back();
+
+
+
+
 }
