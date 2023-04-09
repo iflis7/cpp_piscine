@@ -31,19 +31,26 @@ private:
 public:
     BitcoinExchange();
     BitcoinExchange(std::string file, std::string input);
+    BitcoinExchange(std::string file, std::string input1, std::string input2);
     BitcoinExchange(const BitcoinExchange &rhs);
     ~BitcoinExchange();
     BitcoinExchange &operator=(const BitcoinExchange &rhs);
     std::deque<std::pair<std::string, float> > getCsvInfo(std::string file);
     std::deque<std::pair<std::string, float> > getInputInfo(std::string file);
     bool validDateFormat(std::string date);
-    bool validPrice(float value);
     int getCurrentYear();
     bool validValueFormat(float value, std::string date);
     std::string trim(const std::string& str);
     void printPairInfo(std::deque<std::pair<std::string, float> > pair);
+    
     void run();
 };
+
+void exit_error(std::string str);
+std::pair<std::string, float> nearestDate(const std::string& date, 
+    const std::deque<std::pair<std::string, float> >& values);
+
+std::string trim(const std::string& str);
 
 #endif
 

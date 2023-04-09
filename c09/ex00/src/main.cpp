@@ -1,13 +1,9 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "../include/BitcoinExchange.hpp"
 
-// TEST_CASE("Test Vector")
-// {
-
-// }
-
 int main(int argc, char **argv)
 {
+    // DOCTEST FRAMEWORK
     doctest::Context ctx;
     ctx.setOption("abort-after", 5);  // default - stop after 5 failed asserts
     ctx.applyCommandLine(argc, argv); // apply command line - argc / argv

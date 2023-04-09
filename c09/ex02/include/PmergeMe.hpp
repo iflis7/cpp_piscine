@@ -7,6 +7,7 @@
 #include <vector>
 #include <ctime>
 #include <list>
+#include <cctype>
 
 #define RESET "\033[0m"
 #define BOLD_RED "\033[1m\033[31m"

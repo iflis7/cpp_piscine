@@ -26,7 +26,6 @@ PergeMe &PergeMe::operator=(const PergeMe &rhs)
     return *this;
 }
 
-
 bool validInput(char **argv)
 {
     for (int i = 1; argv[i] != NULL; i++)
@@ -43,11 +42,14 @@ bool validInput(char **argv)
     return (true);
 }
 
+
+
 void PergeMe::setSequence(int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
     {
-        if (atoi(argv[i]) > 0)
+        // std::cout << BOLD_YELLOW << "0 is considered positive"  << std::endl;
+        if (std::atoi(argv[i]) > 0)
         {
             this->seq.push_back(atoi(argv[i]));
             this->seqList.push_back(atoi(argv[i]));
@@ -150,6 +152,7 @@ void PergeMe::mergeVector(std::vector<int> &left, std::vector<int> &right, std::
         seq[k++] = right[j++];
     }
 }
+
 
 
 /* Sorting LIST Container */
@@ -260,8 +263,6 @@ void PergeMe::sortList(std::list<int> &seq)
     setSortedListSequence(seq);
 }
 
-
-
 bool PergeMe::hasDuplicates(std::vector<int> &seq)
 {
     for (int i = 0; i < static_cast<int>(seq.size()); i++)
@@ -274,6 +275,8 @@ bool PergeMe::hasDuplicates(std::vector<int> &seq)
     }
     return false;
 }
+
+
 
 // // MANAGING PROCESSING TIME
 double PergeMe::getVecProTime() const
@@ -318,3 +321,4 @@ std::ostream &operator<<(std::ostream &out, const PergeMe &rhs)
         << BOLD_CYAN << std::fixed << std::setprecision(6) << rhs.getListProTime() << " us" << RESET << std::endl;
     return out;
 }
+

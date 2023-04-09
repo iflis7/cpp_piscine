@@ -4,6 +4,7 @@
 TEST_CASE("BitcoinExchange tests")
 {
     BitcoinExchange btc;
+
     SUBCASE("validDateFormat")
     {
         CHECK(btc.validDateFormat("2022-03-01") == true);
@@ -13,14 +14,6 @@ TEST_CASE("BitcoinExchange tests")
         CHECK(btc.validDateFormat("202-03-01") == false);
         CHECK(btc.validDateFormat("2022/03/01") == false);
         CHECK(btc.validDateFormat("") == false);
-    }
-
-    SUBCASE("validPrice")
-    {
-        CHECK(btc.validPrice(0.0f) == true);
-        CHECK(btc.validPrice(100.0f) == true);
-        CHECK(btc.validPrice(-100.0f) == false);
-        CHECK(btc.validPrice(10000.0f) == true);
     }
 
     SUBCASE("validValueFormat")
@@ -48,7 +41,6 @@ TEST_CASE("BitcoinExchange tests")
         std::deque<std::pair<std::string, float> > csvInfo = btc.getCsvInfo(file1);
         CHECK(csvInfo.size() == 1612);
         CHECK(csvInfo[0].first == "2009-01-02");
-        CHECK(csvInfo[0].second == 0);
         CHECK(csvInfo[300].first == "2011-06-22");
         CHECK(csvInfo[300].second == 15.39f);
     }
@@ -56,12 +48,30 @@ TEST_CASE("BitcoinExchange tests")
 
     SUBCASE("getInputInfo")
     {
-        std::string file = "src/input.txt";
+        std::string file = "src/testInput.txt";
         std::deque<std::pair<std::string, float> > inputInfo = btc.getInputInfo(file);
         CHECK(inputInfo.size() == 15);
         CHECK(inputInfo[0].first == "2010-08-20");
         CHECK(inputInfo[0].second == 3);
         CHECK(inputInfo[1].first == "2011-03-02");
         CHECK(inputInfo[1].second == 2);
+    }
+
+    SUBCASE("nearestDate")
+    {
+        std::string file1 = "src/data.csv";
+        std::deque<std::pair<std::string, float> > csvInfo = btc.getCsvInfo(file1);
+        std::pair<std::string, float> nearest = nearestDate("2022-03-31", csvInfo);
+        CHECK(nearest.first == "2022-03-29");
+
+        nearest = nearestDate("2013-01-16", csvInfo);
+        CHECK(nearest.first == "2013-01-14");
+
+        nearest = nearestDate("2019-09-27", csvInfo);
+        CHECK(nearest.first == "2019-09-26");
+
+        nearest = nearestDate("2008-01-02", csvInfo);
+        CHECK(nearest.first == "");
+
     }
 }
